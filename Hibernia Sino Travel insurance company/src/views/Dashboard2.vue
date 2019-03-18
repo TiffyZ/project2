@@ -5,7 +5,7 @@
  <Row >
 
     <Col :sm="24" :md="8">
-        <h3>Hibernia-Sino Travel insurance company</h3>
+        <h3>Hibernia-Sino</h3>
         
     </Col>
         

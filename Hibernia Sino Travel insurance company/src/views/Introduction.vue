@@ -32,7 +32,7 @@
             
         </Col>
 
-  <Col :md="8" >
+            <Col :md="8" >
 
           <div class="dashboard_feature">
             <Icon type="android-phone-portrait" size="50"></Icon>

@@ -38,11 +38,11 @@
             <p  style="color:white"> My Profile </p>
         </router-link>
         <DropdownMenu slot="list">
-            <DropdownItem>Linux</DropdownItem>
-            <DropdownItem>Mac OS X</DropdownItem>
-            <DropdownItem>Windows</DropdownItem>
+            <DropdownItem>Overview</DropdownItem>
+            <DropdownItem>Pending Profile</DropdownItem>
+            <DropdownItem>Pending Claims</DropdownItem>
             
-            <DropdownItem>Core OS</DropdownItem>
+            <DropdownItem>Finished Task</DropdownItem>
         </DropdownMenu>
     </Dropdown>
 
