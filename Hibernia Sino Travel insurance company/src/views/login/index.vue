@@ -167,7 +167,7 @@ function animate() {
             font-family: Cursive;
             left: 0;
             right: 0;
-            width: 1000px;
+            width: auto;
             font-size: 64px;
             font-weight: 900;
             color: white;
