@@ -94,7 +94,18 @@ export const asyncRouterMap = [
     
     ]
   },
+    {
+        path: '/dashboard2',
+        redirect: '/home1/dashboard',
+        name: 'HOME2',
+        component: Full2,
+        hidden:false,
+        children: [
+            {path: '/home1/dashboard',name: 'Home2',icon:'speedometer',component: _import('Dashboard2')},
+            {path: '/home1/introduction',name: 'introduction2',icon:'thumbsup',component: _import('Introduction')},
 
+        ]
+    },
 
   { path: '*', redirect: '/pages/404', hidden: true }
   
