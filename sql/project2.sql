@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-03-20 17:07:10
+Date: 2019-03-26 17:35:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,6 +24,21 @@ CREATE TABLE `admin_info` (
   `admin_pass` varchar(30) NOT NULL,
   PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for employees
+-- ----------------------------
+DROP TABLE IF EXISTS `employees`;
+CREATE TABLE `employees` (
+  `employee_mail` varchar(40) NOT NULL,
+  `employee_id` decimal(11,0) NOT NULL,
+  `employee_name` varchar(20) NOT NULL,
+  `employee_phone` decimal(11,0) NOT NULL,
+  `employee_password` varchar(100) NOT NULL,
+  `employee_evaluation` int(11) DEFAULT NULL,
+  `employee_account_num` decimal(6,0) NOT NULL,
+  `employee_address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Table structure for luggage_info
