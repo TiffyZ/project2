@@ -14,7 +14,7 @@
       </li>
         <li class="nav-item header-item">
         
-        <router-link tag="div" to='/dashboard2'  style="height:55px;" class="nav-link">
+        <router-link tag="div" to='/markdown'  style="height:55px;" class="nav-link">
             <p><Icon type="stats-bars" size='30' color=orange></Icon></p>
             <p  style="color:white"> New Policy </p>
         </router-link> 
