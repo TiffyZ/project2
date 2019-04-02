@@ -27,9 +27,9 @@
 /*具体内容*/
 .wrap_conter ul {
   position: relative;
-  width: 300px;
+  width: 330px;
   border-radius: 5px;
-  background: #fff;
+  background: rgba(55,60,150,0.2);
   margin: 0 auto;
 }
 .wrap_conter li {
@@ -84,8 +84,8 @@
                     <ul style="list-style: none;box-shadow:10px 10px 20px rgba(0,0,0,.5);">
                         <li style="border-bottom: 1px solid #e9eaec;">
                             <div class="content">
-                                <img src="../images/logo.jpg" style="width: 40px;height: 40px;" align="absmiddle" />
-                                <span style="float:right;font-size: 15px"><Icon type="ios-log-in"></Icon>欢迎登录</span>
+                                <img src="../images/WechatIMG1636.png" style="width: 40px;height: 40px" align="absmiddle" />
+                                <span style="float:right;font-size: 22px;align-items: center" >Welcome</span>
                             </div>
                         </li>
                         <li>
