@@ -73,6 +73,7 @@
           <div style="width: 100%;margin: 0 0 20px 0">
               <Card v-for="(item,index) in articleList" :key="index" class="card-body">
                   <div class="title">
+
                     <router-link :to="('/article/detail/'+item.id)">
                       <span class="tirtleFont lineThrou ">{{item.title}}</span>
                     </router-link>
@@ -111,6 +112,7 @@
                   </dl>
               </Card>
               <div style="margin-top: 20px">
+
                   <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
               </div>
           </div>
