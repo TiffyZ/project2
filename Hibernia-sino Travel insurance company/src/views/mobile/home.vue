@@ -8,6 +8,33 @@
                     </router-link>
                 </CarouselItem>
             </Carousel>
+
+
+            <Carousel autoplay>
+                <Carousel-item>
+                    <div class="demo-carousel">
+                        <img :style="{height:'200px'}" src=url(../images/login3.jpg)>
+                        <p>a</p>
+                        <p>a</p><p>a</p>
+                        <p>a</p>
+
+                    </div>
+                </Carousel-item>
+                <Carousel-item>
+                    <div class="demo-carousel">
+                        <img :style="{height:'200px'}" src=url(../images/login2.jpg)>
+                        <p>a</p>
+                        <p>a</p><p>a</p>
+                        <p>a</p>
+                    </div>
+                </Carousel-item>
+                <Carousel-item>
+                    <div class="demo-carousel">3</div>
+                </Carousel-item>
+                <Carousel-item>
+                    <div class="demo-carousel">4</div>
+                </Carousel-item>
+            </Carousel>
         </div>
         <div v-if="flage" style="background: #f5f7f9;padding: 24px 50px;color: #495060;font-size: 14px;text-align: center;">
             <span>未找到符合条件的结果</span>
@@ -20,6 +47,7 @@
                         <img class="mobile-images images-con imgpic" v-bind:src="(A.image)" style="height: 100%;" >
                     </router-link>
                 </div>
+
                 <div class="box-flex flex-1 padding-all flex-direction-column">
                     <router-link :to="('/mobile/detail/'+A.id)">
                         <span class="tirtleFont lineThrou">{{A.title}}</span>
