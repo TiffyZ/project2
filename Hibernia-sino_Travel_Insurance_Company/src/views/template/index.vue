@@ -169,7 +169,7 @@
                         <Icon style="color: rebeccapurple;" size="40" type="logo-github"></Icon>
                     </a>
                 </div>
-                <p>2018-2020 &copy; smallsail-wh</p>
+                <p>2016-2020 &copy; Hibernia-Sino Travel Insurance Company</p>
             </Footer>
         </Layout>
 
