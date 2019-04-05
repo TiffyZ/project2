@@ -212,7 +212,7 @@
                                     <a :href="$store.state.userUrlPre+article.userid" target="_blank">{{article.userName}}</a>
                                 </dd>
                                 <dd>
-                                    <span class="text">阅读数:</span>
+                                    <span class="text">浏览数:</span>
                                     <span class="num">{{article.clickRate}}</span>
                                 </dd>
                                 <dd>{{article.createTime}}</dd>
