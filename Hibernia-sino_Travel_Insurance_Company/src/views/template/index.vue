@@ -116,7 +116,7 @@
                           </MenuItem>
                           <MenuItem name="2">
                               <Icon type="ios-mail"></Icon>
-                              邮件
+                              创建表单
                           </MenuItem>
                           <Submenu name="3">
                             <template slot="title">
@@ -138,7 +138,7 @@
                           </MenuItem>
                           <MenuItem name="5" v-if="consoleFlag">
                               <Icon type="md-settings"></Icon>
-                              控制台
+                              员工控制台
                           </MenuItem>
                       </div>
                       <div  type="success" class="avatar-badge-wrapper" @click="toMessages">
@@ -166,7 +166,7 @@
             <Footer class="layout-footer-center">
                 <div>
                     <a href="https://github.com/smallsnail-wh" target="_blank">
-                        <Icon style="color: rebeccapurple;" size="40" type="logo-github"></Icon>
+                        <Icon style="color: rebeccapurple;" size="40" type="logo-github">z</Icon>
                     </a>
                 </div>
                 <p>2016-2020 &copy; Hibernia-Sino Travel Insurance Company</p>
@@ -174,18 +174,18 @@
         </Layout>
 
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
-               title="联系管理员" @on-ok="emailOk('email')" @on-cancel="cancel()">
-            <Form ref="email" :rules="emailRule" :model="email" :label-width="80">
-                <FormItem label="标题" prop="title">
-                    <Input v-model="email.title" placeholder="请输入标题" />
+               title="创建表单" @on-ok="emailOk('email')" @on-cancel="cancel()">
+            <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
+                <FormItem label="被保险人姓名" prop="title">
+                    <Input v-model="email.title" placeholder="请输入被保险人姓名" />
                 </FormItem>
-                <FormItem label="email" prop="email">
-                    <Input v-model="email.email" placeholder="请输入email" />
+                <FormItem label="被保险人ID" prop="email">
+                    <Input v-model="email.email" placeholder="请输入被保险人id" />
                 </FormItem>
-                <FormItem label="姓名" prop="name">
-                    <Input v-model="email.name" placeholder="请输入姓名" />
+                <FormItem label="申报信息" prop="name">
+                    <Input v-model="email.name" placeholder="请输入所需申报信息：如丢失物品" />
                 </FormItem>
-                <FormItem label="内容" prop="content">
+                <FormItem label="问题详情" prop="content">
                     <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter something..." />
                 </FormItem>
             </Form>

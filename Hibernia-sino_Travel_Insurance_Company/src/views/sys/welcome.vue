@@ -16,7 +16,7 @@
 </style>
 <template>
     <div id="welcome">
-        <img src="../../images/welcome2.jpg" />
+        <img src="../../images/339228868131700513.jpg" />
     </div>
 </template>
 <script>
