@@ -197,7 +197,7 @@
                     <Upload
                             ref="upload"
                             :headers="headers"
-                            action="/interest/admin/interest/upload/picture"
+                            action="/interest/admin/template/upload/picture"
                             name="picture"
                             :show-upload-list="false"
                             :before-upload="handleBeforeUpload"
@@ -290,6 +290,7 @@ export default {
     };
   },
   mounted() {
+
     var code = this.$route.query.code;
     var state = this.$route.query.state;
     if (this.$store.getters._isMobile) {
@@ -303,9 +304,18 @@ export default {
     }
     this.login(code, state);
   },
+
   methods: {
     userGet() {
+
+
+
+        
       let _this = this;
+
+
+
+
       this.axios({
         method: "get",
         url: "/public/user"
