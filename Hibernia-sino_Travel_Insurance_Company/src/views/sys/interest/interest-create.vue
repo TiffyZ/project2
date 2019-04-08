@@ -59,6 +59,7 @@ export default {
     return {
       interestContent: "",
       content: null,
+        interestList: [],
       headers: {
         Authorization: "bearer " + localStorage.getItem("currentUser_token")
       },

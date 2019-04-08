@@ -180,9 +180,11 @@
                     <!--<Select v-model="interestId" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
                         <!--<Option v-for="item in interestList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
                     <!--</Select>-->
+
                     <i-select :model.sync="model1" style="width:200px">
                         <i-option v-for="item in insuranceList" :value="item.value">{{ item.label }}</i-option>
                     </i-select>
+
                 </FormItem>
                 <FormItem label="被保险人姓名" prop="name">
                     <Input v-model="email.name" placeholder="请输入被保险人姓名" />
@@ -312,6 +314,26 @@ export default {
     };
   },
   mounted() {
+
+      // this.axios({
+      //     method: "get",
+      //     url: "/public/interests"
+      // })
+      //     .then(
+      //         function(response) {
+      //             var listTemp = response.data.data;
+      //             for (var i = 0; i < listTemp.length; i++) {
+      //                 this.interestList.push({
+      //                     value: listTemp[i].id,
+      //                     label: listTemp[i].title
+      //                 });
+      //             }
+      //         }.bind(this)
+      //     )
+      //     .catch(function(error) {
+      //         alert(error);
+      //     });
+
 
     var code = this.$route.query.code;
     var state = this.$route.query.state;
