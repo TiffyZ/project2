@@ -177,21 +177,24 @@
                title="创建表单" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
                 <FormItem label="保单类型" prop="type">
-                    <Select v-model="interestId" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">
-                        <Option v-for="item in interestList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                    </Select>
+                    <!--<Select v-model="interestId" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
+                        <!--<Option v-for="item in interestList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
+                    <!--</Select>-->
+                    <i-select :model.sync="model1" style="width:200px">
+                        <i-option v-for="item in insuranceList" :value="item.value">{{ item.label }}</i-option>
+                    </i-select>
                 </FormItem>
                 <FormItem label="被保险人姓名" prop="name">
-                    <Input v-model="email.title" placeholder="请输入被保险人姓名" />
+                    <Input v-model="email.name" placeholder="请输入被保险人姓名" />
                 </FormItem>
                 <FormItem label="被保险人ID" prop="id">
-                    <Input v-model="email.email" placeholder="请输入被保险人id" />
+                    <Input v-model="email.id" placeholder="请输入被保险人id" />
                 </FormItem>
                 <FormItem label="被保险人邮箱" prop="email">
                     <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
                 </FormItem>
                 <FormItem label="申报信息" prop="title">
-                    <Input v-model="email.name" placeholder="请输入所需申报信息：如丢失物品" />
+                    <Input v-model="email.title" placeholder="请输入所需申报信息：如丢失物品" />
                 </FormItem>
                 <Form-item label="图片：" prop="image">
                     <Upload
@@ -228,6 +231,25 @@ export default {
       emailModal: false,
       //用户未读消息个数
       unreadMsgCount: 0,
+        insuranceList: [
+            {
+                value: '行李险',
+                label: '行李险'
+            },
+            {
+                value: '亲子险',
+                label: '亲子险'
+            },
+            {
+                value: '准时险',
+                label: '准时险'
+            },
+            {
+                value: '人身安全险',
+                label: '人身安全险'
+            }
+        ],
+
       email: {
         title: "",
         email: "",
@@ -249,14 +271,14 @@ export default {
             trigger: "blur"
           }
         ],
-          type: [
-              {
-                  type: "string",
-                  required: true,
-                  message: "填选择保单类型",
-                  trigger: "blur"
-              }
-          ],
+          // type: [
+          //     {
+          //         type: "string",
+          //         required: true,
+          //         message: "填选择保单类型",
+          //         trigger: "blur"
+          //     }
+          // ],
           id: [
               {
                   type: "string",
@@ -310,7 +332,7 @@ export default {
 
 
 
-        
+
       let _this = this;
 
 
