@@ -176,15 +176,40 @@
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
                title="创建表单" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
-                <FormItem label="被保险人姓名" prop="title">
+                <FormItem label="保单类型" prop="type">
+                    <Select v-model="interestId" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">
+                        <Option v-for="item in interestList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    </Select>
+                </FormItem>
+                <FormItem label="被保险人姓名" prop="name">
                     <Input v-model="email.title" placeholder="请输入被保险人姓名" />
                 </FormItem>
-                <FormItem label="被保险人ID" prop="email">
+                <FormItem label="被保险人ID" prop="id">
                     <Input v-model="email.email" placeholder="请输入被保险人id" />
                 </FormItem>
-                <FormItem label="申报信息" prop="name">
+                <FormItem label="被保险人邮箱" prop="email">
+                    <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
+                </FormItem>
+                <FormItem label="申报信息" prop="title">
                     <Input v-model="email.name" placeholder="请输入所需申报信息：如丢失物品" />
                 </FormItem>
+                <Form-item label="图片：" prop="image">
+                    <Upload
+                            ref="upload"
+                            :headers="headers"
+                            action="/interest/admin/interest/upload/picture"
+                            name="picture"
+                            :show-upload-list="false"
+                            :before-upload="handleBeforeUpload"
+                            :on-success="handleSuccess"
+                            :on-format-error="handleFormatError"
+                            :format="['jpg','jpeg','png']">
+                        <Button icon="ios-cloud-upload-outline">上传图片</Button>
+                    </Upload>
+                </Form-item>
+                <Form-item>
+                    <img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px">
+                </Form-item>
                 <FormItem label="问题详情" prop="content">
                     <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter something..." />
                 </FormItem>
@@ -220,10 +245,26 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请输入密码",
+            message: "请输入申报信息",
             trigger: "blur"
           }
         ],
+          type: [
+              {
+                  type: "string",
+                  required: true,
+                  message: "填选择保单类型",
+                  trigger: "blur"
+              }
+          ],
+          id: [
+              {
+                  type: "string",
+                  required: true,
+                  message: "请输入被保险人id",
+                  trigger: "blur"
+              }
+          ],
         email: [
           { required: true, message: "输入邮箱", trigger: "blur" },
           { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
