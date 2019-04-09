@@ -203,18 +203,19 @@
                 <FormItem label="申报信息" prop="title">
                     <Input v-model="email.title" placeholder="请输入所需申报信息：如丢失物品" />
                 </FormItem>
-                <Form-item label="图片：" prop="image">
+                <Form-item label="图片证明：" prop="image"  >
                     <Upload
+                            v-model="email.image"
                             ref="upload"
-                            :headers="headers"
-                            action="/interest/admin/template/upload/picture"
+                            action="/index/upload/picture"
                             name="picture"
-                            :show-upload-list="false"
+                            :show-upload-list="true"
                             :before-upload="handleBeforeUpload"
                             :on-success="handleSuccess"
                             :on-format-error="handleFormatError"
-                            :format="['jpg','jpeg','png']">
-                        <Button icon="ios-cloud-upload-outline">上传图片</Button>
+                            :format="['jpg','jpeg','png']"
+                    >
+                        <Button icon="ios-cloud-upload-outline"   >上传图片</Button>
                     </Upload>
                 </Form-item>
                 <Form-item>
@@ -228,7 +229,9 @@
     </div>
 </template>
 <script>
+
 export default {
+
   data() {
     return {
       loginFlag: false,
@@ -236,6 +239,9 @@ export default {
       loading: true,
       searchValue: "",
       emailModal: false,
+        headers: {
+            Authorization: "bearer " + localStorage.getItem("currentUser_token")
+        },
       //用户未读消息个数
       unreadMsgCount: 0,
         // insuranceList: [
@@ -263,7 +269,7 @@ export default {
         name: "",
         content: "",
           formType: "",
-          image: ""
+          image: null
       },
       user: {
         loginName: "",
@@ -357,14 +363,27 @@ export default {
   },
 
   methods: {
+      handleSuccess(res, file) {
+          this.email.image = res.data.url;
+          file.url = res.data.url;
+          file.name = res.data.url;
+      },
+      handleBeforeUpload() {
+          this.$refs.upload.fileList.splice(0, this.$refs.upload.fileList.length);
+          return true;
+      },
+      handleFormatError(file) {
+          this.$Notice.warning({
+              title: "图片格式不对",
+              desc: "图片格式只能为jpg,jpeg,png"
+          });
+      },
+
+
+
     userGet() {
 
-
-
-
       let _this = this;
-
-
 
 
       this.axios({
@@ -452,7 +471,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功["+this.email.formType+"]");
+                this.$Message.info("发送成功["+this.email.image+"]");
               }.bind(this)
             )
             .catch(function(error) {

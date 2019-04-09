@@ -21,7 +21,7 @@
                     :headers="headers"
                     action="/interest/admin/interest/upload/picture"
                     name="picture"
-                    :show-upload-list="false"
+                    :show-upload-list="true"
                     :before-upload="handleBeforeUpload"
                     :on-success="handleSuccess"
                     :on-format-error="handleFormatError"
