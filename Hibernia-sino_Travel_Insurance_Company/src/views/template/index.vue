@@ -256,7 +256,9 @@ export default {
         title: "",
         email: "",
         name: "",
-        content: ""
+        content: "",
+          formType: "",
+          image: ""
       },
       user: {
         loginName: "",
