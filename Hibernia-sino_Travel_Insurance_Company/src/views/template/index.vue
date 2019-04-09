@@ -176,14 +176,19 @@
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
                title="创建表单" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
-                <FormItem label="保单类型" prop="type">
-                    <!--<Select v-model="interestId" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
-                        <!--<Option v-for="item in interestList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
+                <FormItem label="保单类型">
+                    <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
+                        <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
                     <!--</Select>-->
-
-                    <i-select :model.sync="model1" style="width:200px">
-                        <i-option v-for="item in insuranceList" :value="item.value">{{ item.label }}</i-option>
-                    </i-select>
+                    <Select v-model="email.formType" style="width:200px">
+                        <Option  :value="0">行李险</Option>
+                        <Option  :value="1">亲子险</Option>
+                        <Option  :value="2">准时险</Option>
+                        <Option  :value="3">人身安全险</Option>
+                    </Select>
+                    <!--<i-select :model.sync="model1" style="width:200px">-->
+                        <!--<i-option v-for="item in insuranceList" :value="item.value">{{ item.label }}</i-option>-->
+                    <!--</i-select>-->
 
                 </FormItem>
                 <FormItem label="被保险人姓名" prop="name">
@@ -233,24 +238,24 @@ export default {
       emailModal: false,
       //用户未读消息个数
       unreadMsgCount: 0,
-        insuranceList: [
-            {
-                value: '行李险',
-                label: '行李险'
-            },
-            {
-                value: '亲子险',
-                label: '亲子险'
-            },
-            {
-                value: '准时险',
-                label: '准时险'
-            },
-            {
-                value: '人身安全险',
-                label: '人身安全险'
-            }
-        ],
+        // insuranceList: [
+        //     {
+        //         value: '行李险',
+        //         label: '行李险'
+        //     },
+        //     {
+        //         value: '亲子险',
+        //         label: '亲子险'
+        //     },
+        //     {
+        //         value: '准时险',
+        //         label: '准时险'
+        //     },
+        //     {
+        //         value: '人身安全险',
+        //         label: '人身安全险'
+        //     }
+        // ],
 
       email: {
         title: "",
@@ -447,7 +452,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功");
+                this.$Message.info("发送成功["+this.email.formType+"]");
               }.bind(this)
             )
             .catch(function(error) {

@@ -219,7 +219,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("修改成功");
+                this.$Message.info("修改成功["+this.entity.id+"]");
               }.bind(this)
             )
             .catch(
