@@ -205,9 +205,9 @@
                 </FormItem>
                 <Form-item label="图片证明：" prop="image"  >
                     <Upload
-                            v-model="email.image"
                             ref="upload"
-                            action="/index/upload/picture"
+                            :headers="headers"
+                            action="/interest/admin/interest/upload/picture"
                             name="picture"
                             :show-upload-list="true"
                             :before-upload="handleBeforeUpload"
@@ -269,8 +269,16 @@ export default {
         name: "",
         content: "",
           formType: "",
-          image: null
+          image: ""
       },
+        image: [
+            {
+                type: "string",
+                required: true,
+                message: "上传图片",
+                trigger: "blur"
+            }
+        ],
       user: {
         loginName: "",
         email: "",
@@ -471,7 +479,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功["+this.email.image+"]");
+                this.$Message.info("发送成功["+this.email.title+"]");
               }.bind(this)
             )
             .catch(function(error) {
