@@ -101,7 +101,7 @@
                                     <Icon type="ios-lock-outline" slot="prepend"></Icon></Input>
                                 </FormItem>
                                 <FormItem>
-                                    
+
                                     <Button type="primary" @click="login('formLogin')" style="width: 250px">登录</Button>
                                     <Button type="primary" @click="register()" style="width: 250px">注册</Button>
 

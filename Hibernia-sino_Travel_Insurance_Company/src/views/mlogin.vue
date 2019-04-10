@@ -107,7 +107,8 @@
                                     </div>
                                 </FormItem> -->
                                 <FormItem>
-                                    <Button type="primary" @click="login('formLogin')" style="width: 250px ">立即登录</Button>
+                                    <Button type="primary" @click="login('formLogin')" style="width: 250px ">登录</Button>
+                                    <Button type="primary" @click="register()" style="width: 250px ">注册</Button>
                                     <ul class="account-list">
                                         <li>
                                             <a href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github" style="{right: 26px;}">
