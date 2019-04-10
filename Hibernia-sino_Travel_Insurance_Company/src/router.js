@@ -16,7 +16,7 @@ const routers = [
   {
     path: "/",
     meta: {
-      title: "smallsnail-wh"
+      title: "Hibernia-Sino"
     },
     component: resolve => require(["./views/template/index.vue"], resolve),
     children: [

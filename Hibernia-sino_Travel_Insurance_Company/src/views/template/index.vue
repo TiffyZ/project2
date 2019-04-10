@@ -165,9 +165,9 @@
             </Content>
             <Footer class="layout-footer-center">
                 <div>
-                    <a href="https://github.com/smallsnail-wh" target="_blank">
+                    <!--<a href="https://github.com/smallsnail-wh" target="_blank">-->
                         <Icon style="color: rebeccapurple;" size="40" type="logo-github">z</Icon>
-                    </a>
+                    <!--</a>-->
                 </div>
                 <p>2016-2020 &copy; Hibernia-Sino Travel Insurance Company</p>
             </Footer>
@@ -479,7 +479,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功["+this.email.title+"]");
+                this.$Message.info("发送成功["+this.email.image+"]");
               }.bind(this)
             )
             .catch(function(error) {
