@@ -16,7 +16,7 @@ const routers = [
   {
     path: "/",
     meta: {
-      title: "Hibernia-Sino"
+      title: "Hibernia-Sino Travel Insurance"
     },
     component: resolve => require(["./views/template/index.vue"], resolve),
     children: [
@@ -33,7 +33,7 @@ const routers = [
   {
     path: "/qq",
     meta: {
-      title: "smallsnail-wh"
+      title: "Hibernia-Sino Travel Insurance"
     },
     component: resolve => require(["./views/template/index.vue"], resolve),
     children: [
@@ -50,7 +50,7 @@ const routers = [
   {
     path: "/login",
     meta: {
-      title: "smallsnail-wh"
+      title: "Hibernia-Sino Travel Insurance"
     },
     component: resolve => require(["./views/login.vue"], resolve)
   },
@@ -125,14 +125,14 @@ const routers = [
   {
     path: "/mlogin",
     meta: {
-      title: "smallsnail-wh"
+      title: "Hibernia-Sino Travel Insurance"
     },
     component: resolve => require(["./views/mlogin.vue"], resolve)
   },
   {
     path: "/mobile",
     meta: {
-      title: "smallsnail-wh"
+      title: "Hibernia-Sino Travel Insurance"
     },
     component: resolve => require(["./views/mobile/index.vue"], resolve),
     children: [
