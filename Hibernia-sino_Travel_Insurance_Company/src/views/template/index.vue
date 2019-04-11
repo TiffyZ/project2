@@ -102,7 +102,7 @@
                           </MenuItem>
                           <MenuItem name="article">
                             <span class="home-text">
-                              文章
+                              表单列表
                             </span>
                           </MenuItem>
                       </div>
@@ -121,15 +121,15 @@
                           <Submenu name="3">
                             <template slot="title">
                                 <Icon type="md-list-box" />
-                                文章
+                                表单
                             </template>
                             <MenuItem name="31">
                               <Icon type="md-create" />
-                              写文章
+                              写表单
                             </MenuItem>
                             <MenuItem name="32">
                               <Icon type="md-list" />
-                              我的文章
+                              我的表单
                             </MenuItem>
                         </Submenu>
                           <MenuItem name="4">
@@ -186,10 +186,6 @@
                         <Option  :value="2">准时险</Option>
                         <Option  :value="3">人身安全险</Option>
                     </Select>
-                    <!--<i-select :model.sync="model1" style="width:200px">-->
-                        <!--<i-option v-for="item in insuranceList" :value="item.value">{{ item.label }}</i-option>-->
-                    <!--</i-select>-->
-
                 </FormItem>
                 <FormItem label="被保险人姓名" prop="name">
                     <Input v-model="email.name" placeholder="请输入被保险人姓名" />

@@ -103,7 +103,31 @@
                                 <FormItem>
 
                                     <Button type="primary" @click="login('formLogin')" style="width: 250px">登录</Button>
-                                    <Button type="primary" @click="register()" style="width: 250px">注册</Button>
+                                    <!--<Button type="primary" @click="register()" style="width: 250px"  >注册</Button>-->
+                                    <Button type="primary" @click="modal1 = true" style="width: 250px">注册</Button>
+                                    <Modal
+                                            v-model="modal1"
+                                            title="会员注册"
+                                            @on-ok="ok"
+                                            @on-cancel="cancel">
+
+                                        <Form ref="register" :rules="riRule" :model="register" :label-width="110">
+
+                                            <FormItem label="姓名：" prop="name">
+                                                <Input v-model="register.name" placeholder="请输入姓名" />
+                                            </FormItem>
+                                            <FormItem label="ID：" prop="id">
+                                                <Input v-model="register.id" placeholder="请输入id" />
+                                            </FormItem>
+                                            <FormItem label="邮箱：" prop="email">
+                                                <Input v-model="register.email" placeholder="请输入邮箱" />
+                                            </FormItem>
+                                            <FormItem label="电话：" prop="phone">
+                                                <Input v-model="register.phone" placeholder="请输入电话号码" />
+                                            </FormItem>
+                                        </Form>
+                                    </Modal>
+
 
                                     <ul class="account-list">
                                         <li>
@@ -130,19 +154,60 @@
 </template>
 <script>
 export default {
+
   data() {
     return {
+        modal1: false,
       code: null,
       formLogin: {
         userName: null,
         password: null
       },
+        register: {
+            name: "",
+            email: "",
+            id: "",
+            phone: "",
+
+
+        },
       ruleLogin: {
         userName: [
           { required: true, message: "请填写用户名", trigger: "blur" }
         ],
         password: [{ required: true, message: "请填写密码", trigger: "blur" }]
-      }
+      },
+        riRule: {
+            name: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "请输入姓名",
+                    trigger: "blur"
+                }
+            ],
+            id: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "请输入id",
+                    trigger: "blur"
+                }
+            ],
+            phone: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "请输入电话号码",
+                    trigger: "blur"
+                }
+            ],
+
+            email: [
+                { required: true, message: "输入邮箱", trigger: "blur" },
+                { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+            ],
+        }
     };
   },
   mounted() {
@@ -151,6 +216,12 @@ export default {
     }
   },
   methods: {
+      ok () {
+          this.$Message.info('Clicked ok');
+      },
+      cancel () {
+          this.$Message.info('Clicked cancel');
+      },
     login(formLogin) {
       this.$refs[formLogin].validate(valid => {
         if (valid) {
