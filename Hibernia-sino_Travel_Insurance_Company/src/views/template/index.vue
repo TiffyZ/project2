@@ -121,15 +121,15 @@
                           <Submenu name="3">
                             <template slot="title">
                                 <Icon type="md-list-box" />
-                                表单
+                                问题咨询
                             </template>
                             <MenuItem name="31">
                               <Icon type="md-create" />
-                              写表单
+                              填写咨询表
                             </MenuItem>
                             <MenuItem name="32">
                               <Icon type="md-list" />
-                              我的表单
+                              我的咨询
                             </MenuItem>
                         </Submenu>
                           <MenuItem name="4">

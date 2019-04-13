@@ -67,7 +67,7 @@
   }
 </style>
 <template>
-   
+
 </template>
 <script>
 export default {
