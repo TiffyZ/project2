@@ -4,7 +4,7 @@
         <div>
             <ul>
                 <li>
-                    <Button type="error" icon="md-trash" @click="del()">删除</Button>
+                    <Button type="error" icon="md-trash" @click="del()">删除我的表单</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
