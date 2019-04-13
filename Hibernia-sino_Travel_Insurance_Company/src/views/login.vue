@@ -108,11 +108,20 @@
                                     <Modal
                                             v-model="modal1"
                                             title="会员注册"
-                                            @on-ok="ok"
+                                            @on-ok="ok('register')"
                                             @on-cancel="cancel">
 
                                         <Form ref="register" :rules="riRule" :model="register" :label-width="110">
 
+                                            <FormItem label="账号：" prop="userName">
+                                                <Input v-model="register.userName" placeholder="请输入您想设置的账号名" />
+                                            </FormItem>
+                                            <FormItem label="密码：" prop="userPassword">
+                                                <Input v-model="register.userPassword"  placeholder="请输入密码" />
+                                            </FormItem>
+                                            <FormItem label="确认密码：" prop="userPassword2">
+                                                <Input v-model="register.userPassword2" placeholder="请再次输入密码"  />
+                                            </FormItem>
                                             <FormItem label="姓名：" prop="name">
                                                 <Input v-model="register.name" placeholder="请输入姓名" />
                                             </FormItem>
@@ -156,6 +165,45 @@
 export default {
 
   data() {
+
+      var validatePass = (rule, value, callback) => {
+
+          if (value === '') {
+
+              callback(new Error('请输入密码'));
+
+          } else {
+
+              if (this.register.checkPass !== '') {
+
+                  this.$refs.ruleForm.validateField('checkPass');
+
+              }
+
+              callback();
+
+          }
+
+      };
+
+      var validatePass2 = (rule, value, callback) => {
+
+          if (value === '') {
+
+              callback(new Error('请再次输入密码'));
+
+          } else if (value !== this.register.userPassword) {
+
+              callback(new Error('两次输入密码不一致!'));
+
+          } else {
+
+              callback();
+
+          }
+
+      };
+
     return {
         modal1: false,
       code: null,
@@ -165,11 +213,12 @@ export default {
       },
         register: {
             name: "",
+            userName: "",
+            userPassword: null,
+            userPassword2: null,
             email: "",
             id: "",
             phone: "",
-
-
         },
       ruleLogin: {
         userName: [
@@ -207,6 +256,11 @@ export default {
                 { required: true, message: "输入邮箱", trigger: "blur" },
                 { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
             ],
+            userName: [
+                { required: true, message: "请填写用户名", trigger: "blur" }
+            ],
+            userPassword: [{ required: true, message: "请填写密码", validator: validatePass,trigger: "blur" }],
+            userPassword2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
         }
     };
   },
@@ -216,8 +270,32 @@ export default {
     }
   },
   methods: {
-      ok () {
-          this.$Message.info('Clicked ok');
+      ok (register) {
+          // this.$Message.info("发送成功[" + this.register.userName + "]");
+          this.$refs[register].validate(valid => {
+              if (valid) {
+                  this.axios({
+                      method: "post",
+                      url: "/login",
+                      data: this.register
+                  })
+                      .then(
+                          function (response) {
+                              this.$Message.info("发送成功[" + this.register.userName + "]");
+                          }.bind(this)
+                      )
+                      .catch(function (error) {
+                          alert(error);
+                      });
+                  this.modal1 = false;
+              } else {
+                  this.$Message.error("表单验证失败!");
+
+              };
+      });
+
+
+
       },
       cancel () {
           this.$Message.info('Clicked cancel');
