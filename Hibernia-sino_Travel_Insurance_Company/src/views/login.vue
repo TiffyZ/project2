@@ -104,35 +104,35 @@
 
                                     <Button type="primary" @click="login('formLogin')" style="width: 250px">登录</Button>
                                     <!--<Button type="primary" @click="register()" style="width: 250px"  >注册</Button>-->
+
                                     <Button type="primary" @click="modal1 = true" style="width: 250px">注册</Button>
                                     <Modal
-                                            v-model="modal1"
+                                            v-model="enroll"
                                             title="会员注册"
-                                            @on-ok="ok('register')"
+                                            @on-ok="ok('enroll')"
                                             @on-cancel="cancel">
 
-                                        <Form ref="register" :rules="riRule" :model="register" :label-width="110">
-
+                                        <Form ref="enroll" :rules="riRule" :model="enroll" :label-width="110">
                                             <FormItem label="用户名：" prop="userName">
-                                                <Input v-model="register.userName" placeholder="请输入您想设置的用户名" />
+                                                <Input v-model="enroll.userName" placeholder="请输入您想设置的用户名" />
                                             </FormItem>
                                             <FormItem label="密码：" prop="userPassword">
-                                                <Input v-model="register.userPassword"  placeholder="请输入密码" />
+                                                <Input v-model="enroll.userPassword"  placeholder="请输入密码" />
                                             </FormItem>
                                             <FormItem label="确认密码：" prop="userPassword2">
-                                                <Input v-model="register.userPassword2" placeholder="请再次输入密码"  />
+                                                <Input v-model="enroll.userPassword2" placeholder="请再次输入密码"  />
                                             </FormItem>
                                             <FormItem label="真实姓名：" prop="name">
-                                                <Input v-model="register.name" placeholder="请输入您的真实姓名" />
+                                                <Input v-model="enroll.name" placeholder="请输入您的真实姓名" />
                                             </FormItem>
                                             <FormItem label="ID：" prop="id">
-                                                <Input v-model="register.id" placeholder="请输入证件号" />
+                                                <Input v-model="enroll.id" placeholder="请输入证件号" />
                                             </FormItem>
                                             <FormItem label="邮箱：" prop="email">
-                                                <Input v-model="register.email" placeholder="请输入您的邮箱" />
+                                                <Input v-model="enroll.email" placeholder="请输入您的邮箱" />
                                             </FormItem>
                                             <FormItem label="电话：" prop="phone">
-                                                <Input v-model="register.phone" placeholder="请输入您的电话号码" />
+                                                <Input v-model="enroll.phone" placeholder="请输入您的电话号码" />
                                             </FormItem>
                                         </Form>
                                     </Modal>
@@ -174,9 +174,9 @@ export default {
 
           } else {
 
-              if (this.register.checkPass !== '') {
+              if (this.enroll.userPassword !== '') {
 
-                  this.$refs.ruleForm.validateField('checkPass');
+                  this.$refs.enroll;
 
               }
 
@@ -192,7 +192,7 @@ export default {
 
               callback(new Error('请再次输入密码'));
 
-          } else if (value !== this.register.userPassword) {
+          } else if (value !== this.enroll.userPassword) {
 
               callback(new Error('两次输入密码不一致!'));
 
@@ -211,7 +211,7 @@ export default {
         userName: null,
         password: null
       },
-        register: {
+        enroll: {
             name: "",
             userName: "",
             userPassword: null,
@@ -270,18 +270,21 @@ export default {
     }
   },
   methods: {
-      ok (register) {
-          // this.$Message.info("发送成功[" + this.register.userName + "]");
-          this.$refs[register].validate(valid => {
+      ok (enroll) {
+          this.$Message.info("发送成功1[" + this.enroll.id + "]");
+          this.$refs[enroll].validate(valid => {
+              this.$Message.info("发送成功2[" + this.enroll.phone + "]");
               if (valid) {
+                  this.$Message.info("发送成功3[" + this.enroll.phone + "]");
                   this.axios({
                       method: "post",
                       url: "/Cregister",
-                      data: this.register
+                      data: this.enroll
                   })
+
                       .then(
                           function (response) {
-                              this.$Message.info("发送成功[" + this.register.userName + "]");
+                              this.$Message.info("发送成功[" + this.enroll.userName + "]");
                           }.bind(this)
                       )
                       .catch(function (error) {
@@ -311,9 +314,9 @@ export default {
         }
       });
     },
-    register() {
-      this.$router.push({ path: "/register" });
-    }
+      register() {
+          this.$router.push({ path: "/register" });
+      }
   }
 };
 </script>
