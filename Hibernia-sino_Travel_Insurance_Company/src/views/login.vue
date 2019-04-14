@@ -113,8 +113,8 @@
 
                                         <Form ref="register" :rules="riRule" :model="register" :label-width="110">
 
-                                            <FormItem label="账号：" prop="userName">
-                                                <Input v-model="register.userName" placeholder="请输入您想设置的账号名" />
+                                            <FormItem label="用户名：" prop="userName">
+                                                <Input v-model="register.userName" placeholder="请输入您想设置的用户名" />
                                             </FormItem>
                                             <FormItem label="密码：" prop="userPassword">
                                                 <Input v-model="register.userPassword"  placeholder="请输入密码" />
@@ -122,17 +122,17 @@
                                             <FormItem label="确认密码：" prop="userPassword2">
                                                 <Input v-model="register.userPassword2" placeholder="请再次输入密码"  />
                                             </FormItem>
-                                            <FormItem label="姓名：" prop="name">
-                                                <Input v-model="register.name" placeholder="请输入姓名" />
+                                            <FormItem label="真实姓名：" prop="name">
+                                                <Input v-model="register.name" placeholder="请输入您的真实姓名" />
                                             </FormItem>
                                             <FormItem label="ID：" prop="id">
-                                                <Input v-model="register.id" placeholder="请输入id" />
+                                                <Input v-model="register.id" placeholder="请输入证件号" />
                                             </FormItem>
                                             <FormItem label="邮箱：" prop="email">
-                                                <Input v-model="register.email" placeholder="请输入邮箱" />
+                                                <Input v-model="register.email" placeholder="请输入您的邮箱" />
                                             </FormItem>
                                             <FormItem label="电话：" prop="phone">
-                                                <Input v-model="register.phone" placeholder="请输入电话号码" />
+                                                <Input v-model="register.phone" placeholder="请输入您的电话号码" />
                                             </FormItem>
                                         </Form>
                                     </Modal>
