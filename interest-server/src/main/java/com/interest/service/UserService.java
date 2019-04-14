@@ -2,13 +2,13 @@ package com.interest.service;
 
 import java.util.List;
 
+import com.interest.model.entity.ClientEntity;
 import com.interest.model.entity.UserEntity;
 import com.interest.model.request.UserInfoRequest;
 import com.interest.model.response.UserInfoResponse;
 
 public interface UserService {
 	void insert(UserEntity userEntity);
-
 	void del(UserEntity userEntity);
 
 	/**
@@ -41,6 +41,12 @@ public interface UserService {
 	 * @param userEntity
 	 */
 	void insertUser(UserEntity userEntity);
+
+	/**
+	 * 新建用户信息
+	 * @param clientEntity
+	 */
+	void insertUser(ClientEntity clientEntity);
 
 	/**
 	 * 更新用户信息

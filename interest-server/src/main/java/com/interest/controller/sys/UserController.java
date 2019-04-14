@@ -1,5 +1,6 @@
 package com.interest.controller.sys;
 
+import com.interest.model.entity.ClientEntity;
 import com.interest.model.entity.PageResult;
 import com.interest.model.entity.UserEntity;
 import com.interest.model.request.UserInfoRequest;
@@ -79,6 +80,19 @@ public class UserController {
         userService.insertUser(userEntity);
         log.debug("The method is ending");
         return new ResponseWrapper<>(userEntity);
+    }
+
+    /**
+     * 新建用户信息
+     *
+     * @param clientEntity
+     * @return
+     */
+    @PostMapping("/Cregister")
+    public ResponseWrapper<ClientEntity> register(@RequestBody ClientEntity clientEntity) {
+        userService.insertUser(clientEntity);
+        log.debug("The method is ending");
+        return new ResponseWrapper<>(clientEntity);
     }
 
     /**

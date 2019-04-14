@@ -1,7 +1,9 @@
 package com.interest.service.impl;
 
+import com.interest.dao.ClientDao;
 import com.interest.dao.RelationDao;
 import com.interest.dao.UserDao;
+import com.interest.model.entity.ClientEntity;
 import com.interest.model.entity.RelationEntity;
 import com.interest.model.entity.UserEntity;
 import com.interest.model.ordinary.UserIdHeadImg;
@@ -29,6 +31,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private ClientDao clientDao;
 
     @Autowired
     private RelationDao relationDao;
@@ -82,6 +87,20 @@ public class UserServiceImpl implements UserService {
         //userEntity.setPassword(new Md5PasswordEncoder().encodePassword(userEntity.getPassword(), null));
         userEntity.setPassword("{bcrypt}" + new BCryptPasswordEncoder().encode(userEntity.getPassword()));
         userDao.insertUser(userEntity);
+    }
+
+    @Override
+    public void insertUser(ClientEntity clientEntity) {
+		/*String password = null;
+		try {
+			password = MD5Util.encrypt(userEntity.getPassword());
+			userEntity.setPassword(password);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}*/
+        //userEntity.setPassword(new Md5PasswordEncoder().encodePassword(userEntity.getPassword(), null));
+        clientEntity.setPassword("{bcrypt}" + new BCryptPasswordEncoder().encode(clientEntity.getPassword()));
+        clientDao.insertUser(clientEntity);
     }
 
     @Override

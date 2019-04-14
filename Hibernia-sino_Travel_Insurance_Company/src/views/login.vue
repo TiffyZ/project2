@@ -276,7 +276,7 @@ export default {
               if (valid) {
                   this.axios({
                       method: "post",
-                      url: "/login",
+                      url: "/Cregister",
                       data: this.register
                   })
                       .then(
