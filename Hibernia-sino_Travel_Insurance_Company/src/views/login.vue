@@ -113,14 +113,14 @@
                                             @on-cancel="cancel">
 
                                         <Form ref="enroll" :rules="riRule" :model="enroll" :label-width="110">
-                                            <FormItem label="用户名：" prop="userName">
-                                                <Input v-model="enroll.userName" placeholder="请输入您想设置的用户名" />
+                                            <FormItem label="用户名：" prop="loginName">
+                                                <Input v-model="enroll.loginName" placeholder="请输入您想设置的用户名" />
                                             </FormItem>
-                                            <FormItem label="密码：" prop="userPassword">
-                                                <Input v-model="enroll.userPassword"  placeholder="请输入密码" />
+                                            <FormItem label="密码：" prop="password">
+                                                <Input v-model="enroll.password"  placeholder="请输入密码" />
                                             </FormItem>
-                                            <FormItem label="确认密码：" prop="userPassword2">
-                                                <Input v-model="enroll.userPassword2" placeholder="请再次输入密码"  />
+                                            <FormItem label="确认密码：" prop="password2">
+                                                <Input v-model="enroll.password2" placeholder="请再次输入密码"  />
                                             </FormItem>
                                             <FormItem label="真实姓名：" prop="name">
                                                 <Input v-model="enroll.name" placeholder="请输入您的真实姓名" />
@@ -174,7 +174,7 @@ export default {
 
           } else {
 
-              if (this.enroll.userPassword !== '') {
+              if (this.enroll.password !== '') {
 
                   this.$refs.enroll;
 
@@ -192,7 +192,7 @@ export default {
 
               callback(new Error('请再次输入密码'));
 
-          } else if (value !== this.enroll.userPassword) {
+          } else if (value !== this.enroll.password) {
 
               callback(new Error('两次输入密码不一致!'));
 
@@ -213,9 +213,9 @@ export default {
       },
         enroll: {
             name: "",
-            userName: "",
-            userPassword: null,
-            userPassword2: null,
+            loginName: "",
+            password: null,
+            password2: null,
             email: "",
             id: "",
             phone: "",
@@ -259,8 +259,8 @@ export default {
             userName: [
                 { required: true, message: "请填写用户名", trigger: "blur" }
             ],
-            userPassword: [{ required: true, message: "请填写密码", validator: validatePass,trigger: "blur" }],
-            userPassword2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
+            password: [{ required: true, message: "请填写密码", validator: validatePass,trigger: "blur" }],
+            password2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
         }
     };
   },
@@ -283,7 +283,8 @@ export default {
                   })
                       .then(
                           function (response) {
-                              this.$Message.info("发送成功[" + this.enroll.userName + "]");
+                              this.$Message.info("发送成功[" + this.enroll.loginName
+                                  + "]");
                           }.bind(this)
                       )
                       .catch(function (error) {
