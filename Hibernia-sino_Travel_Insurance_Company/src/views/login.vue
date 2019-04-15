@@ -219,7 +219,7 @@ export default {
             email: "",
             id: "",
             phone: "",
-            usertype:"",
+            usertype:0,
         },
       ruleLogin: {
         userName: [
@@ -279,7 +279,7 @@ export default {
                   // this.$Message.info("发送成功3[" + this.enroll.phone + "]");
                   this.axios({
                       method: "post",
-                      url: "/Cregister",
+                      url: "/register",
                       data: this.enroll
                   })
                       .then(
