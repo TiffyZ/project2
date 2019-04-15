@@ -221,7 +221,7 @@ export default {
             phone: "",
         },
         user1: {
-            userID : 100,
+            userID : "",
             roleId : 0,
         },
       ruleLogin: {
@@ -277,6 +277,7 @@ export default {
       okEnroll (enroll) {
           this.$refs[enroll].validate(valid => {
               if (valid) {
+                  this.user1.userID = this.enroll.id;
                   this.axios({
                       method: "post",
                       url: "/register",
@@ -289,7 +290,7 @@ export default {
                   })
                       .then(
                           function (response) {
-                              this.$Message.info("发送成功[" + this.enroll.id + "]");
+                              this.$Message.info("发送成功[" + this.user1.userID + "]");
                           }.bind(this)
                       )
                       .catch(function (error) {
