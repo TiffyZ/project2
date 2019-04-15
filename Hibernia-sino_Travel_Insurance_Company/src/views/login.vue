@@ -219,6 +219,7 @@ export default {
             email: "",
             id: "",
             phone: "",
+            usertype:0,
         },
         user1: {
             userID : "",
