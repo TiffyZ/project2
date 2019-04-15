@@ -278,20 +278,14 @@ export default {
       okEnroll (enroll) {
           this.$refs[enroll].validate(valid => {
               if (valid) {
-                  this.user1.userID = this.enroll.id;
                   this.axios({
                       method: "post",
                       url: "/register",
                       data: this.enroll
                   })
-                  this.axios({
-                      method: "post",
-                      url: "/relations",
-                      data: this.user1
-                  })
                       .then(
                           function (response) {
-                              this.$Message.info("发送成功[" + this.user1.userID + "]");
+                              this.$Message.info("发送成功[" + this.enroll.loginName + "]");
                           }.bind(this)
                       )
                       .catch(function (error) {
@@ -301,12 +295,30 @@ export default {
               } else {
                   this.$Message.error("表单验证失败!");
               };
-
-
-
-
       });
-
+          // this.user1.userID = this.enroll.id;
+          //
+          // this.$refs[user1].validate(valid => {
+          //     if (valid) {
+          //
+          //         this.axios({
+          //             method: "post",
+          //             url: "/relations",
+          //             data: this.user1
+          //         })
+          //             .then(
+          //                 function (response) {
+          //                     this.$Message.info("发送成功[" + this.user1.userID + "]");
+          //                 }.bind(this)
+          //             )
+          //             .catch(function (error) {
+          //                 alert(error);
+          //             });
+          //
+          //     } else {
+          //         this.$Message.error("表单验证失败!");
+          //     };
+          // });
 
 
       },
