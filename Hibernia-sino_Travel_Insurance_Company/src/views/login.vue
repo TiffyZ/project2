@@ -219,6 +219,7 @@ export default {
             email: "",
             id: "",
             phone: "",
+            usertype:"",
         },
       ruleLogin: {
         userName: [
@@ -283,7 +284,7 @@ export default {
                   })
                       .then(
                           function (response) {
-                              this.$Message.info("发送成功[" + this.enroll.loginName
+                              this.$Message.info("发送成功[" + this.enroll.id
                                   + "]");
                           }.bind(this)
                       )
