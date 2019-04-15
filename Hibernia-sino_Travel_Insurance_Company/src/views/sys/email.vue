@@ -19,14 +19,46 @@
         </div>
         <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
 	        <Form :label-width="80" >
-	        	<Form-item label="用户名:">
-	        		<strong>{{email.username}}</strong>
+            <Form-item label="表单ID:">
+              <strong>{{email.id}}</strong>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+
+            <Form-item label="标题:">
+              <strong>{{email.title}}</strong>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+	        	<Form-item label="用户姓名:">
+	        		<strong>{{email.name}}</strong>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+
+                <Form-item label="email:">
+              <strong>{{email.email}}</strong>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+
+                <Form-item label="表单类型:">
+              <strong>{{email.formType}}</strong>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+              <Form-item label="用户ID:">
+              <strong>{{email.userid}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item label="内容:">
                 	<span>{{email.content}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
+                 <Form-item label="备注:">
+                  <span>{{email.remark}}</span>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+                <Form-item label="图片:">
+                  <span>{{email.image}}</span>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+            
             </Form>
 	        <div slot="footer">
 	            <Button type="error" size="large"  @click="cancel">关闭</Button>
@@ -49,13 +81,16 @@ export default {
       },
       /*user实体*/
       email: {
-        id: null,
-        username: null,
-        title: null,
-        email: null,
-        name: null,
-        content: null,
-        createtime: null
+        id:"",
+        title: "",
+        email: "",
+        name: "",/*用户名字*/
+        content: "",
+        userid:"",
+        formType: "",
+        image: "",
+        label:"",
+        remark:""
       },
       /*表显示字段*/
       columns1: [
@@ -65,12 +100,16 @@ export default {
           align: "center"
         },
         {
-          title: "姓名",
-          key: "name"
+          title: "表单ID",
+          key: "id"
         },
         {
+          title: "用户姓名",
+          key:"userid"
+        },   
+        {
           title: "标题",
-          width: 500,
+          width: 200,
           key: "title"
         },
         {
@@ -82,7 +121,42 @@ export default {
           key: "createtime"
         },
         {
-          title: "操作",
+          title: "表单类型",
+          key: "formType"
+        },
+        {
+          title: "申请进程",
+          key: "label"
+        },
+        {
+          title: "员工操作",
+          align: "center",
+          key: "action",
+          render: (h, params) => {
+            return h("div", [
+              h(
+                "Button",
+                {
+                  props: {
+                    type: "info"
+                  },
+                  on: {
+                    click: () => {
+                      this.email.label=1;
+                      this.getTable({
+                        pageInfo: this.pageInfo
+                      });
+                    }
+                  }
+                },
+                "同意"
+              )
+            ]);
+          }
+        },
+
+        {
+          title: "查看",
           align: "center",
           key: "action",
           render: (h, params) => {
@@ -104,6 +178,7 @@ export default {
             ]);
           }
         }
+
       ],
       /*表数据*/
       data1: []
@@ -123,12 +198,17 @@ export default {
     },
     emailSet(e) {
       this.email.id = e.id;
-      this.email.username = e.username;
+      this.email.name = e.name;
       this.email.title = e.title;
       this.email.email = e.email;
-      this.email.name = e.name;
+      this.email.userid = e.userid;
       this.email.content = e.content;
       this.email.createtime = e.createtime;
+      this.email.formType = e.formType;
+      this.email.image = e.image;
+      this.email.label = e.label;
+      this.email.remark = e.remark;
+
     },
     dateGet(e) {
       var time = new Date(parseInt(e));
