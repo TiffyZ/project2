@@ -58,7 +58,7 @@ const routers = [
   {
     path: "/page",
     meta: {
-      title: "smallsnail-wh"
+      title: "Hibernia-Sino Travel Insurance"
     },
     component: resolve => require(["./views/template/index.vue"], resolve),
     children: [
@@ -223,7 +223,7 @@ const routers = [
       {
         path: "email",
         name: "email",
-        component: resolve => require(["./views/sys/form.vue"], resolve),
+        component: resolve => require(["./views/sys/email.vue"], resolve),
         meta: {
           title: "email"
         }
@@ -284,7 +284,7 @@ const routers = [
   {
     path: "/article",
     meta: {
-      title: "smallsnail-wh"
+      title: "Hibernia-Sino Travel Insurance"
     },
     component: resolve => require(["./views/template/index.vue"], resolve),
     children: [
