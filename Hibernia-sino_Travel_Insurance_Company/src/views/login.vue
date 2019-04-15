@@ -11,7 +11,7 @@
   left: 0;
   text-align: center;
   /*background: rebeccapurple;*/
-    background: url(../images/login3.jpg) no-repeat center center;
+    background: url(../images/339228868131700513.jpg) no-repeat center center;
 }
 .index .ivu-row-flex {
   height: 100%;
@@ -126,7 +126,7 @@
                                                 <Input v-model="enroll.name" placeholder="请输入您的真实姓名" />
                                             </FormItem>
                                             <FormItem label="ID：" prop="id">
-                                                <Input v-model="enroll.id" placeholder="请输入证件号" />
+                                                <Input v-model="enroll.id"  placeholder="请输入证件号" />
                                             </FormItem>
                                             <FormItem label="邮箱：" prop="email">
                                                 <Input v-model="enroll.email" placeholder="请输入您的邮箱" />
@@ -219,7 +219,10 @@ export default {
             email: "",
             id: "",
             phone: "",
-            usertype:0,
+        },
+        user1: {
+            userID : 100,
+            roleId : 0,
         },
       ruleLogin: {
         userName: [
@@ -272,20 +275,21 @@ export default {
   },
   methods: {
       okEnroll (enroll) {
-          // this.$Message.info("发送成功1[" + this.enroll.id + "]");
           this.$refs[enroll].validate(valid => {
-              // this.$Message.info("发送成功2[" + this.enroll.phone + "]");
               if (valid) {
-                  // this.$Message.info("发送成功3[" + this.enroll.phone + "]");
                   this.axios({
                       method: "post",
                       url: "/register",
                       data: this.enroll
                   })
+                  this.axios({
+                      method: "post",
+                      url: "/relations",
+                      data: this.user1
+                  })
                       .then(
                           function (response) {
-                              this.$Message.info("发送成功[" + this.enroll.id
-                                  + "]");
+                              this.$Message.info("发送成功[" + this.enroll.id + "]");
                           }.bind(this)
                       )
                       .catch(function (error) {
@@ -294,8 +298,11 @@ export default {
                   this.modal1 = false;
               } else {
                   this.$Message.error("表单验证失败!");
-
               };
+
+
+
+
       });
 
 
