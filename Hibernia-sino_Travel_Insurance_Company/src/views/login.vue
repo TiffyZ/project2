@@ -107,9 +107,9 @@
 
                                     <Button type="primary" @click="modal1 = true" style="width: 250px">注册</Button>
                                     <Modal
-                                            v-model="enroll"
-                                            title="会员注册"
-                                            @on-ok="ok('enroll')"
+                                            v-model="modal1"
+                                            title="进行会员注册"
+                                            @on-ok="okEnroll('enroll')"
                                             @on-cancel="cancel">
 
                                         <Form ref="enroll" :rules="riRule" :model="enroll" :label-width="110">
@@ -140,16 +140,16 @@
 
                                     <ul class="account-list">
                                         <li>
-                                            <a href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github" style="{right: 26px;}">
-                                                <!-- <Icon  style="color: rebeccapurple;" size="40" type="social-github"></Icon> -->
-                                                <img class="icon" src="../images/GitHub.svg" />
-                                            </a>
+                                            <!--<a href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github" style="{right: 26px;}">-->
+                                                <!--&lt;!&ndash; <Icon  style="color: rebeccapurple;" size="40" type="social-github"></Icon> &ndash;&gt;-->
+                                                <!--<img class="icon" src="../images/GitHub.svg" />-->
+                                            <!--</a>-->
                                         </li>
-                                        
+
                                         <li>
-                                            <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101512648&redirect_uri=http://www.lovemtt.com/qq&state=qq" style="{right: 26px;}">
-                                                <img class="icon" src="../images/social-qq.svg" />  
-                                            </a>
+                                            <!--<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101512648&redirect_uri=http://www.lovemtt.com/qq&state=qq" style="{right: 26px;}">-->
+                                                <!--<img class="icon" src="../images/social-qq.svg" />  -->
+                                            <!--</a>-->
                                         </li>
                                     </ul>
                                 </FormItem>
@@ -270,18 +270,17 @@ export default {
     }
   },
   methods: {
-      ok (enroll) {
-          this.$Message.info("发送成功1[" + this.enroll.id + "]");
+      okEnroll (enroll) {
+          // this.$Message.info("发送成功1[" + this.enroll.id + "]");
           this.$refs[enroll].validate(valid => {
-              this.$Message.info("发送成功2[" + this.enroll.phone + "]");
+              // this.$Message.info("发送成功2[" + this.enroll.phone + "]");
               if (valid) {
-                  this.$Message.info("发送成功3[" + this.enroll.phone + "]");
+                  // this.$Message.info("发送成功3[" + this.enroll.phone + "]");
                   this.axios({
                       method: "post",
                       url: "/Cregister",
                       data: this.enroll
                   })
-
                       .then(
                           function (response) {
                               this.$Message.info("发送成功[" + this.enroll.userName + "]");
