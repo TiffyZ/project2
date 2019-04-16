@@ -117,10 +117,10 @@
                                                 <Input v-model="enroll.loginName" placeholder="请输入您想设置的用户名" />
                                             </FormItem>
                                             <FormItem label="密码：" prop="password">
-                                                <Input v-model="enroll.password"  placeholder="请输入密码" />
+                                                <Input v-model="enroll.password" type="password" placeholder="请输入密码" />
                                             </FormItem>
-                                            <FormItem label="确认密码：" prop="password2">
-                                                <Input v-model="enroll.password2" placeholder="请再次输入密码"  />
+                                            <FormItem label="确认密码："  prop="password2">
+                                                <Input v-model="enroll.password2" type="password" placeholder="请再次输入密码"  />
                                             </FormItem>
                                             <FormItem label="真实姓名：" prop="name">
                                                 <Input v-model="enroll.name" placeholder="请输入您的真实姓名" />
@@ -264,7 +264,8 @@ export default {
             userName: [
                 { required: true, message: "请填写用户名", trigger: "blur" }
             ],
-            password: [{ required: true, message: "请填写密码", validator: validatePass,trigger: "blur" }],
+            // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
+           password: [{ required: true, message: "请填写密码", validator: validatePass,trigger: "blur" }],
             password2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
         }
     };
