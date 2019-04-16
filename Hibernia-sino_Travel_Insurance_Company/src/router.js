@@ -223,7 +223,7 @@ const routers = [
       {
         path: "email",
         name: "email",
-        component: resolve => require(["./views/sys/email.vue"], resolve),
+        component: resolve => require(["./views/sys/form.vue"], resolve),
         meta: {
           title: "email"
         }

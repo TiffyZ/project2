@@ -220,7 +220,7 @@ export default {
               }.bind(this)
             );
         } else {
-          this.$Message.error("登录后，才能发帖！");
+          this.$Message.error("登录后，才能发布！");
         }
       } else {
         this.$Message.error("请填写标题和内容");

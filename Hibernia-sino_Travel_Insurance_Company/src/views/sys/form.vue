@@ -4,6 +4,9 @@
             <ul>
                 <li>
                     <Button type="error" icon="md-trash" @click="del()">删除</Button>
+                    <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>
+                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>
+                    <Button class="operation-button" type="success" icon="md-build" @click="remarkModal()">备注</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -19,22 +22,22 @@
         </div>
         <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
 	        <Form :label-width="80" >
-            <Form-item label="表单ID:">
+            <Form-item label="表单ID号:">
 
               <strong>{{email.id}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
 
-            <Form-item label="标题:">
-              <strong>{{email.title}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
-                </Form-item>
+
 	        	<Form-item label="用户姓名:">
 	        		<strong>{{email.name}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-
-                <Form-item label="email:">
+                <Form-item label="用户ID号:">
+                    <strong>{{email.userid}}</strong>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+                <Form-item label="用户邮箱:">
               <strong>{{email.email}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
@@ -43,24 +46,25 @@
               <strong>{{email.formType}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-              <Form-item label="用户ID:">
-              <strong>{{email.userid}}</strong>
+                <Form-item label="用户标题:">
+                    <strong>{{email.title}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="内容:">
+                <Form-item label="内容说明:">
                 	<span>{{email.content}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                 <Form-item label="备注:">
-                  <span>{{email.remark}}</span>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
-                </Form-item>
-                <Form-item label="图片:">
+                <Form-item label="证明图片:">
 
                     <span><img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px"></span>
 
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
+                 <Form-item label="员工备注:">
+                  <span>{{email.remark}}</span>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                </Form-item>
+
             
             </Form>
 	        <div slot="footer">
@@ -324,6 +328,24 @@ export default {
     change(e) {
       this.setGroupId(e);
     },
+      /*点击修改时判断是否只选择一个*/
+      openModifyModal() {
+          if (this.count > 1 || this.count < 1) {
+              this.modifyModal = false;
+              this.$Message.warning("请至少选择一项(且只能选择一项)");
+          } else {
+              this.modifyModal = true;
+          }
+      },
+      remarkModal() {
+          if (this.count > 1 || this.count < 1) {
+              this.modifyModal = false;
+              this.$Message.warning("请至少选择一项(且只能选择一项)");
+          } else {
+              this.modifyModal = true;
+          }
+      },
+
     setGroupId(e) {
       this.groupId = [];
       for (var i = 0; i <= e.length - 1; i++) {
