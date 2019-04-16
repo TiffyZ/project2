@@ -125,9 +125,9 @@
                                             <FormItem label="真实姓名：" prop="name">
                                                 <Input v-model="enroll.name" placeholder="请输入您的真实姓名" />
                                             </FormItem>
-                                            <FormItem label="ID：" prop="id">
-                                                <Input v-model="enroll.id"  placeholder="请输入证件号" />
-                                            </FormItem>
+                                            <!--<FormItem label="ID：" prop="id">-->
+                                                <!--<Input v-model="enroll.id"  placeholder="请输入证件号" />-->
+                                            <!--</FormItem>-->
                                             <FormItem label="邮箱：" prop="email">
                                                 <Input v-model="enroll.email" placeholder="请输入您的邮箱" />
                                             </FormItem>
@@ -217,7 +217,7 @@ export default {
             password: null,
             password2: null,
             email: "",
-            id: "",
+            // id: "",
             phone: "",
             usertype:0,
         },
@@ -240,14 +240,14 @@ export default {
                     trigger: "blur"
                 }
             ],
-            id: [
-                {
-                    type: "string",
-                    required: true,
-                    message: "请输入正确的id",
-                    trigger: "blur"
-                }
-            ],
+            // id: [
+            //     {
+            //         type: "string",
+            //         required: true,
+            //         message: "请输入正确的id",
+            //         trigger: "blur"
+            //     }
+            // ],
             phone: [
                 {
                     type: "string",
