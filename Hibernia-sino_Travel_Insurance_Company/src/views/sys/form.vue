@@ -161,6 +161,21 @@ export default {
                                       this.getTable({
                                           pageInfo: this.pageInfo
                                       });
+                                      this.$Message.info("发送成功1");
+                                      this.axios({
+                                          method: "post",
+                                          url: "/email/label",
+                                          data: this.email,
+                                      })
+                                          .then(
+                                              function(response) {
+                                                  this.$Message.info("发送成功["+this.email.formType+"]");
+                                              }.bind(this)
+                                          )
+                                          .catch(function(error) {
+                                              alert(error);
+                                          });
+                                  }
                                   }
                               }
                           },
@@ -168,6 +183,7 @@ export default {
                       )
                   ]);
               }
+
           },
           {
               title: "员工拒绝操作",
