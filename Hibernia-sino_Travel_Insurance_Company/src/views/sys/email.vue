@@ -115,10 +115,10 @@ export default {
           width: 200,
           key: "title"
         },
-        {
-          title: "email",
-          key: "email"
-        },
+        // {
+        //   title: "email",
+        //   key: "email"
+        // },
         {
           title: "时间",
           key: "createtime"
@@ -131,35 +131,62 @@ export default {
           title: "表单赔付状态",
           key: "label"
         },
-        {
-          title: "员工操作",
-          align: "center",
-          key: "action",
-          render: (h, params) => {
-            return h("div", [
-              h(
-                "Button",
-                {
-                  props: {
-                    type: "info"
-                  },
-                  on: {
-                    click: () => {
-                      this.email.label="已经赔付";
-                      this.getTable({
-                        pageInfo: this.pageInfo
-                      });
-                    }
-                  }
-                },
-                "同意"
-              )
-            ]);
-          }
+          {
+              title: "员工同意操作",
+              align: "center",
+              key: "action",
+              render: (h, params) => {
+                  return h("div", [
+                      h(
+                          "Button",
+                          {
+                              props: {
+                                  type: "info"
+                              },
+                              on: {
+                                  click: () => {
+                                      this.email.label = "同意赔付";
+                                      this.getTable({
+                                          pageInfo: this.pageInfo
+                                      });
+                                  }
+                              }
+                          },
+                          "同意"
+                      )
+                  ]);
+              }
+          },
+          {
+              title: "员工拒绝操作",
+              align: "center",
+              key: "action",
+              render: (h, params) => {
+                  return h("div", [
+                      h(
+                          "Button",
+                          {
+                              props: {
+                                  type: "info"
+                              },
+                              on: {
+                                  click: () => {
+                                      this.email.label="拒绝赔付";
+                                      this.getTable({
+                                          pageInfo: this.pageInfo
+                                      });
+                                  }
+                              }
+                          },
+                          "拒绝"
+                      )
+                  ]);
+              }
+
         },
 
         {
-          title: "查看",
+          title: "查看详情",
           align: "center",
           key: "action",
           render: (h, params) => {
@@ -176,7 +203,7 @@ export default {
                     }
                   }
                 },
-                "查看"
+                "详情"
               )
             ]);
           }
