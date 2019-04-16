@@ -161,21 +161,7 @@ export default {
                                       this.getTable({
                                           pageInfo: this.pageInfo
                                       });
-                                      this.$Message.info("发送成功1");
-                                      this.axios({
-                                          method: "post",
-                                          url: "/email/label",
-                                          data: this.email,
-                                      })
-                                          .then(
-                                              function(response) {
-                                                  this.$Message.info("发送成功["+this.email.formType+"]");
-                                              }.bind(this)
-                                          )
-                                          .catch(function(error) {
-                                              alert(error);
-                                          });
-                                  }
+
                                   }
                               }
                           },
@@ -254,6 +240,13 @@ export default {
       this.pageInfo.page = 0;
       this.pageInfo.pageSize = 10;
     },
+      labelpost(){
+          this.$Message.info("发送成功1");
+
+      },
+
+
+
     emailSet(e) {
       this.email.id = e.id;
       this.email.name = e.name;
