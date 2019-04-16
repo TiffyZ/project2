@@ -191,9 +191,9 @@
                 <FormItem label="被保险人姓名" prop="name">
                     <Input v-model="email.name" placeholder="请输入被保险人姓名" />
                 </FormItem>
-                <FormItem label="被保险人ID" prop="id">
-                    <Input v-model="email.id" placeholder="请输入被保险人id" />
-                </FormItem>
+                <!--<FormItem label="被保险人ID" prop="id">-->
+                    <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
+                <!--</FormItem>-->
                 <FormItem label="被保险人邮箱" prop="email">
                     <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
                 </FormItem>
