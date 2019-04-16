@@ -2,6 +2,7 @@
 	<div style="margin: 20px;">
         <div>
             <ul>
+
                 <li>
                     <Button type="error" icon="md-trash" @click="del()">删除</Button>
                     <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>
@@ -9,15 +10,22 @@
                     <Button class="operation-button" type="success" icon="md-build" @click="remarkModal()">备注</Button>
                 </li>
                 <li>
+                    <p>保单类型对应：</p>
+                    <p>（1）行李险   （2）高理赔行李险   （3）准时险   （4）人身安全险   （5）亲子险</p>
+
+                </li>
+                <li>
                     <div style="padding: 10px 0;">
                     	<Table border :columns="columns1" :data="data1" :height="400" @on-selection-change="s=>{change(s)}" @on-row-dblclick="s=>{dblclick(s)}"></Table>
                     </div> 
                 </li>
+
                 <li>
                     <div style="text-align: right;">
                         <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
                     </div>  
                 </li>
+
             </ul>
         </div>
         <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
