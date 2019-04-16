@@ -92,7 +92,7 @@ export default {
         userid:"",
         formType: "",
         image: "",
-        label:"",
+        label:"未处理",
         remark:""
       },
       /*表显示字段*/
@@ -128,7 +128,7 @@ export default {
           key: "formType"
         },
         {
-          title: "申请进程",
+          title: "表单赔付状态",
           key: "label"
         },
         {
@@ -145,7 +145,7 @@ export default {
                   },
                   on: {
                     click: () => {
-                      this.email.label=1;
+                      this.email.label="已经赔付";
                       this.getTable({
                         pageInfo: this.pageInfo
                       });
