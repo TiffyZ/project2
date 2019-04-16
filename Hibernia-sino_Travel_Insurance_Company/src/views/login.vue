@@ -242,9 +242,9 @@ export default {
             ],
             id: [
                 {
-                    type: "string",
+                    type: "integer",
                     required: true,
-                    message: "请输入id",
+                    message: "请输入正确的id（数字）",
                     trigger: "blur"
                 }
             ],

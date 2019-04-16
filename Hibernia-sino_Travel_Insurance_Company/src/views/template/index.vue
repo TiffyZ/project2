@@ -166,7 +166,7 @@
             <Footer class="layout-footer-center">
                 <div>
                     <!--<a href="https://github.com/smallsnail-wh" target="_blank">-->
-                        <Icon style="color: rebeccapurple;" size="40" type="logo-github">z</Icon>
+                        <!--<Icon style="color: rebeccapurple;" size="40" type="logo-github">z</Icon>-->
                     <!--</a>-->
                 </div>
                 <p>2016-2020 &copy; Hibernia-Sino Travel Insurance Company</p>
@@ -181,10 +181,11 @@
                         <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
                     <!--</Select>-->
                     <Select v-model="email.formType" style="width:200px">
-                        <Option  :value="0">行李险</Option>
-                        <Option  :value="1">亲子险</Option>
-                        <Option  :value="2">准时险</Option>
-                        <Option  :value="3">人身安全险</Option>
+                        <Option  :value="1">行李险</Option>
+                        <Option  :value="2">高理赔行李险</Option>
+                        <Option  :value="3">准时险</Option>
+                        <Option  :value="4">人身安全险</Option>
+                        <Option  :value="5">亲子险</Option>
                     </Select>
                 </FormItem>
                 <FormItem label="被保险人姓名" prop="name">
@@ -265,7 +266,7 @@ export default {
         name: "",
         content: "",
           formType: "",
-          image: ""
+          image: null,
       },
         image: [
             {
@@ -290,19 +291,19 @@ export default {
             trigger: "blur"
           }
         ],
-          // type: [
-          //     {
-          //         type: "string",
-          //         required: true,
-          //         message: "填选择保单类型",
-          //         trigger: "blur"
-          //     }
-          // ],
-          id: [
+          type: [
               {
                   type: "string",
                   required: true,
-                  message: "请输入被保险人id",
+                  message: "填选择保单类型",
+                  trigger: "blur"
+              }
+          ],
+          id: [
+              {
+                  type: "integer",
+                  required: true,
+                  message: "请输入被保险人正确的id（纯数字）",
                   trigger: "blur"
               }
           ],
@@ -475,7 +476,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功["+this.email.image+"]");
+                this.$Message.info("发送成功["+this.email.formType+"]");
               }.bind(this)
             )
             .catch(function(error) {

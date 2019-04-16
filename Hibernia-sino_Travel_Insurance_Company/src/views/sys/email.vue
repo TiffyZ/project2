@@ -20,6 +20,7 @@
         <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
 	        <Form :label-width="80" >
             <Form-item label="表单ID:">
+
               <strong>{{email.id}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
@@ -55,7 +56,9 @@
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item label="图片:">
-                  <span>{{email.image}}</span>
+
+                    <span><img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px"></span>
+
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
             
