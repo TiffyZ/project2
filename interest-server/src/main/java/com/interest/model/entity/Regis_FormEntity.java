@@ -23,7 +23,7 @@ public class Regis_FormEntity {
 
 	private String image;
 
-	private Integer label;
+	private String label;
 
 	private String remark;
 
@@ -35,11 +35,11 @@ public class Regis_FormEntity {
 		this.image = image;
 	}
 
-	public Integer getLabel() {
+	public String getLabel() {
 		return label;
 	}
 
-	public void setLabel(Integer label) {
+	public void setLabel(String label) {
 		this.label = label;
 	}
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.interest.dao.UserDao">
     <resultMap id="userMap" type="com.interest.model.entity.UserEntity">
-        <result column="id" property="id"/>
+        <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="login_name" property="loginName"/>
         <result column="password" property="password"/>
@@ -84,9 +84,13 @@
     </select>
     <!-- 新建用户信息 -->
     <insert id="insertUser" parameterType="UserEntity">
-        insert into sys_user (id,name,login_name,password,email,usertype,headimg,url,create_time,githubid)
+        <selectKey keyProperty="id" resultType="java.lang.Integer"
+                   order="AFTER">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_user (name,login_name,password,email,usertype,headimg,url,create_time,githubid)
         values
-        (#{id},#{name},#{loginName},#{password},#{email},#{usertype},#{headimg},#{url},#{createTime},#{githubid})
+        (#{name},#{loginName},#{password},#{email},#{usertype},#{headimg},#{url},#{createTime},#{githubid})
     </insert>
     <!-- 更新用户信息 -->
     <update id="updateUser" parameterType="UserEntity">
