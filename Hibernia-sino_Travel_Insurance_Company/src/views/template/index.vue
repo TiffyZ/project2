@@ -303,7 +303,7 @@ export default {
               {
                   type: "string",
                   required: true,
-                  message: "请输入被保险人正确的id（纯数字）",
+                  message: "请输入被保险人正确的id",
                   trigger: "blur"
               }
           ],
