@@ -301,7 +301,7 @@ export default {
           ],
           id: [
               {
-                  type: "integer",
+                  type: "string",
                   required: true,
                   message: "请输入被保险人正确的id（纯数字）",
                   trigger: "blur"
