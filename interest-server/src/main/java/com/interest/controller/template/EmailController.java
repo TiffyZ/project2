@@ -1,6 +1,6 @@
 package com.interest.controller.template;
 
-import com.interest.model.entity.EmailEntity;
+import com.interest.model.entity.Regis_FormEntity;
 import com.interest.model.entity.PageResult;
 import com.interest.model.utils.ResponseWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +26,11 @@ public class EmailController {
     }
 
     @PostMapping("/email")
-    public ResponseWrapper<EmailEntity> insertEntity(@RequestBody EmailEntity emailEntity) {
+    public ResponseWrapper<Regis_FormEntity> insertEntity(@RequestBody Regis_FormEntity regisFormEntity) {
         int userid = SecurityAuthenUtil.getId();
-        emailEntity.setUserid(userid);
-        emailService.insertEntity(emailEntity);
-        return new ResponseWrapper<>(emailEntity);
+        regisFormEntity.setUserid(userid);
+        emailService.insertEntity(regisFormEntity);
+        return new ResponseWrapper<>(regisFormEntity);
     }
 
     @DeleteMapping("/admin/emails")

@@ -2,8 +2,8 @@ package com.interest.service.impl;
 
 import java.util.List;
 
-import com.interest.dao.EmailDao;
-import com.interest.model.entity.EmailEntity;
+import com.interest.dao.Regis_FormDao;
+import com.interest.model.entity.Regis_FormEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,27 +14,27 @@ import com.interest.utils.DateUtil;
 public class EmailServiceImpl implements EmailService {
 
 	@Autowired
-	private EmailDao emailDao;
+	private Regis_FormDao regisFormDao;
 
 	@Override
-	public void insertEntity(EmailEntity emailEntity) {
-		emailEntity.setCreatetime(DateUtil.currentTimestamp());
-		emailDao.insertEntity(emailEntity);
+	public void insertEntity(Regis_FormEntity regisFormEntity) {
+		regisFormEntity.setCreatetime(DateUtil.currentTimestamp());
+		regisFormDao.insertEntity(regisFormEntity);
 	}
 
 	@Override
-	public List<EmailEntity> emailsList(int pageSize, int start) {
-		return emailDao.emailsList(pageSize,start);
+	public List<Regis_FormEntity> emailsList(int pageSize, int start) {
+		return regisFormDao.emailsList(pageSize,start);
 	}
 
 	@Override
 	public Integer emailsSize(int pageSize, int start) {
-		return emailDao.emailsSize(pageSize,start);
+		return regisFormDao.emailsSize(pageSize,start);
 	}
 
 	@Override
 	public void deleteEmails(List<String> groupId) {
-		emailDao.deleteEmails(groupId);
+		regisFormDao.deleteEmails(groupId);
 	}
 
 

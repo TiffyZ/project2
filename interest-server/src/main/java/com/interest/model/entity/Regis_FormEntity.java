@@ -4,7 +4,7 @@ package com.interest.model.entity;
  * @author wanghuan
  *
  */
-public class EmailEntity {
+public class Regis_FormEntity {
 	private Integer id;
 	
 	private String title;

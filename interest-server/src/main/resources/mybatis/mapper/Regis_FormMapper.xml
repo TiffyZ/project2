@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.interest.dao.EmailDao">
-    <resultMap id="emailMap" type="com.interest.model.entity.EmailEntity">
+<mapper namespace="com.interest.dao.Regis_FormDao">
+    <resultMap id="emailMap" type="com.interest.model.entity.Regis_FormEntity">
         <id column="id" property="id"/>
         <result column="title" property="title"/>
         <result column="email" property="email"/>
@@ -15,7 +15,7 @@
         <result column="remark" property="remark"/>
     </resultMap>
 
-    <resultMap id="emailModelMap" type="com.interest.model.response.EmailResponse">
+    <resultMap id="emailModelMap" type="com.interest.model.response.RegisFormResponse">
         <id column="id" property="id"/>
         <result column="title" property="title"/>
         <result column="email" property="email"/>
@@ -30,14 +30,14 @@
         <result column="username" property="username"/>
     </resultMap>
 
-    <insert id="insertEntity" parameterType="EmailEntity">
-		insert into email(userid,title,email,name,content,createtime,formType,image,label,remark)
+    <insert id="insertEntity" parameterType="Regis_FormEntity">
+		insert into regis_form(userid,title,email,name,content,createtime,formType,image,label,remark)
 		values (#{userid},#{title},#{email},#{name},#{content},#{createtime},#{formType},#{image},#{label},#{remark})
 	</insert>
 
     <select id="emailsList" resultMap="emailModelMap">
         select a.* ,b.name username
-          from email a
+          from regis_form a
           left join sys_user b on a.userid = b.id
         <![CDATA[ order by createtime desc ]]>
         <if test="pageSize != null and start != null ">
@@ -47,12 +47,12 @@
     <!-- 获取user列表的总量 -->
     <select id="emailsSize" resultType="Integer">
 	    <![CDATA[
-        select count(*) from email
+        select count(*) from regis_form
         ]]>
 	</select>
 
     <delete id="deleteEmails">
-        delete from email
+        delete from regis_form
         <where>
             <if test="groupId !=null">
                 id in

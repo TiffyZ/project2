@@ -1,8 +1,8 @@
 package com.interest.model.response;
 
-import com.interest.model.entity.EmailEntity;
+import com.interest.model.entity.Regis_FormEntity;
 
-public class EmailResponse extends EmailEntity {
+public class RegisFormResponse extends Regis_FormEntity {
 
     private String username;
 
