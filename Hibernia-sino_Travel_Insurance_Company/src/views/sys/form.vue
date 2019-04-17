@@ -29,46 +29,46 @@
             </ul>
         </div>
         <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
-	        <Form :label-width="80" >
-            <Form-item label="表单ID号:">
+            <Form ref="email" :rules="emailRule" :model="email" :label-width="80">
+            <Form-item label="表单ID号:" prop="id">
 
               <strong>{{email.id}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
 
 
-	        	<Form-item label="用户姓名:">
+	        	<Form-item label="用户姓名:" prop="name">
 	        		<strong>{{email.name}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="用户ID号:">
+                <Form-item label="用户ID号:" prop="userid">
                     <strong>{{email.userid}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="用户邮箱:">
+                <Form-item label="用户邮箱:" prop="email">
               <strong>{{email.email}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
 
-                <Form-item label="表单类型:">
+                <Form-item label="表单类型:" prop="formType">
               <strong>{{email.formType}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="用户标题:">
+                <Form-item label="用户标题:" prop="title">
                     <strong>{{email.title}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="内容说明:">
+                <Form-item label="内容说明:" prop="content">
                 	<span>{{email.content}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="证明图片:">
+                <Form-item label="证明图片:" prop="image">
 
                     <span><img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px"></span>
 
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                 <Form-item label="员工备注:">
+                 <Form-item label="员工备注:" prop="remark">
                   <span>{{email.remark}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
@@ -76,7 +76,7 @@
             </Form>
 	        <div slot="footer">
 	            <!--<Button type="error" size="large"  @click="cancel">关闭</Button>-->
-                <Button type="success" size="large"  @click="agree('email')">同意赔付</Button>
+                <Button v-model="email" type="success" size="large"  @click="agree('email')">同意赔付</Button>
                 <Button type="error" size="large"  @click="disagree('email')">拒绝赔付</Button>
 	        </div>
 	    </Modal>	
@@ -84,6 +84,53 @@
 </template>
 <script>
 export default {
+    emailRule: {
+        title: [
+            {
+                type: "string",
+                required: true,
+                message: "请输入申报信息",
+                trigger: "blur"
+            }
+        ],
+        type: [
+            {
+                type: "string",
+                required: true,
+                message: "填选择保单类型",
+                trigger: "blur"
+            }
+        ],
+        id: [
+            {
+                type: "string",
+                required: true,
+                message: "请输入被保险人正确的id",
+                trigger: "blur"
+            }
+        ],
+        email: [
+            { required: true, message: "输入邮箱", trigger: "blur" },
+            { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+        ],
+        passwordAgain: [
+            {
+                type: "string",
+                required: true,
+                message: "请输入再次输入密码",
+                trigger: "blur"
+            }
+        ],
+        name: [
+            {
+                type: "string",
+                required: true,
+                message: "请输入姓名",
+                trigger: "blur"
+            }
+        ],
+        content: [{ required: true, message: "请输入内容", trigger: "blur" }]
+    },
   data() {
     return {
       /*修改modal的显示参数*/
@@ -145,6 +192,7 @@ export default {
           title: "表单赔付状态",
           key: "label"
         },
+
         //   {
         //       title: "员工同意操作",
         //       align: "center",
@@ -372,12 +420,10 @@ export default {
       }
     },
       agree(email){
+          this.modal=false;
           this.email.label="同意赔付";
-          this.$Message.info(this.$refs[email]);
           this.$refs[email].validate(valid => {
-              this.$Message.info("发送成功111["+this.email.label+"]");
               if (valid) {
-                  this.$Message.info("发送成功222["+this.email.label+"]");
                   this.axios({
                       method: "post",
                       url: "/email/label",
@@ -386,6 +432,9 @@ export default {
                       .then(
                           function(response) {
                               this.$Message.info("发送成功["+this.email.label+"]");
+                              this.getTable({
+                                  pageInfo: this.pageInfo
+                              });
                           }.bind(this)
                       )
                       .catch(function(error) {
@@ -399,12 +448,10 @@ export default {
           });
       },
       disagree(email){
+          this.model=false;
           this.email.label="拒绝赔付";
-          this.$Message.info("发送成功000["+this.email.label+"]");
           this.$refs[email].validate(valid => {
-              this.$Message.info("发送成功111["+this.email.label+"]");
               if (valid) {
-                  this.$Message.info("发送成功222["+this.email.label+"]");
                   this.axios({
                       method: "post",
                       url: "/email/label",
@@ -413,6 +460,9 @@ export default {
                       .then(
                           function(response) {
                               this.$Message.info("发送成功["+this.email.label+"]");
+                              this.getTable({
+                                  pageInfo: this.pageInfo
+                              });
                           }.bind(this)
                       )
                       .catch(function(error) {
