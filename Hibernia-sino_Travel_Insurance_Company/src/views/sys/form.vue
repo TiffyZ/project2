@@ -5,9 +5,9 @@
 
                 <li>
                     <Button type="error" icon="md-trash" @click="del()">删除</Button>
-                    <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>
-                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>
-                    <Button class="operation-button" type="success" icon="md-build" @click="remarkModal()">备注</Button>
+                    <!--<Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>-->
+                    <!--<Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>-->
+                    <!--<Button class="operation-button" type="success" icon="md-build" @click="remarkModal()">备注</Button>-->
                 </li>
                 <li>
                     <p>保单类型对应：</p>
@@ -72,11 +72,12 @@
                   <span>{{email.remark}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-
             
             </Form>
 	        <div slot="footer">
-	            <Button type="error" size="large"  @click="cancel">关闭</Button>
+	            <!--<Button type="error" size="large"  @click="cancel">关闭</Button>-->
+                <Button type="success" size="large"  @click="agree('email')">同意赔付</Button>
+                <Button type="error" size="large"  @click="disagree('email')">拒绝赔付</Button>
 	        </div>
 	    </Modal>	
     </div>
@@ -96,12 +97,13 @@ export default {
       },
       /*user实体*/
       email: {
-        id:"",
+        id: "",
+          name: "",/*用户名字*/
         title: "",
         email: "",
-        name: "",/*用户名字*/
+          userid:"",
         content: "",
-        userid:"",
+          createtime: "",
         formType: "",
         image: "",
         label:"未处理",
@@ -143,61 +145,61 @@ export default {
           title: "表单赔付状态",
           key: "label"
         },
-          {
-              title: "员工同意操作",
-              align: "center",
-              key: "action",
-              render: (h, params) => {
-                  return h("div", [
-                      h(
-                          "Button",
-                          {
-                              props: {
-                                  type: "info"
-                              },
-                              on: {
-                                  click: () => {
-                                      this.email.label = "同意赔付";
-                                      this.getTable({
-                                          pageInfo: this.pageInfo
-                                      });
-
-                                  }
-                              }
-                          },
-                          "同意"
-                      )
-                  ]);
-              }
-
-          },
-          {
-              title: "员工拒绝操作",
-              align: "center",
-              key: "action",
-              render: (h, params) => {
-                  return h("div", [
-                      h(
-                          "Button",
-                          {
-                              props: {
-                                  type: "info"
-                              },
-                              on: {
-                                  click: () => {
-                                      this.email.label="拒绝赔付";
-                                      this.getTable({
-                                          pageInfo: this.pageInfo
-                                      });
-                                  }
-                              }
-                          },
-                          "拒绝"
-                      )
-                  ]);
-              }
-
-        },
+        //   {
+        //       title: "员工同意操作",
+        //       align: "center",
+        //       key: "action",
+        //       render: (h, params) => {
+        //           return h("div", [
+        //               h(
+        //                   "Button",
+        //                   {
+        //                       props: {
+        //                           type: "info"
+        //                       },
+        //                       on: {
+        //                           click: () => {
+        //                               this.email.label = "同意赔付";
+        //                               this.getTable({
+        //                                   pageInfo: this.pageInfo
+        //                               });
+        //
+        //                           }
+        //                       }
+        //                   },
+        //                   "同意"
+        //               )
+        //           ]);
+        //       }
+        //
+        //   },
+        //   {
+        //       title: "员工拒绝操作",
+        //       align: "center",
+        //       key: "action",
+        //       render: (h, params) => {
+        //           return h("div", [
+        //               h(
+        //                   "Button",
+        //                   {
+        //                       props: {
+        //                           type: "info"
+        //                       },
+        //                       on: {
+        //                           click: () => {
+        //                               this.email.label="拒绝赔付";
+        //                               this.getTable({
+        //                                   pageInfo: this.pageInfo
+        //                               });
+        //                           }
+        //                       }
+        //                   },
+        //                   "拒绝"
+        //               )
+        //           ]);
+        //       }
+        //
+        // },
 
         {
           title: "查看详情",
@@ -368,7 +370,62 @@ export default {
       for (var i = 0; i <= e.length - 1; i++) {
         this.groupId.push(e[i].id);
       }
-    }
+    },
+      agree(email){
+          this.email.label="同意赔付";
+          this.$Message.info("发送成功000["+this.email.image+"]");
+          this.$refs[email].validate(valid => {
+              this.$Message.info("发送成功111["+this.email.label+"]");
+              if (valid) {
+                  this.$Message.info("发送成功222["+this.email.label+"]");
+                  this.axios({
+                      method: "post",
+                      url: "/email/label",
+                      data: this.email
+                  })
+                      .then(
+                          function(response) {
+                              this.$Message.info("发送成功["+this.email.label+"]");
+                          }.bind(this)
+                      )
+                      .catch(function(error) {
+                          alert(error);
+                      });
+                  // this.emailModal = false;
+              } else {
+                  this.$Message.error("表单验证失败!");
+
+              }
+          });
+      },
+      disagree(email){
+          this.email.label="拒绝赔付";
+          this.$Message.info("发送成功000["+this.email.image+"]");
+          this.$refs[email].validate(valid => {
+              this.$Message.info("发送成功111["+this.email.label+"]");
+              if (valid) {
+                  this.$Message.info("发送成功222["+this.email.label+"]");
+                  this.axios({
+                      method: "post",
+                      url: "/email/label",
+                      data: this.email
+                  })
+                      .then(
+                          function(response) {
+                              this.$Message.info("发送成功["+this.email.label+"]");
+                          }.bind(this)
+                      )
+                      .catch(function(error) {
+                          alert(error);
+                      });
+                  // this.emailModal = false;
+              } else {
+                  this.$Message.error("表单验证失败!");
+
+              }
+          });
+      },
+
   }
 };
 </script>
