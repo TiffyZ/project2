@@ -161,7 +161,7 @@ export default {
                                       this.getTable({
                                           pageInfo: this.pageInfo
                                       });
- 
+
                                   }
                               }
                           },

@@ -9,7 +9,9 @@
                     <span class="time">{{dateGet(item.replytime)}}</span>
                     <span>回复：</span>
 
-                    <router-link :to="{ path: 'card/' + item.cardid }"><span class="post-title">{{item.postCardTitle}}</span></router-link>
+                    <router-link v-if="item.form == 0" :to="{ path: 'card/' + item.toId }">{{item.title}}</router-link>
+                    <router-link v-if="item.form == 1" :to="{ path: '/article/detail/' + item.toId }">{{item.title}}</router-link>
+                    <!--<router-link :to="{ path: 'card/' + item.cardid }"><span class="post-title">{{item.postCardTitle}}</span></router-link>-->
                 </div>
                 <Divider /> 
                 <div class="reply-content">
@@ -98,7 +100,23 @@ export default {
       // }).catch(function (error) {
       //     _this.$Message.error('已读失败，请稍后重试');
       // });
-    }
+    },
+      pageSearch(e) {
+          this.page = e - 1;
+          let _this = this;
+          this.axios
+              .get(
+                  "/msgrecords/user?pageSize= " + _this.pageSize + "&page=" + _this.page
+              )
+              .then(function(response) {
+                  let data = response.data.data;
+                  _this.messages = data.data;
+                  _this.totalCount = data.totalCount;
+              })
+              .catch(function(error) {
+                  _this.$Message.error("查询失败，请稍后重试");
+              });
+      }
   }
 };
 </script>

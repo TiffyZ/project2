@@ -113,7 +113,7 @@
                             </DropdownItem>
                             <DropdownItem name="email" divided>
                             	<Icon type="ios-mail"></Icon>
-                                邮件
+                                创建表单
                             </DropdownItem>
 
                             <DropdownItem name="messages" divided>
@@ -149,18 +149,63 @@
 
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading = "loading" v-model="emailModal" title="联系管理员" @on-ok="emailOk('email')" @on-cancel="cancel()">
              <Form ref="email" :rules="emailRule" :model="email"  :label-width="80" >
-                <FormItem label="标题" prop="title">
-                    <Input v-model="email.title" placeholder="请输入标题" />
-                </FormItem>
-                <FormItem label="email" prop="email">
-                    <Input v-model="email.email" placeholder="请输入email" />
-                </FormItem>
-                <FormItem label="姓名" prop="name">
-                    <Input v-model="email.name" placeholder="请输入姓名" />
-                </FormItem>
-                <FormItem label="内容" prop="content">
-                    <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..." />
-                </FormItem>
+                <!--<FormItem label="标题" prop="title">-->
+                    <!--<Input v-model="email.title" placeholder="请输入标题" />-->
+                <!--</FormItem>-->
+                <!--<FormItem label="email" prop="email">-->
+                    <!--<Input v-model="email.email" placeholder="请输入email" />-->
+                <!--</FormItem>-->
+                <!--<FormItem label="姓名" prop="name">-->
+                    <!--<Input v-model="email.name" placeholder="请输入姓名" />-->
+                <!--</FormItem>-->
+                <!--<FormItem label="内容" prop="content">-->
+                    <!--<Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..." />-->
+                <!--</FormItem>-->
+                 <FormItem label="保单类型">
+                     <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
+                     <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
+                     <!--</Select>-->
+                     <Select v-model="email.formType" style="width:200px">
+                         <Option  :value="1">行李险</Option>
+                         <Option  :value="2">高理赔行李险</Option>
+                         <Option  :value="3">准时险</Option>
+                         <Option  :value="4">人身安全险</Option>
+                         <Option  :value="5">亲子险</Option>
+                     </Select>
+                 </FormItem>
+                 <FormItem label="被保险人姓名" prop="name">
+                     <Input v-model="email.name" placeholder="请输入被保险人姓名" />
+                 </FormItem>
+                 <!--<FormItem label="被保险人ID" prop="id">-->
+                 <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
+                 <!--</FormItem>-->
+                 <FormItem label="被保险人邮箱" prop="email">
+                     <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
+                 </FormItem>
+                 <FormItem label="申报信息" prop="title">
+                     <Input v-model="email.title" placeholder="请输入所需申报信息：如丢失物品" />
+                 </FormItem>
+                 <Form-item label="图片证明：" prop="image"  >
+                     <Upload
+                             ref="upload"
+                             :headers="headers"
+                             action="/interest/interest/upload/picture"
+                             name="picture"
+                             :show-upload-list="true"
+                             :before-upload="handleBeforeUpload"
+                             :on-success="handleSuccess"
+                             :on-format-error="handleFormatError"
+                             :format="['jpg','jpeg','png']"
+                     >
+                         <Button icon="ios-cloud-upload-outline"   >上传图片</Button>
+                     </Upload>
+                 </Form-item>
+                 <Form-item>
+                     <img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px">
+                 </Form-item>
+                 <FormItem label="问题详情" prop="content">
+                     <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter something..." />
+                 </FormItem>
             </Form>
         </Modal>
     </div>
@@ -177,10 +222,16 @@ export default {
       unreadMsgCount: 0,
       emailModal: false,
       email: {
-        title: "",
-        email: "",
-        name: "",
-        content: ""
+        // title: "",
+        // email: "",
+        // name: "",
+        // content: ""
+          title: "",
+          email: "",
+          name: "",
+          content: "",
+          formType: "",
+          image: null,
       },
       user: {
         loginName: "",
@@ -189,35 +240,81 @@ export default {
         name: ""
       },
       emailRule: {
-        title: [
-          {
-            type: "string",
-            required: true,
-            message: "请输入密码",
-            trigger: "blur"
-          }
-        ],
-        email: [
-          { required: true, message: "输入邮箱", trigger: "blur" },
-          { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
-        ],
-        passwordAgain: [
-          {
-            type: "string",
-            required: true,
-            message: "请输入再次输入密码",
-            trigger: "blur"
-          }
-        ],
-        name: [
-          {
-            type: "string",
-            required: true,
-            message: "请输入姓名",
-            trigger: "blur"
-          }
-        ],
-        content: [{ required: true, message: "请输入内容", trigger: "blur" }]
+      //   title: [
+      //     {
+      //       type: "string",
+      //       required: true,
+      //       message: "请输入密码",
+      //       trigger: "blur"
+      //     }
+      //   ],
+      //   email: [
+      //     { required: true, message: "输入邮箱", trigger: "blur" },
+      //     { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+      //   ],
+      //   passwordAgain: [
+      //     {
+      //       type: "string",
+      //       required: true,
+      //       message: "请输入再次输入密码",
+      //       trigger: "blur"
+      //     }
+      //   ],
+      //   name: [
+      //     {
+      //       type: "string",
+      //       required: true,
+      //       message: "请输入姓名",
+      //       trigger: "blur"
+      //     }
+      //   ],
+      //   content: [{ required: true, message: "请输入内容", trigger: "blur" }]
+      // }
+          title: [
+              {
+                  type: "string",
+                  required: true,
+                  message: "请输入申报信息",
+                  trigger: "blur"
+              }
+          ],
+          type: [
+              {
+                  type: "string",
+                  required: true,
+                  message: "填选择保单类型",
+                  trigger: "blur"
+              }
+          ],
+          id: [
+              {
+                  type: "string",
+                  required: true,
+                  message: "请输入被保险人正确的id",
+                  trigger: "blur"
+              }
+          ],
+          email: [
+              { required: true, message: "输入邮箱", trigger: "blur" },
+              { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+          ],
+          passwordAgain: [
+              {
+                  type: "string",
+                  required: true,
+                  message: "请输入再次输入密码",
+                  trigger: "blur"
+              }
+          ],
+          name: [
+              {
+                  type: "string",
+                  required: true,
+                  message: "请输入姓名",
+                  trigger: "blur"
+              }
+          ],
+          content: [{ required: true, message: "请输入内容", trigger: "blur" }]
       }
     };
   },
@@ -285,7 +382,18 @@ export default {
       this.user.headimg = e.headimg;
       this.user.name = e.name;
     },
-    search() {
+      handleBeforeUpload() {
+          this.$refs.upload.fileList.splice(0, this.$refs.upload.fileList.length);
+          return true;
+      },
+      handleFormatError(file) {
+          this.$Notice.warning({
+              title: "图片格式不对",
+              desc: "图片格式只能为jpg,jpeg,png"
+          });
+      },
+
+      search() {
       if (this.searchValue != null && this.searchValue != "") {
         this.$router.push("/page/home/" + this.searchValue);
       }
