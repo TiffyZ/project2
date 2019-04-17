@@ -204,7 +204,7 @@
                     <Upload
                             ref="upload"
                             :headers="headers"
-                            action="/interest/admin/interest/upload/picture"
+                            action="/interest/interest/upload/picture"
                             name="picture"
                             :show-upload-list="true"
                             :before-upload="handleBeforeUpload"
@@ -476,7 +476,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功["+this.email.formType+"]");
+                this.$Message.info("发送成功["+this.email.image+"]");
               }.bind(this)
             )
             .catch(function(error) {

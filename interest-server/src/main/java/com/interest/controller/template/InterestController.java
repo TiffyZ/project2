@@ -35,7 +35,7 @@ public class InterestController {
         return new ResponseWrapper<>(interestService.getInsterestById(id));
     }
 
-    @PostMapping("/admin/interest/upload/picture")
+    @PostMapping("/interest/upload/picture")
     public ResponseWrapper<Map<String, String>> uploadPicture(@RequestParam("picture") MultipartFile picture) {
 
         Map<String, String> resultMap = new HashMap<String, String>();
