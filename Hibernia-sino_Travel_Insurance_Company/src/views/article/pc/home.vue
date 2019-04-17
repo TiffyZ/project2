@@ -56,7 +56,8 @@ export default {
                 email: null,
                 name: null,
                 content: null,
-                createtime: null
+                createtime: null,
+                label: null
             },
             /*表显示字段*/
             columns1: [
@@ -73,6 +74,10 @@ export default {
                     title: "标题",
                     width: 500,
                     key: "title"
+                },
+                {
+                    title: "状态",
+                    key: "label"
                 },
                 {
                     title: "email",
@@ -130,6 +135,7 @@ export default {
             this.email.name = e.name;
             this.email.content = e.content;
             this.email.createtime = e.createtime;
+            this.email.label = e.label;
         },
         dateGet(e) {
             var time = new Date(parseInt(e));
