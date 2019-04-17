@@ -154,7 +154,7 @@ export default {
         getTable(e) {
             this.axios({
                 method: "get",
-                url: "/emails",
+                url: "/emails/individual",
                 params: {
                     page: e.pageInfo.page,
                     pageSize: e.pageInfo.pageSize

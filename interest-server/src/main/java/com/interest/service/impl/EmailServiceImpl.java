@@ -28,6 +28,11 @@ public class EmailServiceImpl implements EmailService {
 	}
 
 	@Override
+	public List<Regis_FormEntity> emailList(int pageSize, int start, int ID) {
+		return regisFormDao.emailList(pageSize,start,ID);
+	}
+
+	@Override
 	public Integer emailsSize(int pageSize, int start) {
 		return regisFormDao.emailsSize(pageSize,start);
 	}

@@ -10,6 +10,8 @@ public interface EmailService {
 
 	List<Regis_FormEntity> emailsList(int pageSize, int start);
 
+	List<Regis_FormEntity> emailList(int pageSize, int start, int ID);
+
 	Integer emailsSize(int pageSize, int start);
 
     void deleteEmails(List<String> groupId);

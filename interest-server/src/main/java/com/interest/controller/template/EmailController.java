@@ -25,6 +25,15 @@ public class EmailController {
         return new ResponseWrapper<>(pageResult);
     }
 
+    @GetMapping("/emails/individual")
+    public ResponseWrapper<PageResult> emailList(@RequestParam("pageSize") int pageSize, @RequestParam("page") int page) {
+        int ID = SecurityAuthenUtil.getId();
+        PageResult pageResult = new PageResult();
+        pageResult.setData(emailService.emailList(pageSize, page * pageSize, ID));
+        pageResult.setTotalCount(emailService.emailsSize(pageSize, page * pageSize));
+        return new ResponseWrapper<>(pageResult);
+    }
+
     @PostMapping("/email")
     public ResponseWrapper<Regis_FormEntity> insertEntity(@RequestBody Regis_FormEntity regisFormEntity) {
         int userid = SecurityAuthenUtil.getId();
