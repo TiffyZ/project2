@@ -161,6 +161,7 @@ export default {
                                       this.getTable({
                                           pageInfo: this.pageInfo
                                       });
+
                                   }
                               }
                           },
@@ -168,6 +169,7 @@ export default {
                       )
                   ]);
               }
+
           },
           {
               title: "员工拒绝操作",
@@ -238,6 +240,13 @@ export default {
       this.pageInfo.page = 0;
       this.pageInfo.pageSize = 10;
     },
+      labelpost(){
+          this.$Message.info("发送成功1");
+
+      },
+
+
+
     emailSet(e) {
       this.email.id = e.id;
       this.email.name = e.name;
