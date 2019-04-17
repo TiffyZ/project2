@@ -267,6 +267,7 @@ export default {
         content: "",
           formType: "",
           image: null,
+          label: "未处理"
       },
         image: [
             {
