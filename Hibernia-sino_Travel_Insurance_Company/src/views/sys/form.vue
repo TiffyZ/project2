@@ -77,7 +77,7 @@
 	        <div slot="footer">
 	            <!--<Button type="error" size="large"  @click="cancel">关闭</Button>-->
                 <Button v-model="email" type="success" size="large"  @click="agree('email')">同意赔付</Button>
-                <Button type="error" size="large"  @click="disagree('email')">拒绝赔付</Button>
+                <Button v-model="email" type="error" size="large"  @click="disagree('email')">拒绝赔付</Button>
 	        </div>
 	    </Modal>	
     </div>
@@ -448,7 +448,7 @@ export default {
           });
       },
       disagree(email){
-          this.model=false;
+          this.modal=false;
           this.email.label="拒绝赔付";
           this.$refs[email].validate(valid => {
               if (valid) {
