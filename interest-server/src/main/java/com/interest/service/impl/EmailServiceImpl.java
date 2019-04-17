@@ -41,6 +41,7 @@ public class EmailServiceImpl implements EmailService {
 	public void deleteEmails(List<String> groupId) {
 		regisFormDao.deleteEmails(groupId);
 	}
-
+    @Override
+	public void updateLabel(Regis_FormEntity regisFormEntity){regisFormDao.updateLabel(regisFormEntity);}
 
 }

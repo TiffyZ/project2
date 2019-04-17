@@ -18,4 +18,11 @@ public interface Regis_FormDao {
 	Integer emailsSize(@Param("pageSize") int pageSize, @Param("start") int start);
 
     void deleteEmails(@Param("groupId") List<String> groupId);
+
+	/**
+	 * 更新label
+	 *
+	 * @param regisFormEntity
+	 */
+	void updateLabel(Regis_FormEntity regisFormEntity);
 }

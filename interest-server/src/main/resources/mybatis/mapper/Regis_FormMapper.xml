@@ -61,6 +61,14 @@
         select count(*) from regis_form
         ]]>
 	</select>
+    <!-- 更新label -->
+    <update id="updateLabel" parameterType="Regis_FormEntity">
+        update regis_form set
+        label = #{label}
+        <where>
+            userid = #{userid}
+        </where>
+    </update>
 
     <delete id="deleteEmails">
         delete from regis_form

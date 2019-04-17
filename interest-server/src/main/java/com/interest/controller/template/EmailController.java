@@ -1,8 +1,11 @@
 package com.interest.controller.template;
 
+import com.interest.controller.sys.UserController;
 import com.interest.model.entity.Regis_FormEntity;
 import com.interest.model.entity.PageResult;
 import com.interest.model.utils.ResponseWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +16,7 @@ import java.util.List;
 
 @RestController
 public class EmailController {
-
+    private Logger log = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private EmailService emailService;
 
@@ -46,6 +49,19 @@ public class EmailController {
     public ResponseWrapper<List<String>> deleteEmails(@RequestBody List<String> groupId) {
         emailService.deleteEmails(groupId);
         return new ResponseWrapper<>(groupId);
+    }
+
+    /**
+     * 更新Label
+     *
+     * @param regisFormEntity
+     * @return
+     */
+    @PostMapping("/email/label")
+    public ResponseWrapper<Regis_FormEntity> updateLabel(@RequestBody Regis_FormEntity regisFormEntity) {
+        emailService.updateLabel(regisFormEntity);
+        log.debug("The method is ending");
+        return new ResponseWrapper<>(regisFormEntity);
     }
 
 }

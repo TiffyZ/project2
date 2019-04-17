@@ -373,7 +373,7 @@ export default {
     },
       agree(email){
           this.email.label="同意赔付";
-          this.$Message.info("发送成功000["+this.email.image+"]");
+          this.$Message.info(this.$refs[email]);
           this.$refs[email].validate(valid => {
               this.$Message.info("发送成功111["+this.email.label+"]");
               if (valid) {
@@ -400,7 +400,7 @@ export default {
       },
       disagree(email){
           this.email.label="拒绝赔付";
-          this.$Message.info("发送成功000["+this.email.image+"]");
+          this.$Message.info("发送成功000["+this.email.label+"]");
           this.$refs[email].validate(valid => {
               this.$Message.info("发送成功111["+this.email.label+"]");
               if (valid) {

@@ -15,4 +15,9 @@ public interface EmailService {
 	Integer emailsSize(int pageSize, int start);
 
     void deleteEmails(List<String> groupId);
+	/**
+	 * 更新Label
+	 * @param regisFormEntity
+	 */
+	void updateLabel(Regis_FormEntity regisFormEntity);
 }
