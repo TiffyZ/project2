@@ -246,32 +246,98 @@ export default {
       menuList: [],
       /*生产类型表显示字段*/
       columns1: [
-        {
-          type: "selection",
-          width: 60,
-          align: "center"
-        },
-        {
-          title: "Form ID",
-          key: "id"
-        },
-        {
-          title: "Form Name",
-          key: "name"
-        },
-        
-        {
-          title: "User's id",
-          key: "parentId"
-        },
-        {
-          title: "schedule（进度）",
-          key: "sort"
-        },
-        {
-          title: "Remark",
-          key: "icon"
-        }
+          {
+              type: "selection",
+              width: 60,
+              align: "center"
+          },
+          {
+              title: "文章ID",
+              key: "id",
+              width: 75
+          },
+          {
+              title: "创建者ID",
+              key: "userid",
+              width: 90
+          },
+          {
+              title: "创建时间",
+              key: "createTime",
+              width: 140
+          },
+          {
+              title: "标题",
+              key: "title",
+              width: 150
+          }, {
+              title: "置顶",
+              align: "center",
+              key: "action",
+              width: 70,
+              render: (h, params) => {
+                  if (params.row.top == 1) {
+                      return h("div", [
+                          h(
+                              "strong",
+                              {
+                                  style: {
+                                      color: "#2b85e4"
+                                  }
+                              },
+                              "是"
+                          )
+                      ]);
+                  } else if (params.row.top == 0) {
+                      return h("div", [
+                          h(
+                              "strong",
+                              {
+                                  style: {
+                                      color: "#f90"
+                                  }
+                              },
+                              "否"
+                          )
+                      ]);
+                  }
+              }
+          },
+          {
+              title: "简介",
+              key: "info"
+          },
+          {
+              title: "操作",
+              align: "center",
+              key: "action",
+              width: 100,
+              render: (h, params) => {
+                  return h(
+                      "a",
+                      {
+                          attrs: {
+                              href:
+                              this.$store.state.domainName +
+                              "/article/detail/" +
+                              params.row.id,
+                              target: "_blank"
+                          }
+                      },
+                      [
+                          h(
+                              "Button",
+                              {
+                                  props: {
+                                      type: "info"
+                                  }
+                              },
+                              "查看"
+                          )
+                      ]
+                  );
+              }
+          }
       ],
       /*生产类型表数据*/
       data1: []
