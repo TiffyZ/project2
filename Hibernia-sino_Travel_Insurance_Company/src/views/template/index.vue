@@ -100,6 +100,8 @@
                               主页
                             </span>
                           </MenuItem>
+                          </div>
+                          <div v-if="loginFlag" class="layout-title">
                           <MenuItem name="article">
                             <span class="home-text">
                               表单列表
