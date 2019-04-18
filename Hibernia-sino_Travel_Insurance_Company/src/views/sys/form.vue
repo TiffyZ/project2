@@ -69,8 +69,9 @@
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                  <Form-item label="员工备注:" prop="remark">
-                  <span>{{email.remark}}</span>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
+                  <!--<span>{{email.remark}}</span>-->
+                     <Input v-model="email.remark" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter remark..." />
+
                 </Form-item>
             
             </Form>

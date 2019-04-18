@@ -91,7 +91,7 @@
             	<div style="width: 95%;margin: 0 auto">
                     <div class="layout-logo">
                         <a @click="backHome()">
-                            <img src="../../images/logo.jpg" style="width: 50px;height: 50px;" align="absmiddle" />
+                            <img src="../../images/logo.png" style="width: 50px;height: 50px;" align="absmiddle" />
                         </a>
                     </div>
                     <!-- <div style="height: 64px;float: left;">
@@ -138,11 +138,11 @@
                 <router-view></router-view>
             </Content>
             <Footer class="layout-footer-center">
-                <div>
-                    <a href="https://github.com/smallsnail-wh" target="_blank">
-                        <Icon  style="color: rebeccapurple;" size="40" type="logo-github"></Icon>
-                    </a>
-                </div>
+                <!--<div>-->
+                    <!--<a href="https://github.com/smallsnail-wh" target="_blank">-->
+                        <!--<Icon  style="color: rebeccapurple;" size="40" type="logo-github"></Icon>-->
+                    <!--</a>-->
+                <!--</div>-->
                 <p>2016-2020 &copy; Hibernia-Sino Travel Insurance Company</p>
             </Footer>
         </Layout>
@@ -208,6 +208,56 @@
                  </FormItem>
             </Form>
         </Modal>
+        <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
+               title="创建表单" @on-ok="emailOk('email')" @on-cancel="cancel()">
+            <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
+                <FormItem label="保单类型">
+                    <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
+                    <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
+                    <!--</Select>-->
+                    <Select v-model="email.formType" style="width:200px">
+                        <Option  :value="1">行李险</Option>
+                        <Option  :value="2">高理赔行李险</Option>
+                        <Option  :value="3">准时险</Option>
+                        <Option  :value="4">人身安全险</Option>
+                        <Option  :value="5">亲子险</Option>
+                    </Select>
+                </FormItem>
+                <FormItem label="被保险人姓名" prop="name">
+                    <Input v-model="email.name" placeholder="请输入被保险人姓名" />
+                </FormItem>
+                <!--<FormItem label="被保险人ID" prop="id">-->
+                <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
+                <!--</FormItem>-->
+                <FormItem label="被保险人邮箱" prop="email">
+                    <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
+                </FormItem>
+                <FormItem label="申报信息" prop="title">
+                    <Input v-model="email.title" placeholder="请输入所需申报信息：如丢失物品" />
+                </FormItem>
+                <Form-item label="图片证明：" prop="image"  >
+                    <Upload
+                            ref="upload"
+                            :headers="headers"
+                            action="/interest/interest/upload/picture"
+                            name="picture"
+                            :show-upload-list="true"
+                            :before-upload="handleBeforeUpload"
+                            :on-success="handleSuccess"
+                            :on-format-error="handleFormatError"
+                            :format="['jpg','jpeg','png']"
+                    >
+                        <Button icon="ios-cloud-upload-outline"   >上传图片</Button>
+                    </Upload>
+                </Form-item>
+                <Form-item>
+                    <img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px">
+                </Form-item>
+                <FormItem label="问题详情" prop="content">
+                    <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter something..." />
+                </FormItem>
+            </Form>
+        </Modal>
     </div>
 </template>
 <script>
@@ -221,101 +271,77 @@ export default {
       //用户未读消息个数
       unreadMsgCount: 0,
       emailModal: false,
-      email: {
-        // title: "",
-        // email: "",
-        // name: "",
-        // content: ""
-          title: "",
-          email: "",
-          name: "",
-          content: "",
-          formType: "",
-          image: null,
-      },
+
+        email: {
+            title: "",
+            email: "",
+            name: "",
+            content: "",
+            formType: "",
+            image: null,
+            label: "未处理"
+        },
+        image: [
+            {
+                type: "string",
+                required: true,
+                message: "上传图片",
+                trigger: "blur"
+            }
+        ],
       user: {
         loginName: "",
         email: "",
         headimg: "",
         name: ""
       },
-      emailRule: {
-      //   title: [
-      //     {
-      //       type: "string",
-      //       required: true,
-      //       message: "请输入密码",
-      //       trigger: "blur"
-      //     }
-      //   ],
-      //   email: [
-      //     { required: true, message: "输入邮箱", trigger: "blur" },
-      //     { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
-      //   ],
-      //   passwordAgain: [
-      //     {
-      //       type: "string",
-      //       required: true,
-      //       message: "请输入再次输入密码",
-      //       trigger: "blur"
-      //     }
-      //   ],
-      //   name: [
-      //     {
-      //       type: "string",
-      //       required: true,
-      //       message: "请输入姓名",
-      //       trigger: "blur"
-      //     }
-      //   ],
-      //   content: [{ required: true, message: "请输入内容", trigger: "blur" }]
-      // }
-          title: [
-              {
-                  type: "string",
-                  required: true,
-                  message: "请输入申报信息",
-                  trigger: "blur"
-              }
-          ],
-          type: [
-              {
-                  type: "string",
-                  required: true,
-                  message: "填选择保单类型",
-                  trigger: "blur"
-              }
-          ],
-          id: [
-              {
-                  type: "string",
-                  required: true,
-                  message: "请输入被保险人正确的id",
-                  trigger: "blur"
-              }
-          ],
-          email: [
-              { required: true, message: "输入邮箱", trigger: "blur" },
-              { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
-          ],
-          passwordAgain: [
-              {
-                  type: "string",
-                  required: true,
-                  message: "请输入再次输入密码",
-                  trigger: "blur"
-              }
-          ],
-          name: [
-              {
-                  type: "string",
-                  required: true,
-                  message: "请输入姓名",
-                  trigger: "blur"
-              }
-          ],
-          content: [{ required: true, message: "请输入内容", trigger: "blur" }]
-      }
+        emailRule: {
+            title: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "请输入申报信息",
+                    trigger: "blur"
+                }
+            ],
+            type: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "填选择保单类型",
+                    trigger: "blur"
+                }
+            ],
+            id: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "请输入被保险人正确的id",
+                    trigger: "blur"
+                }
+            ],
+            email: [
+                { required: true, message: "输入邮箱", trigger: "blur" },
+                { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+            ],
+            passwordAgain: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "请输入再次输入密码",
+                    trigger: "blur"
+                }
+            ],
+            name: [
+                {
+                    type: "string",
+                    required: true,
+                    message: "请输入姓名",
+                    trigger: "blur"
+                }
+            ],
+            content: [{ required: true, message: "请输入内容", trigger: "blur" }]
+        }
     };
   },
   mounted() {
@@ -327,6 +353,51 @@ export default {
     this.login(code, state);
   },
   methods: {
+      handleSuccess(res, file) {
+          this.email.image = res.data.url;
+          file.url = res.data.url;
+          file.name = res.data.url;
+      },
+      handleBeforeUpload() {
+          this.$refs.upload.fileList.splice(0, this.$refs.upload.fileList.length);
+          return true;
+      },
+      handleFormatError(file) {
+          this.$Notice.warning({
+              title: "图片格式不对",
+              desc: "图片格式只能为jpg,jpeg,png"
+          });
+      },
+      emailOk(email) {
+          this.$refs[email].validate(valid => {
+              if (valid) {
+                  this.axios({
+                      method: "post",
+                      url: "/email",
+                      data: this.email
+                  })
+                      .then(
+                          function(response) {
+                              this.$Message.info("发送成功["+this.email.image+"]");
+                          }.bind(this)
+                      )
+                      .catch(function(error) {
+                          alert(error);
+                      });
+                  this.emailModal = false;
+              } else {
+                  this.$Message.error("表单验证失败!");
+                  setTimeout(() => {
+                      this.loading = false;
+                      this.$nextTick(() => {
+                          this.loading = true;
+                      });
+                  }, 1000);
+              }
+          });
+      },
+
+
     dropdownClick(m) {
       if (m == "email") {
         this.emailModal = true;
