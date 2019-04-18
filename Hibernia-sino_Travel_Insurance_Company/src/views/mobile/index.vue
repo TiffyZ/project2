@@ -6,6 +6,13 @@
   border-radius: 4px;
   overflow: hidden;
 }
+.layout-title .home-text{
+    color: rebeccapurple;
+    font-weight: bold;
+}
+.layout-title .home-text:hover{
+    color: #2d8cf0;
+}
 .mobild-layout .layout-logo {
   /*width: 100px;*/
   /*height: 30px;*/
@@ -115,6 +122,17 @@
                             	<Icon type="ios-mail"></Icon>
                                 创建表单
                             </DropdownItem>
+
+                            <DropdownItem name="artical" divided>
+                                <Icon type="ios-mail"></Icon>
+                                我的保单
+                            </DropdownItem>
+
+                    <!--<MenuItem name="article">-->
+                            <!--<span class="home-text">-->
+                              <!--表单列表-->
+                            <!--</span>-->
+                    <!--</MenuItem>-->
 
                             <DropdownItem name="messages" divided>
                                 <Icon type="md-chatboxes"></Icon>
@@ -353,6 +371,13 @@ export default {
     this.login(code, state);
   },
   methods: {
+      // search() {
+      //     if(this.$route.name == "home" || this.$route.name == "page-home-title"|| this.$route.name == "page-home"){
+      //         this.$router.push("/page/home/" + this.searchValue);
+      //     }else if(this.$route.name == "article-home"){
+      //         this.$router.push("/article" + "?searchValue=" + this.searchValue);
+      //     }
+      // },
       handleSuccess(res, file) {
           this.email.image = res.data.url;
           file.url = res.data.url;
@@ -405,6 +430,9 @@ export default {
         this.$store.dispatch("users/loginOUt", { router: this.$router });
       } else if (m == "messages") {
         this.$router.push({ path: "/mobile/messages" });
+      }
+      else if (m == "artical") {
+          this.$router.push({ path: "/article" });
       }
     },
     toLogin() {
