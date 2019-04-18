@@ -170,7 +170,7 @@ export default {
         },
         {
           title: "用户姓名",
-          key:"userid"
+          key:"name"
         },   
         {
           title: "标题",
