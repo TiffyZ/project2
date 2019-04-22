@@ -219,6 +219,7 @@ export default {
             email: "",
             // id: "",
             phone: "",
+            createtime: null,
             usertype:0,
         },
         user1: {
@@ -276,7 +277,24 @@ export default {
     }
   },
   methods: {
+      dateGet(e) {
+          var time = new Date(parseInt(e));
+          return (
+              time.getFullYear() +
+              "-" +
+              (time.getMonth() + 1) +
+              "-" +
+              time.getDate() +
+              " " +
+              time.getHours() +
+              ":" +
+              time.getMinutes()
+          );
+      },
+
+
       okEnroll (enroll) {
+          this.enroll.createtime = this.dateGet(this.enroll.createtime)
           this.$refs[enroll].validate(valid => {
               if (valid) {
                   this.axios({
