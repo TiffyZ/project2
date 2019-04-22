@@ -118,7 +118,7 @@
                           </MenuItem>
                           <MenuItem name="2">
                               <Icon type="ios-mail"></Icon>
-                              创建表单
+                              创建保单
                           </MenuItem>
                           <Submenu name="3">
                             <template slot="title">
@@ -176,7 +176,7 @@
         </Layout>
 
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
-               title="创建表单" @on-ok="emailOk('email')" @on-cancel="cancel()">
+               title="创建保单" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
                 <FormItem label="保单类型">
                     <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->

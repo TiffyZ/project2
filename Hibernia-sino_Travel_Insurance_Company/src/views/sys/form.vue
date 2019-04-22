@@ -454,9 +454,11 @@ export default {
                       .catch(function(error) {
                           alert(error);
                       });
+                  callback();
                   // this.emailModal = false;
               } else {
                   this.$Message.error("表单验证失败!");
+                  callback();
 
               }
           });
