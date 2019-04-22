@@ -295,7 +295,7 @@ export default {
             email: "",
             name: "",
             content: "",
-            formType: "",
+            formType: 1,
             image: null,
             label: "未处理"
         },
