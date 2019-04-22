@@ -64,9 +64,10 @@
     <!-- 更新label -->
     <update id="updateLabel" parameterType="Regis_FormEntity">
         update regis_form set
-        label = #{label}
+        label = #{label},
+        remark=#{remark}
         <where>
-            userid = #{userid}
+            id = #{id}
         </where>
     </update>
 

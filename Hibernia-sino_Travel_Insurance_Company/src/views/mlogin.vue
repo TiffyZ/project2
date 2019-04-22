@@ -8,7 +8,7 @@
   bottom: 0;
   left: 0;
   text-align: center;
-  background-image: url(../images/login2.jpg);
+  background-image: url(../images/login.jpg);
 }
 .index .ivu-row-flex {
   height: 100%;
@@ -26,7 +26,7 @@
   position: relative;
   width: 300px; /*border:5px solid rgba(255,255,255,0.3);*/
   border-radius: 5px;
-  background: #fff;
+  background: rgba(55,60,150,0.2);
   text-align: center;
   margin: 0 auto;
 }
@@ -82,8 +82,8 @@
                     <ul style="list-style: none; box-shadow:1px 1px 20px rgba(0,0,0,.5);">
                         <li style="border-bottom: 1px solid #e9eaec;">
                             <div class="contenst">
-                                <img src="../images/home2.jpg" style="width: 40px;height: 40px;" align="absmiddle" />
-                                <span style="float:right;font-size: 15px"><Icon type="ios-log-in"></Icon>欢迎登录</span>
+                                <img src="../images/logo.png" style="width: 40px;height: 40px;" align="absmiddle" />
+                                <span style="float:right;font-size: 15px">欢迎登录</span>
                             </div>
                         </li>
                         <li>
@@ -108,19 +108,50 @@
                                 </FormItem> -->
                                 <FormItem>
                                     <Button type="primary" @click="login('formLogin')" style="width: 250px ">登录</Button>
-                                    <Button type="primary" @click="register()" style="width: 250px ">注册</Button>
+                                    <!--<Button type="primary" @click="register()" style="width: 250px ">注册</Button>-->
+                                    <Button type="primary" @click="modal1 = true" style="width: 250px">注册</Button>
+                                    <Modal
+                                            v-model="modal1"
+                                            title="进行会员注册"
+                                            @on-ok="okEnroll('enroll')"
+                                            @on-cancel="cancel">
+
+                                        <Form ref="enroll" :rules="riRule" :model="enroll" :label-width="110">
+                                            <FormItem label="用户名：" prop="loginName">
+                                                <Input v-model="enroll.loginName" placeholder="请输入您想设置的用户名" />
+                                            </FormItem>
+                                            <FormItem label="密码：" prop="password">
+                                                <Input v-model="enroll.password" type="password" placeholder="请输入密码" />
+                                            </FormItem>
+                                            <FormItem label="确认密码："  prop="password2">
+                                                <Input v-model="enroll.password2" type="password" placeholder="请再次输入密码"  />
+                                            </FormItem>
+                                            <FormItem label="真实姓名：" prop="name">
+                                                <Input v-model="enroll.name" placeholder="请输入您的真实姓名" />
+                                            </FormItem>
+                                            <!--<FormItem label="ID：" prop="id">-->
+                                            <!--<Input v-model="enroll.id"  placeholder="请输入证件号" />-->
+                                            <!--</FormItem>-->
+                                            <FormItem label="邮箱：" prop="email">
+                                                <Input v-model="enroll.email" placeholder="请输入您的邮箱" />
+                                            </FormItem>
+                                            <FormItem label="电话：" prop="phone">
+                                                <Input v-model="enroll.phone" placeholder="请输入您的电话号码" />
+                                            </FormItem>
+                                        </Form>
+                                    </Modal>
                                     <ul class="account-list">
                                         <li>
-                                            <a href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github" style="{right: 26px;}">
-                                                <!-- <Icon  style="color: rebeccapurple;" size="40" type="social-github"></Icon> -->
-                                                <img class="icon" src="../images/GitHub.svg" />
-                                            </a>
-                                        </li>
-                                        
-                                        <li>
-                                            <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101512648&redirect_uri=http://www.lovemtt.com/qq&state=qq" style="{right: 26px;}">
-                                                <img class="icon" src="../images/social-qq.svg" />  
-                                            </a>
+                                            <!--<a href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github" style="{right: 26px;}">-->
+                                                <!--&lt;!&ndash; <Icon  style="color: rebeccapurple;" size="40" type="social-github"></Icon> &ndash;&gt;-->
+                                                <!--<img class="icon" src="../images/GitHub.svg" />-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                        <!---->
+                                        <!--<li>-->
+                                            <!--<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101512648&redirect_uri=http://www.lovemtt.com/qq&state=qq" style="{right: 26px;}">-->
+                                                <!--<img class="icon" src="../images/social-qq.svg" />  -->
+                                            <!--</a>-->
                                         </li>
                                     </ul>
                                 </FormItem>
@@ -135,18 +166,107 @@
 <script>
 export default {
   data() {
-    return {
+      var validatePass = (rule, value, callback) => {
+
+          if (value === '') {
+
+              callback(new Error('请输入密码'));
+
+          } else {
+
+              if (this.enroll.password !== '') {
+
+                  this.$refs.enroll;
+
+              }
+
+              callback();
+
+          }
+
+      };
+
+      var validatePass2 = (rule, value, callback) => {
+
+          if (value === '') {
+
+              callback(new Error('请再次输入密码'));
+
+          } else if (value !== this.enroll.password) {
+
+              callback(new Error('两次输入密码不一致!'));
+
+          } else {
+
+              callback();
+
+          }
+
+      };
+
+      return {
       code: null,
+          modal1: false,
+
+
       formLogin: {
         userName: null,
         password: null
       },
+          enroll: {
+              name: "",
+              loginName: "",
+              password: null,
+              password2: null,
+              email: "",
+              // id: "",
+              phone: "",
+              usertype:0,
+          },
       ruleLogin: {
         userName: [
           { required: true, message: "用户名", trigger: "blur" }
         ],
         password: [{ required: true, message: "密码", trigger: "blur" }]
-      }
+      },
+          riRule: {
+              name: [
+                  {
+                      type: "string",
+                      required: true,
+                      message: "请输入姓名",
+                      trigger: "blur"
+                  }
+              ],
+              // id: [
+              //     {
+              //         type: "string",
+              //         required: true,
+              //         message: "请输入正确的id",
+              //         trigger: "blur"
+              //     }
+              // ],
+              phone: [
+                  {
+                      type: "string",
+                      required: true,
+                      message: "请输入电话号码",
+                      trigger: "blur"
+                  }
+              ],
+
+              email: [
+                  { required: true, message: "输入邮箱", trigger: "blur" },
+                  { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+              ],
+              userName: [
+                  { required: true, message: "请填写用户名", trigger: "blur" }
+              ],
+              // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
+              password: [{ required: true, message: "请填写密码", validator: validatePass,trigger: "blur" }],
+              password2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
+          },
+
     };
   },
   mounted() {
@@ -155,6 +275,56 @@ export default {
     }
   },
   methods: {
+      okEnroll (enroll) {
+          this.$refs[enroll].validate(valid => {
+              if (valid) {
+                  this.axios({
+                      method: "post",
+                      url: "/register",
+                      data: this.enroll
+                  })
+                      .then(
+                          function (response) {
+                              this.$Message.info("发送成功[" + this.enroll.loginName + "]");
+                          }.bind(this)
+                      )
+                      .catch(function (error) {
+                          alert(error);
+                      });
+                  this.modal1 = false;
+              } else {
+                  this.$Message.error("表单验证失败!");
+              };
+          });
+          // this.user1.userID = this.enroll.id;
+          //
+          // this.$refs[user1].validate(valid => {
+          //     if (valid) {
+          //
+          //         this.axios({
+          //             method: "post",
+          //             url: "/relations",
+          //             data: this.user1
+          //         })
+          //             .then(
+          //                 function (response) {
+          //                     this.$Message.info("发送成功[" + this.user1.userID + "]");
+          //                 }.bind(this)
+          //             )
+          //             .catch(function (error) {
+          //                 alert(error);
+          //             });
+          //
+          //     } else {
+          //         this.$Message.error("表单验证失败!");
+          //     };
+          // });
+
+
+      },
+      cancel () {
+          this.$Message.info('Clicked cancel');
+      },
     login(formLogin) {
       this.$refs[formLogin].validate(valid => {
         if (valid) {
