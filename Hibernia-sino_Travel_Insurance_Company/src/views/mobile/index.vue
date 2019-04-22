@@ -433,7 +433,11 @@ export default {
       }
       else if (m == "article") {
 <<<<<<< HEAD
+<<<<<<< HEAD
           this.$router.push({ path: "/mobile/article" });
+=======
+          this.$router.push("/article");
+>>>>>>> parent of 6965e89... 默认值
 =======
           this.$router.push("/article");
 >>>>>>> parent of 6965e89... 默认值
