@@ -7,6 +7,7 @@ import com.interest.model.response.UserInfoResponse;
 import com.interest.model.utils.ResponseWrapper;
 import com.interest.picture.PictureService;
 import com.interest.service.UserService;
+import com.interest.utils.DateUtil;
 import com.interest.utils.SecurityAuthenUtil;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -76,6 +77,7 @@ public class UserController {
      */
     @PostMapping("/register")
     public ResponseWrapper<UserEntity> register(@RequestBody UserEntity userEntity) {
+        userEntity.setCreateTime(DateUtil.currentTimestamp());
         userService.insertUser(userEntity);
         log.debug("The method is ending");
         return new ResponseWrapper<>(userEntity);
