@@ -17,6 +17,12 @@
         </div>            
         <div>
             <ul>
+                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
+                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
+                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
+                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
+                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
+
                 <li>
                     <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>
                     <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>
