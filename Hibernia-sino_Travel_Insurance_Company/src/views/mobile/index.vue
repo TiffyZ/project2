@@ -123,7 +123,7 @@
                                 创建表单
                             </DropdownItem>
 
-                            <DropdownItem name="artical" divided>
+                            <DropdownItem name="article" divided>
                                 <Icon type="ios-mail"></Icon>
                                 我的保单
                             </DropdownItem>
@@ -431,8 +431,8 @@ export default {
       } else if (m == "messages") {
         this.$router.push({ path: "/mobile/messages" });
       }
-      else if (m == "artical") {
-          this.$router.push({ path: "/article" });
+      else if (m == "article") {
+          this.$router.push("/article");
       }
     },
     toLogin() {
@@ -508,6 +508,9 @@ export default {
       } else if (e == 5) {
         this.$router.push("/login");
       }
+      // else if (e == "4") {
+      //     this.$router.push("/article");
+      // }
     },
     backHome() {
       this.$router.push("/page/home");

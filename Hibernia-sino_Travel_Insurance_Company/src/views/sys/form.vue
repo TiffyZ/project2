@@ -187,7 +187,20 @@ export default {
         },
         {
           title: "表单类型",
-          key: "formType"
+          key: "formType",
+            render: (h, params) => {
+                if (params.row.formType == 1) {
+                    return h("div", [h("strong", null, "行李险")]);
+                } else if (params.row.formType == 2) {
+                    return h("div", [h("strong", null, "高理赔行李险")]);
+                }else if (params.row.formType == 3) {
+                    return h("div", [h("strong", null, "准时险")]);
+                }else if (params.row.formType == 4) {
+                    return h("div", [h("strong", null, "人身安全险")]);
+                }else if (params.row.formType == 5) {
+                    return h("div", [h("strong", null, "亲子险")]);
+                }
+            }
         },
         {
           title: "表单赔付状态",

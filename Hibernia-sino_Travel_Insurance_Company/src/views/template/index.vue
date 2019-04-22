@@ -182,8 +182,8 @@
                     <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
                         <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
                     <!--</Select>-->
-                    <Select v-model="email.formType" style="width:200px">
-                        <Option  :value="1">行李险</Option>
+                    <Select v-model="email.formType" style="width:200px" >
+                        <Option  :value="1" >行李险</Option>
                         <Option  :value="2">高理赔行李险</Option>
                         <Option  :value="3">准时险</Option>
                         <Option  :value="4">人身安全险</Option>
@@ -267,7 +267,7 @@ export default {
         email: "",
         name: "",
         content: "",
-          formType: "",
+          formType: 1,
           image: null,
           label: "未处理"
       },
@@ -294,7 +294,7 @@ export default {
             trigger: "blur"
           }
         ],
-          type: [
+          formType: [
               {
                   type: "string",
                   required: true,
