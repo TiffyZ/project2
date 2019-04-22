@@ -295,7 +295,7 @@ export default {
             email: "",
             name: "",
             content: "",
-            formType: 1,
+            formType: "",
             image: null,
             label: "未处理"
         },
@@ -432,7 +432,11 @@ export default {
         this.$router.push({ path: "/mobile/messages" });
       }
       else if (m == "article") {
+<<<<<<< HEAD
           this.$router.push({ path: "/mobile/article" });
+=======
+          this.$router.push("/article");
+>>>>>>> parent of 6965e89... 默认值
       }
     },
     toLogin() {
@@ -497,21 +501,21 @@ export default {
         this.$router.push("/page/home/" + this.searchValue);
       }
     },
-    // menuSelect(e) {
-    //   if (e == 1) {
-    //   } else if (e == 2) {
-    //     this.emailModal = true;
-    //   } else if (e == 3) {
-    //     this.$store.dispatch("users/loginOUt", { router: this.$router });
-    //   } else if (e == 4) {
-    //     this.$router.push("/base");
-    //   } else if (e == 5) {
-    //     this.$router.push("/login");
-    //   }
-    //   else if (e == "article") {
-    //       this.$router.push("/article");
-    //   }
-    // },
+    menuSelect(e) {
+      if (e == 1) {
+      } else if (e == 2) {
+        this.emailModal = true;
+      } else if (e == 3) {
+        this.$store.dispatch("users/loginOUt", { router: this.$router });
+      } else if (e == 4) {
+        this.$router.push("/base");
+      } else if (e == 5) {
+        this.$router.push("/login");
+      }
+      // else if (e == "4") {
+      //     this.$router.push("/article");
+      // }
+    },
     backHome() {
       this.$router.push("/page/home");
     },
