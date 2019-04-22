@@ -181,7 +181,7 @@ const routers = [
       {
         path: "article",
         name: "mobile-article",
-        component: resolve => require(["./views/mobile/home.vue"], resolve),
+        component: resolve => require(["./views/mobile/home1.vue"], resolve),
         meta: {
           title: "messages"
         }
