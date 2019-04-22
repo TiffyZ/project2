@@ -177,6 +177,14 @@ const routers = [
         meta: {
           title: "messages"
         }
+      },
+      {
+        path: "article",
+        name: "mobile-article",
+        component: resolve => require(["./views/mobile/home.vue"], resolve),
+        meta: {
+          title: "messages"
+        }
       }
     ]
   },

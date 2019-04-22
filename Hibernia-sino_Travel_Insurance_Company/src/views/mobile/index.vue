@@ -432,7 +432,7 @@ export default {
         this.$router.push({ path: "/mobile/messages" });
       }
       else if (m == "article") {
-          this.$router.push({ path: "/article" });
+          this.$router.push({ path: "/mobile/article" });
       }
     },
     toLogin() {
