@@ -120,7 +120,7 @@
                             </DropdownItem>
                             <DropdownItem name="email" divided>
                             	<Icon type="ios-mail"></Icon>
-                                创建表单
+                                提交申请
                             </DropdownItem>
 
                             <DropdownItem name="article" divided>

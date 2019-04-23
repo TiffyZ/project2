@@ -118,7 +118,7 @@
                           </MenuItem>
                           <MenuItem name="2">
                               <Icon type="ios-mail"></Icon>
-                              创建保单
+                              提交申请
                           </MenuItem>
                           <Submenu name="3">
                             <template slot="title">
