@@ -398,7 +398,7 @@ export default {
                 pageInfo: this.pageInfo
               });
               this.groupId = [];
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {
@@ -413,7 +413,7 @@ export default {
       openModifyModal() {
           if (this.count > 1 || this.count < 1) {
               this.modifyModal = false;
-              this.$Message.warning("请至少选择一项(且只能选择一项)");
+              this.$Message.warning(this.$t("message.PleaseChooseOne"));
           } else {
               this.modifyModal = true;
           }
@@ -421,7 +421,7 @@ export default {
       remarkModal() {
           if (this.count > 1 || this.count < 1) {
               this.modifyModal = false;
-              this.$Message.warning("请至少选择一项(且只能选择一项)");
+              this.$Message.warning(this.$t("message.PleaseChooseOne"));
           } else {
               this.modifyModal = true;
           }
@@ -435,7 +435,7 @@ export default {
     },
       agree(email){
           this.modal=false;
-          this.email.label="同意赔付";
+          this.email.label=this.$t("message.AgreeToPay");
           this.$refs[email].validate(valid => {
               if (valid) {
                   this.axios({
@@ -445,7 +445,7 @@ export default {
                   })
                       .then(
                           function(response) {
-                              this.$Message.info("发送成功["+this.email.label+"]");
+                              this.$Message.info(this.$t("message.SendSuccess")+"["+this.email.label+"]");
                               this.getTable({
                                   pageInfo: this.pageInfo
                               });
@@ -457,7 +457,7 @@ export default {
                   callback();
                   // this.emailModal = false;
               } else {
-                  this.$Message.error("表单验证失败!");
+                  this.$Message.error(this.$t("message.ValidationFailed"));
                   callback();
 
               }
@@ -465,7 +465,7 @@ export default {
       },
       disagree(email){
           this.modal=false;
-          this.email.label="拒绝赔付";
+          this.email.label=this.$t("message.DisAgreeToPay");
           this.$refs[email].validate(valid => {
               if (valid) {
                   this.axios({
@@ -475,7 +475,7 @@ export default {
                   })
                       .then(
                           function(response) {
-                              this.$Message.info("发送成功["+this.email.label+"]");
+                              this.$Message.info(this.$t("message.SendSuccess")+"["+this.email.label+"]");
                               this.getTable({
                                   pageInfo: this.pageInfo
                               });
@@ -486,7 +486,7 @@ export default {
                       });
                   // this.emailModal = false;
               } else {
-                  this.$Message.error("表单验证失败!");
+                  this.$Message.error(this.$t("message.ValidationFailed"));
 
               }
           });

@@ -8,9 +8,9 @@
         <div>
             <ul>
                 <li>
-                    <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>
-                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>
-                    <Button type="error" icon="md-trash" @click="del()">删除</Button>
+                    <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">{{ $t("message.Create") }}</Button>
+                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">{{ $t("message.Edit") }}</Button>
+                    <Button type="error" icon="md-trash" @click="del()">{{ $t("message.delete") }}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -25,37 +25,37 @@
             </ul>
         </div>
         <!--添加modal-->  
-        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" title="新建" @on-ok="newOk('roleNew')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" :title="$t('message.Create')" @on-ok="newOk('roleNew')" @on-cancel="cancel()">
             <Form ref="roleNew" :model="roleNew" :rules="ruleNew" :label-width="80" >
                 <Row>
                     <Col span="12">
-                      <Form-item label="角色:" prop="role">
+                      <Form-item :label="$t('message.Character')" prop="role">
                           <Input v-model="roleNew.role" style="width: 204px"/>
                       </Form-item>
                     </Col>
                     <Col span="12">
-                         <Form-item label="角色名:" prop="name">
+                         <Form-item :label="$t('message.CharacterName')" prop="name">
                             <Input v-model="roleNew.name" style="width: 204px"/>
                         </Form-item>
                     </Col>
                 </Row>
                
-                <Form-item label="描述:" prop="describe">
+                <Form-item :label="$t('message.Describe')" prop="describe">
                      <Input v-model="roleNew.describe" type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
                 </Form-item>
             </Form>
         </Modal>
         <!--修改modal-->  
-        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" width="600" title="修改" @on-ok="modifyOk('roleModify')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" width="600" :title="$t('message.Edit')" @on-ok="modifyOk('roleModify')" @on-cancel="cancel()">
             <Form ref="roleModify" :model="roleModify" :rules="ruleModify" :label-width="80" >
                 <Row>
                     <Col span="12">
-                        <Form-item label="角色:" prop="role">
+                        <Form-item :label="$t('message.Character')" prop="role">
                             <Input v-model="roleModify.role" style="width: 204px"/>
                         </Form-item>
                     </Col>
                     <Col span="12">
-                         <Form-item label="角色名:" prop="name">
+                         <Form-item :label="$t('message.CharacterName')" prop="name">
                             <Input v-model="roleModify.name" style="width: 204px"/>
                         </Form-item>
                     </Col>
@@ -63,13 +63,13 @@
                 <!-- <Form-item label="角色名:" prop="name">
                             <Input v-model="roleModify.name" style="width: 204px"/>
                         </Form-item> -->
-                <Form-item label="描述:" prop="describe">
+                <Form-item :label="$t('message.Describe')" prop="describe">
                      <Input v-model="roleModify.describe" type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
                 </Form-item>
             </Form>
         </Modal>
         <!-- 配置权限 -->
-        <Modal v-model="settingModal"  width="400" title="配置权限" @on-ok="settingOk()" @on-cancel="cancel()" :mask-closable="false">
+        <Modal v-model="settingModal"  width="400" :title="$t('message.PermissionConfiguration')" @on-ok="settingOk()" @on-cancel="cancel()" :mask-closable="false">
             <Row>
                 <Col span="24"><Table border :columns="columns2" :data="data2"></Table></Col>
             </Row>
@@ -129,7 +129,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入角色",
+            message: this.$t("message.EnterUser"),
             trigger: "blur"
           }
         ],
@@ -137,7 +137,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入角色名",
+            message: this.$t("message.EnterUser"),
             trigger: "blur"
           }
         ]
@@ -148,7 +148,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入角色",
+            message: this.$t("message.EnterUser"),
             trigger: "blur"
           }
         ],
@@ -156,7 +156,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入角色名",
+            message: this.$t("message.EnterUser"),
             trigger: "blur"
           }
         ]
@@ -169,19 +169,19 @@ export default {
           align: "center"
         },
         {
-          title: "角色",
+          title: this.$t("message.user"),
           key: "role"
         },
         {
-          title: "角色名",
+          title: this.$t("message.user"),
           key: "name"
         },
         {
-          title: "描述",
+          title: this.$t("message.Describe"),
           key: "describe"
         },
         {
-          title: "操作",
+          title: this.$t("message.Operation"),
           key: "action",
           width: 180,
           align: "center",
@@ -205,11 +205,11 @@ export default {
       /*表显示字段*/
       columns2: [
         {
-          title: "权限",
+          title: this.$t("message.Permission"),
           key: "name"
         },
         {
-          title: "操作",
+          title: this.$t("message.Operation"),
           align: "center",
           render: (h, params) => {
             return h("div", [
@@ -368,7 +368,7 @@ export default {
                 this.getTable({
                   pageInfo: this.pageInfo
                 });
-                this.$Message.info("新建成功");
+                this.$Message.info(this.$t("message.EditSuccess"));
               }.bind(this)
             )
             .catch(function(error) {
@@ -389,7 +389,7 @@ export default {
     openModifyModal() {
       if (this.count > 1 || this.count < 1) {
         this.modifyModal = false;
-        this.$Message.warning("请至少选择一项(且只能选择一项)");
+        this.$Message.warning(this.$t("message.PleaseChooseOne"));
       } else {
         this.modifyModal = true;
       }
@@ -411,7 +411,7 @@ export default {
                 this.getTable({
                   pageInfo: this.pageInfo
                 });
-                this.$Message.info("修改成功");
+                this.$Message.info(this.$t("message.EditSuccess"));
               }.bind(this)
             )
             .catch(function(error) {
@@ -419,7 +419,7 @@ export default {
             });
           this.modifyModal = false;
         } else {
-          this.$Message.error("表单验证失败!");
+          this.$Message.error(this.$t("message.ValidationFailed"));
           setTimeout(() => {
             this.loading = false;
             this.$nextTick(() => {
@@ -479,7 +479,7 @@ export default {
             this.getTable({
               pageInfo: this.pageInfo
             });
-            this.$Message.info("配置成功");
+            this.$Message.info(this.$t("message.ConfigurationSuccess"));
           }.bind(this)
         )
         .catch(function(error) {
@@ -488,7 +488,7 @@ export default {
     },
     /*modal的cancel点击事件*/
     cancel() {
-      this.$Message.info("点击了取消");
+      this.$Message.info(this.$t("message.ClickCancel"));
     },
     /*table选择后触发事件*/
     change(e) {
@@ -520,7 +520,7 @@ export default {
               });
               this.groupId = null;
               this.count = 0;
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {

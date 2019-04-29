@@ -3,7 +3,7 @@
         <div>
             <ul>
             	<li>
-                    <Button type="error" icon="trash-a" @click="del()">删除</Button>
+                    <Button type="error" icon="trash-a" @click="del()">{{ $t("message.delete") }}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -17,19 +17,19 @@
                 </li>
             </ul>
         </div>
-        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
+        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" :title="$t('message.Watch')">
 	        <Form :label-width="80" >
-	        	<Form-item label="登录名:">
+	        	<Form-item :label="$t('message.loginuser')">
 	        		<strong>{{postcard.username}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="内容:">
+                <Form-item :label="$t('message.Content')">
                 	<span>{{postcard.content}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
             </Form>
 	        <div slot="footer">
-	            <Button type="error" size="large"  @click="cancel">关闭</Button>
+	            <Button type="error" size="large"  @click="cancel">{{ $t("message.Close") }}</Button>
 	        </div>
 	    </Modal>	
     </div>
@@ -70,21 +70,21 @@ export default {
           width: 100
         },
         {
-          title: "标题",
+          title: this.$t("message.Title"),
           key: "title",
           width: 150
         },
         {
-          title: "简介",
+          title: this.$t("message.Introduce"),
           key: "info"
         },
         {
-          title: "排序",
+          title: this.$t("message.sort"),
           key: "sort",
           width: 100
         },
         {
-          title: "操作",
+          title: this.$t("message.Operation"),
           align: "center",
           key: "action",
           width: 100,
@@ -108,7 +108,7 @@ export default {
                       type: "info"
                     }
                   },
-                  "查看"
+                    this.$t("message.Watch")
                 )
               ]
             );
@@ -223,7 +223,7 @@ export default {
                 pageInfo: this.pageInfo
               });
               this.groupId = [];
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {

@@ -8,8 +8,8 @@
         <div>
             <ul>
             	<li>
-            		  <Button class="operation-button" type="info" icon="md-add" @click="setBanner()">添加</Button>
-                  <Button type="error" icon="md-trash" @click="delBanner()">取消</Button>
+            		  <Button class="operation-button" type="info" icon="md-add" @click="setBanner()">{{ $t("message.Add") }}</Button>
+                  <Button type="error" icon="md-trash" @click="delBanner()">{{ $t("message.Cancel") }}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -23,19 +23,19 @@
                 </li>
             </ul>
         </div>
-        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
+        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" :title="$t('message.Watch')">
 	        <Form :label-width="80" >
-	        	<Form-item label="登录名:">
+	        	<Form-item :label="$t('message.loginuser')">
 	        		<strong>{{postcard.username}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="内容:">
+                <Form-item :label="$t('message.Content')">
                 	<span>{{postcard.content}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
             </Form>
 	        <div slot="footer">
-	            <Button type="error" size="large"  @click="cancel">关闭</Button>
+	            <Button type="error" size="large"  @click="cancel">{{ $t("message.Close") }}</Button>
 	        </div>
 	    </Modal>	
     </div>
@@ -76,16 +76,16 @@ export default {
           width: 100
         },
         {
-          title: "标题",
+          title: this.$t("message.Title"),
           key: "title",
           width: 150
         },
         {
-          title: "简介",
+          title: this.$t("message.Introduce"),
           key: "info"
         },
         {
-          title: "轮播",
+          title: this.$t("message.Carousel"),
           key: "banner",
           width: 100,
           render: (h, params) => {
@@ -98,7 +98,7 @@ export default {
                       color: "#2b85e4"
                     }
                   },
-                  "轮播"
+                    this.$t("message.Carousel")
                 )
               ]);
             } else if (params.row.banner == 0) {
@@ -110,14 +110,14 @@ export default {
                       color: "#f90"
                     }
                   },
-                  "非轮播"
+                    this.$t("message.nonCarousel")
                 )
               ]);
             }
           }
         },
         {
-          title: "操作",
+          title: this.$t("message.Operation"),
           align: "center",
           key: "action",
           width: 100,
@@ -141,7 +141,7 @@ export default {
                       type: "info"
                     }
                   },
-                  "查看"
+                    this.$t("message.Watch")
                 )
               ]
             );
@@ -256,7 +256,7 @@ export default {
                 pageInfo: this.pageInfo
               });
               this.groupId = [];
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {
@@ -277,7 +277,7 @@ export default {
                 pageInfo: this.pageInfo
               });
               this.groupId = [];
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<a class="btn" @click="toggleShow">设置头像</a>
+		<a class="btn" @click="toggleShow">{{ $t("message.sethead") }}</a>
 		<my-upload 
 			field="picture"
 	        v-model="show"
@@ -47,7 +47,7 @@
 		cropUploadSuccess(jsonData, field){
 			this.imgDataUrl = jsonData.data;
 			this.show = false;
-			this.$Notice.success({title: '头像修改成功'});
+			this.$Notice.success({title: this.$t("message.EditorialSuccess")});
 		},
 		/**
 		 * upload fail
@@ -56,7 +56,7 @@
 		 * [param] field
 		 */
 		cropUploadFail(status, field){
-			this.$Notice.error({title: '头像修改失败'});
+			this.$Notice.error({title: this.$t("message.EditorialFailed")});
 		}
 	  }
 	};

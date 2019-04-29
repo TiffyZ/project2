@@ -7,26 +7,26 @@
 	<div style="margin: 20px;">
         <div>
             <Row style="margin-bottom: 25px;">
-                <Col span="8">菜单名称：
+                <Col span="8">{{ $t("message.MenuName") }}
                     <Select v-model="menuId" filterable clearable style="width: 200px">
                         <Option v-for="item in menuList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                     </Select>
                 </Col>
-                <Col span="8"><Button type="primary" shape="circle" icon="ios-search" @click="search()">搜索</Button></Col>
+                <Col span="8"><Button type="primary" shape="circle" icon="ios-search" @click="search()">{{ $t("message.search") }}</Button></Col>
             </Row>
         </div>            
         <div>
             <ul>
-                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
-                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
-                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
-                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
-                <li><b>  侧边栏显示重点文件，测试人员禁止修改！！！！</b></li>
+                <li><b>  {{ $t("message.bala") }} </b></li>
+                <li><b>  {{ $t("message.bala") }}</b></li>
+                <li><b>  {{ $t("message.bala") }}</b></li>
+                <li><b>  {{ $t("message.bala") }}</b></li>
+                <li><b>  {{ $t("message.bala") }}</b></li>
 
                 <li>
-                    <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>
-                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>
-                    <Button type="error" icon="md-trash" @click="del()">删除</Button>
+                    <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">{{ $t("message.Create") }}</Button>
+                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">{{ $t("message.Edit") }}</Button>
+                    <Button type="error" icon="md-trash" @click="del()">{{ $t("message.delete") }}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -41,79 +41,79 @@
             </ul>
         </div>
         <!--添加modal-->  
-        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" title="新建" @on-ok="newOk('menuNew')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" :title="$t('message.Create')" @on-ok="newOk('menuNew')" @on-cancel="cancel()">
             <Form ref="menuNew" :model="menuNew" :rules="ruleNew" :label-width="80" >
                 <Row>
                     <Col span="12">
-                        <Form-item label="菜单名称:" prop="name">
+                        <Form-item :label="$t('message.MenuName')" prop="name">
                             <Input v-model="menuNew.name" style="width: 204px"/>
                         </Form-item>
                     </Col>
                     <Col span="12">
-                        <Form-item label="路径:" prop="url">
+                        <Form-item :label="$t('message.Path')" prop="url">
                             <Input v-model="menuNew.url" style="width: 204px"/>
                         </Form-item>
                     </Col>
                 </Row>
                 <Row>
                     <Col span="12">
-                        <Form-item label="父类ID:" prop="parentId">
+                        <Form-item :label="$t('message.FaID')" prop="parentId">
                             <Input v-model="menuNew.parentId" style="width: 204px"/>
                         </Form-item>
                     </Col>
                     <Col span="12">
-                        <Form-item label="排序号:" prop="sort">
+                        <Form-item :label="$t('message.SortNumber')" prop="sort">
                             <Input v-model="menuNew.sort" style="width: 204px"/>
                         </Form-item>
                     </Col>
                 </Row>
                 <Row>
                     <Col span="12">
-                        <Form-item label="图标:" prop="icon">
+                        <Form-item :label="$t('message.icon')" prop="icon">
                             <Input v-model="menuNew.icon" style="width: 204px"/>
                         </Form-item>
                     </Col>
                 </Row>
-                <Form-item label="描述:" prop="remark">
+                <Form-item :label="$t('message.Describe')" prop="remark">
                      <Input v-model="menuNew.remark" type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
                 </Form-item>
             </Form>
         </Modal>
         <!--修改modal-->  
-        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" width="600" title="修改" @on-ok="modifyOk('menuModify')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" width="600" :title="$t('message.Edit')" @on-ok="modifyOk('menuModify')" @on-cancel="cancel()">
             <Form ref="menuModify" :model="menuModify" :rules="ruleModify" :label-width="80" >
                 <Row>
                     <Col span="12">
-                        <Form-item label="菜单名称:" prop="name">
+                        <Form-item :label="$t('message.MenuName')" prop="name">
                             <Input v-model="menuModify.name" style="width: 204px"/>
                         </Form-item>
                     </Col>
                     <Col span="12">
-                        <Form-item label="路径:" prop="url">
+                        <Form-item :label="$t('message.Path')" prop="url">
                             <Input v-model="menuModify.url" style="width: 204px"/>
                         </Form-item>
                     </Col>
                 </Row>
                 <Row>
                     <Col span="12">
-                        <Form-item label="父类ID:" prop="parentId">
+                        <Form-item :label="$t('message.FaID')" prop="parentId">
                             <Input v-model="menuModify.parentId" style="width: 204px"/>
                         </Form-item>
                     </Col>
                     <Col span="12">
-                        <Form-item label="排序号:" prop="sort">
+                        <Form-item :label="$t('message.SortNumber')" prop="sort">
                             <Input v-model="menuModify.sort" style="width: 204px"/>
                         </Form-item>
                     </Col>
                 </Row>
                 <Row>
                     <Col span="12">
-                        <Form-item label="图标:" prop="icon">
+                        <Form-item :label="$t('message.icon')" prop="icon">
                             <Input v-model="menuModify.icon" style="width: 204px"/>
                         </Form-item>
                     </Col>
                 </Row>
-                <Form-item label="描述:" prop="remark">
+                <Form-item :label="$t('message.Describe')" prop="remark">
                      <Input v-model="menuModify.remark" type="textarea" :autosize="{minRows: 2,maxRows: 5}"></Input>
                 </Form-item>
             </Form>
@@ -179,7 +179,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入菜单名",
+            message: this.$t("message.PleaseEnterMenuName"),
             trigger: "blur"
           }
         ],
@@ -187,16 +187,16 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入路径",
+            message: this.$t("message.PleaseEnterPath"),
             trigger: "blur"
           }
         ],
         parentId: [
-          { required: true, message: "输入父类ID", trigger: "blur" },
+          { required: true, message: this.$t("message.PleaseEnterFaId"), trigger: "blur" },
           {
             validator(rule, value, callback) {
               if (!Number.isInteger(+value)) {
-                callback(new Error("请输入数字"));
+                callback(new Error(this.$t("message.PleaseEnterNum")));
               } else {
                 callback();
               }
@@ -205,11 +205,11 @@ export default {
           }
         ],
         sort: [
-          { required: true, message: "输入排序", trigger: "blur" },
+          { required: true, message: this.$t("message.PleaseEnterSort"), trigger: "blur" },
           {
             validator(rule, value, callback) {
               if (!Number.isInteger(+value)) {
-                callback(new Error("请输入数字"));
+                callback(new Error(this.$t("message.PleaseEnterNum")));
               } else {
                 callback();
               }
@@ -221,7 +221,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入图标",
+            message: this.$t("message.PleaseEnterIcon"),
             trigger: "blur"
           }
         ]
@@ -232,7 +232,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入菜单名",
+            message: this.$t("message.PleaseEnterMenuName"),
             trigger: "blur"
           }
         ],
@@ -240,16 +240,16 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入路径",
+            message: this.$t("message.PleaseEnterPath"),
             trigger: "blur"
           }
         ],
         parentId: [
-          { required: true, message: "输入父类ID", trigger: "blur" },
+          { required: true, message: this.$t("message.PleaseEnterFaId"), trigger: "blur" },
           {
             validator(rule, value, callback) {
               if (!Number.isInteger(+value)) {
-                callback(new Error("请输入数字"));
+                callback(new Error(this.$t("message.PleaseEnterNum")));
               } else {
                 callback();
               }
@@ -258,11 +258,11 @@ export default {
           }
         ],
         sort: [
-          { required: true, message: "输入排序", trigger: "blur" },
+          { required: true, message: this.$t("message.PleaseEnterSort"), trigger: "blur" },
           {
             validator(rule, value, callback) {
               if (!Number.isInteger(+value)) {
-                callback(new Error("请输入数字"));
+                callback(new Error(this.$t("message.PleaseEnterNum")));
               } else {
                 callback();
               }
@@ -274,7 +274,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入图标",
+            message: this.$t("message.PleaseEnterIcon"),
             trigger: "blur"
           }
         ]
@@ -289,27 +289,27 @@ export default {
           align: "center"
         },
         {
-          title: "菜单ID",
+          title: this.$t("message.MenuId"),
           key: "id"
         },
         {
-          title: "菜单名称",
+          title: this.$t("message.MenuName"),
           key: "name"
         },
         {
-          title: "地址",
+          title: this.$t("message.Address"),
           key: "url"
         },
         {
-          title: "上级菜单id",
+          title: this.$t("message.parentId"),
           key: "parentId"
         },
         {
-          title: "排序",
+          title: this.$t("message.sort"),
           key: "sort"
         },
         {
-          title: "图标",
+          title: this.$t("message.icon"),
           key: "icon"
         }
       ],
@@ -474,7 +474,7 @@ export default {
                   pageInfo: this.pageInfo,
                   menuId: this.menuId
                 });
-                this.$Message.info("新建成功");
+                this.$Message.info(this.$t("message.CreateSuccess"));
               }.bind(this)
             )
             .catch(function(error) {
@@ -495,7 +495,7 @@ export default {
     openModifyModal() {
       if (this.count > 1 || this.count < 1) {
         this.modifyModal = false;
-        this.$Message.warning("请至少选择一项(且只能选择一项)");
+        this.$Message.warning(this.$t("message.PleaseChooseOne"));
       } else {
         this.modifyModal = true;
       }
@@ -518,7 +518,7 @@ export default {
                   pageInfo: this.pageInfo,
                   menuId: this.menuId
                 });
-                this.$Message.info("修改成功");
+                this.$Message.info(this.$t("message.EditSuccess"));
               }.bind(this)
             )
             .catch(function(error) {
@@ -526,7 +526,7 @@ export default {
             });
           this.modifyModal = false;
         } else {
-          this.$Message.error("表单验证失败!");
+          this.$Message.error(this.$t("message.ValidationFailed"));
           setTimeout(() => {
             this.loading = false;
             this.$nextTick(() => {
@@ -538,7 +538,7 @@ export default {
     },
     /*modal的cancel点击事件*/
     cancel() {
-      this.$Message.info("点击了取消");
+      this.$Message.info(this.$t("message.ClickCancel"));
     },
     /*table选择后触发事件*/
     change(e) {
@@ -571,7 +571,7 @@ export default {
               });
               this.groupId = null;
               this.count = 0;
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {

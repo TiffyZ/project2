@@ -129,14 +129,14 @@
             },
             handleFormatError (file) {
                 this.$Notice.warning({
-                    title: '图片格式不对',
-                    desc: '图片格式只能为jpg,jpeg,png'
+                    title: this.$t("message.WrongPictureFormat"),
+                    desc: this.$t("message.OnlyjpgjpegpngBeAllowed")
                 });
             },
             handleMaxSize (file) {
                 this.$Notice.warning({
-                    title: '图片太大',
-                    desc: '上传图片最大为1M,请优化后在上传。可使用https://zhitu.isux.us/网站优化'
+                    title: this.$t("message.SizeExceeded"),
+                    desc: this.$t("message.PleaseOptimization")
                 });
             },
             onEditorBlur(){//失去焦点事件

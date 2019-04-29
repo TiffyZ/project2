@@ -2,18 +2,18 @@
 	<div style="margin: 20px;">
 		<div>
             <Row style="margin-bottom: 25px;">
-                <Col span="8">兴趣：
+                <Col span="8">{{ $t("message.interest") }}
                     <Select v-model="interestid" clearable style="width: 200px">
                         <Option v-for="item in interestList" :value="item.id" :key="item.id">{{ item.title }}</Option>
                     </Select>
                 </Col>
-                <Col span="8"><Button type="primary" shape="circle" icon="ios-search" @click="search()">搜索</Button></Col>
+                <Col span="8"><Button type="primary" shape="circle" icon="ios-search" @click="search()">{{ $t("message.search") }}</Button></Col>
             </Row>
         </div>
         <div>
             <ul>
             	<li>
-                    <Button type="error" icon="md-trash" @click="del()">删除</Button>
+                    <Button type="error" icon="md-trash" @click="del()">{{ $t("message.delete") }}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -29,11 +29,11 @@
         </div>
         <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
 	        <Form :label-width="80" >
-	        	<Form-item label="登录名:">
+	        	<Form-item :label="$t('message.loginuser')">
 	        		<strong>{{postcard.username}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="内容:">
+                <Form-item :label="$t('message.Content')">
                 	<span>{{postcard.content}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
@@ -78,11 +78,11 @@ export default {
           align: "center"
         },
         {
-          title: "登录名",
+          title: this.$t("message.loginuser"),
           key: "username"
         },
         {
-          title: "兴趣归属",
+          title: this.$t("message.interest"),
           key: "interestid",
           render: (h, params) => {
             for (var i = this.interestList.length - 1; i >= 0; i--) {
@@ -95,16 +95,16 @@ export default {
           }
         },
         {
-          title: "标题",
+          title: this.$t("message.Title"),
           width: 500,
           key: "title"
         },
         {
-          title: "时间",
+          title: this.$t("message.Time"),
           key: "createtime"
         },
         {
-          title: "操作",
+          title: this.$t("message.Operation"),
           align: "center",
           key: "action",
           render: (h, params) => {
@@ -127,7 +127,7 @@ export default {
                       type: "info"
                     }
                   },
-                  "查看"
+                    this.$t("message.Watch")
                 )
               ]
             );
@@ -258,7 +258,7 @@ export default {
                 interestid: this.interestid
               });
               this.groupId = [];
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {

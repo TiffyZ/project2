@@ -9,13 +9,13 @@
 <template>
 	<div style="margin: 20px;">
         <Form ref="entity" :model="entity" :rules="ruleNew" :label-width="80" >
-            <Form-item label="标题：" prop="title">
+            <Form-item :label="$t('message.Title')" prop="title">
                 <Input v-model="entity.title" style="width: 204px"/>
             </Form-item>
-            <Form-item label="简介：" prop="info">
+            <Form-item :label="$t('message.Introduce')" prop="info">
                 <Input v-model="entity.info" type="textarea" :autosize="{minRows: 4,maxRows: 5}"style="width: 50%" />
             </Form-item>
-            <Form-item label="图片：" prop="image">
+            <Form-item :label="$t('message.Picture')" prop="image">
                 <Upload 
                     ref="upload"
                     :headers="headers"
@@ -26,13 +26,13 @@
                     :on-success="handleSuccess"
                     :on-format-error="handleFormatError"
                     :format="['jpg','jpeg','png']">
-                    <Button icon="ios-cloud-upload-outline">上传图片</Button>
+                    <Button icon="ios-cloud-upload-outline">{{ $t("message.UploadPic") }}</Button>
                 </Upload>
             </Form-item>
             <Form-item>
                 <img v-if="entity.image != null" :src="entity.image" style="width: 300px;height: 200px">
             </Form-item>
-            <Form-item label="详情：" prop="content">
+            <Form-item :label="$t('message.Details')" prop="content">
                 <!-- <quill-editor class="editor"
                   v-model="content" 
                   ref="myQuillEditor" 
@@ -43,8 +43,8 @@
                 <interest-quill-editor class="editor" v-bind:interestContent="interestContent" @editor-change="e=>{contentGet(e)}"></interest-quill-editor>
             </Form-item>
             <FormItem>
-                <Button type="primary" @click="submit('entity')">提交</Button>
-                <Button @click="reset()" style="margin-left: 8px">重置</Button>
+                <Button type="primary" @click="submit('entity')">{{ $t("message.Submission") }}</Button>
+                <Button @click="reset()" style="margin-left: 8px">{{ $t("message.Reset") }}</Button>
             </FormItem>
         </Form>
     </div>
@@ -76,7 +76,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写标题",
+            message: this.$t("message.PleaseEnterTitleAndContent"),
             trigger: "blur"
           }
         ],
@@ -84,7 +84,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写介绍",
+            message: this.$t("message.EnterIntroduction"),
             trigger: "blur"
           }
         ],
@@ -92,7 +92,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "上传图片",
+            message: this.$t("message.UploadPic"),
             trigger: "blur"
           }
         ],
@@ -100,7 +100,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写内容",
+            message: this.$t("message.PleaseEnterTitleAndContent"),
             trigger: "blur"
           }
         ]
@@ -157,8 +157,8 @@ export default {
     },
     handleFormatError(file) {
       this.$Notice.warning({
-        title: "图片格式不对",
-        desc: "图片格式只能为jpg,jpeg,png"
+        title: this.$t("message.WrongPictureFormat"),
+        desc: this.$t("message.OnlyjpgjpegpngBeAllowed")
       });
     },
     contentGet(e) {
@@ -176,12 +176,12 @@ export default {
               function(response) {
                 this.interestContent = this.interestContent + ".";
                 this.initEntity();
-                this.$Message.info("新建成功");
+                this.$Message.info(this.$t("message.CreateSuccess"));
               }.bind(this)
             )
             .catch(
               function(error) {
-                this.$Message.error("新建失败");
+                this.$Message.error(this.$t("message.CreateFail"));
               }.bind(this)
             );
         }

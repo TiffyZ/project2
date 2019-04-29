@@ -205,7 +205,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("回复成功");
+                this.$Message.info(this.$t("message.ReplySuccess"));
                 this.textarea = "";
                 // this.pageInfo.page = 0;
                 this.replyCardListGet({
@@ -216,14 +216,14 @@ export default {
             )
             .catch(
               function(error) {
-                this.$Message.error("请重新登录");
+                this.$Message.error(this.$t("message.PleaseRelog"));
               }.bind(this)
             );
         } else {
-          this.$Message.error("登录后，才能回复！");
+          this.$Message.error(this.$t("message.YouNeedLogIn"));
         }
       } else {
-        this.$Message.error("请填写回复内容");
+        this.$Message.error(this.$t("message.PleaseEnterYourMessage"));
       }
     }
   }

@@ -7,17 +7,17 @@
 	<div style="margin: 20px;">
         <div>
             <Row style="margin-bottom: 25px;">
-                <Col span="8">用户名：
-                	<Input v-model="name" placeholder="请输入..." style="width:200px" />
+                <Col span="8">{{ $t("message.loginuser") }}
+                	<Input v-model="name" :placeholder="$t('message.PleaseEnter')" style="width:200px" />
                 </Col>
-                <Col span="8"><Button type="primary" shape="circle" icon="ios-search" @click="search()">搜索</Button></Col>
+                <Col span="8"><Button type="primary" shape="circle" icon="ios-search" @click="search()">{{ $t("message.search") }}</Button></Col>
             </Row>
         </div>            
         <div>
             <ul>
                 <li>
-                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>
-                    <Button type="error" icon="md-trash" @click="del()">删除</Button>
+                    <Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">{{ $t("message.Edit") }}</Button>
+                    <Button type="error" icon="md-trash" @click="del()">{{ $t("message.delete") }}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -32,11 +32,11 @@
             </ul>
         </div>
         <!--修改modal-->  
-        <Modal :mask-closable="false" :visible.sync="modifyModal" v-model="modifyModal" width="600" title="修改" @on-ok="modifyOk()" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="modifyModal" v-model="modifyModal" width="600" :title="$t('message.Edit')" @on-ok="modifyOk()" @on-cancel="cancel()">
              <Form :label-width="80" >
                 <Row>
                     <Col span="12">
-                        <Form-item label="登录名:">
+                        <Form-item :label="$t('message.loginuser')">
                             <Input v-model="userModify.name" style="width: 204px" disabled="disabled" />
                         </Form-item>
                     </Col>
@@ -45,8 +45,8 @@
                     <Col span="12">
                         <Form-item label="用户类型:">
                             <Select v-model="userModify.usertype" style="width:200px">
-                                <Option  :value="0">普通用户</Option>
-                                <Option  :value="1">管理员</Option>
+                                <Option  :value="0">{{ $t("message.user") }}</Option>
+                                <Option  :value="1">{{ $t("message.admin") }}</Option>
                             </Select>
                             <!-- <Input v-model="userModify.email" style="width: 204px"/> -->
                         </Form-item>
@@ -55,7 +55,7 @@
             </Form>
         </Modal>
         <!--配置角色modal-->  
-        <Modal v-model="roleModal" width="500" title="角色配置" @on-ok="roleOk()" @on-cancel="cancel()">
+        <Modal v-model="roleModal" width="500" :title="$t('message.Configure')" @on-ok="roleOk()" @on-cancel="cancel()">
             <div>
                 <Table border :columns="columns2" :data="data2" :height="260"  @on-selection-change="s=>{change2(s)}"></Table>
             </div>
@@ -117,7 +117,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入用户名",
+            message: this.$t("message.EnterUser"),
             trigger: "blur"
           }
         ],
@@ -125,7 +125,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入登录名",
+            message: this.$t("message.EnterUser"),
             trigger: "blur"
           }
         ],
@@ -133,7 +133,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入密码",
+            message: this.$t("message.PleaseEnterPassword"),
             trigger: "blur"
           }
         ],
@@ -141,13 +141,13 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入再次密码",
+            message: this.$t("message.PleaseEnterPasswordAgain"),
             trigger: "blur"
           }
         ],
         email: [
-          { required: true, message: "输入邮箱", trigger: "blur" },
-          { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+          { required: true, message: this.$t("message.EnterEmailAddress"), trigger: "blur" },
+          { type: "email", message: this.$t("message.PleaseEnterRightEmailFormat"), trigger: "blur" }
         ]
       },
       /*修改验证*/
@@ -156,7 +156,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入用户名",
+            message: this.$t("message.EnterUser"),
             trigger: "blur"
           }
         ],
@@ -164,13 +164,13 @@ export default {
           {
             type: "string",
             required: true,
-            message: "输入密码",
+            message: this.$t("message.PleaseEnterPassword"),
             trigger: "blur"
           }
         ],
         email: [
-          { required: true, message: "输入邮箱", trigger: "blur" },
-          { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+          { required: true, message: this.$t("message.EnterEmailAddress"), trigger: "blur" },
+          { type: "email", message: this.$t("message.PleaseEnterRightEmailFormat"), trigger: "blur" }
         ]
       },
       /*表显示字段*/
@@ -181,11 +181,11 @@ export default {
           align: "center"
         },
         {
-          title: "用户名",
+          title: this.$t("message.user"),
           key: "name"
         },
         {
-          title: "邮箱",
+          title: this.$t("message.Email"),
           key: "email"
         },
         {
@@ -206,23 +206,23 @@ export default {
           }
         },
         {
-          title: "用户类型",
+          title: this.$t("message.Usertype"),
           align: "center",
           key: "usertype",
           render: (h, params) => {
             if (params.row.usertype == 0) {
-              return h("div", [h("strong", null, "普通用户")]);
+              return h("div", [h("strong", null, this.$t("message.user"))]);
             } else if (params.row.usertype == 1) {
-              return h("div", [h("strong", null, "管理员")]);
+              return h("div", [h("strong", null, this.$t("message.admin"))]);
             }
           }
         },
         {
-          title: "注册时间",
+          title: this.$t("message.createTime"),
           key: "createTime"
         },
         {
-          title: "操作",
+          title: this.$t("message.Operation"),
           align: "center",
           key: "action",
           render: (h, params) => {
@@ -239,7 +239,7 @@ export default {
                     }
                   }
                 },
-                "配置角色"
+                  this.$t("message.Configure1")
               )
             ]);
           }
@@ -255,12 +255,12 @@ export default {
           align: "center"
         },
         {
-          title: "角色名称",
+          title: this.$t("message.CharacterName"),
           width: 120,
           key: "name"
         },
         {
-          title: "描述",
+          title: this.$t("message.Describe"),
           key: "describe"
         }
       ],
@@ -429,7 +429,7 @@ export default {
                     pageInfo: this.pageInfo,
                     name: this.name
                   });
-                  this.$Message.info("新建成功");
+                  this.$Message.info(this.$t("message.CreateSuccess"));
                 }.bind(this)
               )
               .catch(function(error) {
@@ -437,14 +437,14 @@ export default {
               });
             this.newModal = false;
           } else {
-            this.$Message.error("两次输入的密码不相同！");
+            this.$Message.error(this.$t("message.CharacterName"));
             this.loading = false;
             this.$nextTick(() => {
               this.loading = true;
             });
           }
         } else {
-          this.$Message.error("表单验证失败!");
+          this.$Message.error(this.$t("message.ValidationFailed"));
           setTimeout(() => {
             this.loading = false;
             this.$nextTick(() => {
@@ -458,7 +458,7 @@ export default {
     openModifyModal() {
       if (this.count > 1 || this.count < 1) {
         this.modifyModal = false;
-        this.$Message.warning("请至少选择一项(且只能选择一项)");
+        this.$Message.warning(this.$t("message.PleaseChooseOne"));
       } else {
         this.modifyModal = true;
       }
@@ -483,7 +483,7 @@ export default {
               pageInfo: this.pageInfo,
               name: this.name
             });
-            this.$Message.info("修改成功");
+            this.$Message.info(this.$t("message.EditSuccess"));
           }.bind(this)
         )
         .catch(function(error) {
@@ -493,7 +493,7 @@ export default {
     },
     /*modal的cancel点击事件*/
     cancel() {
-      this.$Message.info("点击了取消");
+      this.$Message.info(this.$t("message.ClickCancel"));
     },
     /*table选择后触发事件*/
     change(e) {
@@ -526,7 +526,7 @@ export default {
               });
               this.groupId = null;
               this.count = 0;
-              this.$Message.info("删除成功");
+              this.$Message.info(this.$t("message.DeleteSuccess"));
             }.bind(this)
           )
           .catch(function(error) {
@@ -589,7 +589,7 @@ export default {
         })
           .then(
             function(response) {
-              this.$Message.info("配置成功");
+              this.$Message.info(this.$t("message.EditSuccess"));
             }.bind(this)
           )
           .catch(function(error) {

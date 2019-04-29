@@ -252,26 +252,26 @@ export default {
               align: "center"
           },
           {
-              title: "文章ID",
+              title: this.$t('message.EssayId'),
               key: "id",
               width: 75
           },
           {
-              title: "创建者ID",
+              title: this.$t("message.CreaterId"),
               key: "userid",
               width: 90
           },
           {
-              title: "创建时间",
+              title: this.$t("message.createTime1"),
               key: "createTime",
               width: 140
           },
           {
-              title: "标题",
+              title: this.$t("message.Title"),
               key: "title",
               width: 150
           }, {
-              title: "置顶",
+              title: this.$t("message.Above"),
               align: "center",
               key: "action",
               width: 70,
@@ -285,7 +285,7 @@ export default {
                                       color: "#2b85e4"
                                   }
                               },
-                              "是"
+                              this.$t("message.yes")
                           )
                       ]);
                   } else if (params.row.top == 0) {
@@ -297,18 +297,18 @@ export default {
                                       color: "#f90"
                                   }
                               },
-                              "否"
+                              this.$t("message.no")
                           )
                       ]);
                   }
               }
           },
           {
-              title: "简介",
+              title: this.$t("message.Introduce"),
               key: "info"
           },
           {
-              title: "操作",
+              title: this.$t("message.Operation"),
               align: "center",
               key: "action",
               width: 100,
@@ -332,7 +332,7 @@ export default {
                                       type: "info"
                                   }
                               },
-                              "查看"
+                              this.$t("message.Watch")
                           )
                       ]
                   );

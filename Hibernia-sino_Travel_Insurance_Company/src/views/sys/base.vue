@@ -91,7 +91,7 @@
                     <a @click="backHome()">
                         <img src="../../images/logo.png" style="width: 50px;height: 50px;" align="absmiddle" />
                     </a>
-                      <strong>主页</strong>
+                      <strong>{{ $t("message.homepage") }}</strong>
                   </div>
                 </div>
                 <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="m=>{select(m)}">
@@ -118,7 +118,7 @@
                                 </MenuItem>
                                 <MenuItem name="1">
                                     <Icon type="log-out"></Icon>
-                                    退出登陆
+                                    {{ $t("message.exit") }}
                                 </MenuItem>
                             </div>
                         </div>

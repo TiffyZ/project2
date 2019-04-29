@@ -83,7 +83,7 @@
       </div>
       <div v-if="total <= 0" class="default-article-content">
         <img src="../../images/05d044b1335c6d79ef253b1de1797b08.jpg" />
-        <span>该用户很懒一篇文章都没写...</span>
+        <span>{{ $t("message.Noessay") }}</span>
       </div>
     </div>
   </div>

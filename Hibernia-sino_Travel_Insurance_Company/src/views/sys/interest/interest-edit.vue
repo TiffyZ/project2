@@ -9,21 +9,21 @@
 <template>
 	<div style="margin: 20px;">
         <Form ref="entity" :model="entity" :rules="ruleNew" :label-width="80" >
-        	<Form-item label="兴趣：">
+        	<Form-item :label="$t('message.interest')">
                 <Select v-model="interestId" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">
                     <Option v-for="item in interestList" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
             </Form-item>
-            <Form-item label="标题：" prop="title">
+            <Form-item :label="$t('message.Title')" prop="title">
                 <Input v-model="entity.title" style="width: 204px"/>
             </Form-item>
-            <Form-item label="排序：" prop="sort">
+            <Form-item :label="$t('message.sort')" prop="sort">
                 <Input v-model="entity.sort" style="width: 204px"/>
             </Form-item>
-            <Form-item label="简介：" prop="info">
+            <Form-item :label="$t('message.Introduce')" prop="info">
                 <Input v-model="entity.info" type="textarea" :autosize="{minRows: 4,maxRows: 5}"style="width: 50%" />
             </Form-item>
-            <Form-item label="图片：" prop="image">
+            <Form-item :label="$t('message.Picture')" prop="image">
                 <Upload 
                     ref="upload"
                     :headers="headers"
@@ -40,7 +40,7 @@
             <Form-item>
                 <img v-if="entity.image != null" :src="entity.image" style="width: 300px;height: 200px">
             </Form-item>
-            <Form-item label="详情：" prop="content">
+            <Form-item :label="$t('message.Details')" prop="content">
                 <!-- <quill-editor class="editor"
                   v-model="content" 
                   ref="myQuillEditor" 
@@ -51,7 +51,7 @@
                 <interest-quill-editor v-bind:interestContent="interestContent"  class="editor" @editor-change="e=>{contentGet(e)}"></interest-quill-editor>
             </Form-item>
             <FormItem>
-                <Button type="primary" @click="submit('entity')">修改</Button>
+                <Button type="primary" @click="submit('entity')">{{ $t("message.Edit") }}</Button>
             </FormItem>
         </Form>
     </div>
@@ -86,7 +86,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写标题",
+            message: this.$t("message.PleaseEnterTitleAndContent"),
             trigger: "blur"
           }
         ],
@@ -94,7 +94,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写介绍",
+            message: this.$t("message.EnterIntroduction"),
             trigger: "blur"
           }
         ],
@@ -102,7 +102,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "上传图片",
+            message: this.$t("message.UploadPic"),
             trigger: "blur"
           }
         ],
@@ -110,16 +110,16 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写内容",
+            message: this.$t("message.PleaseEnterTitleAndContent"),
             trigger: "blur"
           }
         ],
         sort: [
-          { required: true, message: "输入排序", trigger: "blur" },
+          { required: true, message: this.$t("message.PleaseEnterSort"), trigger: "blur" },
           {
             validator(rule, value, callback) {
               if (!Number.isInteger(+value)) {
-                callback(new Error("请输入数字"));
+                callback(new Error(this.$t("message.PleaseEnterNum")));
               } else {
                 callback();
               }
@@ -202,8 +202,8 @@ export default {
     },
     handleFormatError(file) {
       this.$Notice.warning({
-        title: "图片格式不对",
-        desc: "图片格式只能为jpg,jpeg,png"
+        title: this.$t("message.WrongPictureFormat"),
+        desc: this.$t("message.OnlyjpgjpegpngBeAllowed")
       });
     },
     contentGet(e) {
@@ -219,12 +219,12 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("修改成功["+this.entity.id+"]");
+                this.$Message.info(this.$t("message.EditSuccess")+"["+this.entity.id+"]");
               }.bind(this)
             )
             .catch(
               function(error) {
-                this.$Message.error("修改失败");
+                this.$Message.error(this.$t("message.EditFailed"));
               }.bind(this)
             );
         }
@@ -246,7 +246,7 @@ export default {
         )
         .catch(
           function(error) {
-            this.$Message.error("请选择");
+            this.$Message.error(this.$t("message.PleaseChooseOne"));
           }.bind(this)
         );
     }

@@ -2,33 +2,34 @@
     <div class="home content-background">
     	<div class="user-content">
     		<div class="subhead">
-    			<h1 class="title-text">个人信息</h1>
+    			<h1 class="title-text">{{ $t("message.PersonalInformation") }}</h1>
     		</div>
     		<div class="headimg" @click="toggleShow()">
     			<img :src="headImg">
-          <p class="head-btn">修改头像</p>
+          <p class="head-btn">{{ $t("message.sethead") }}</p>
     		</div>
     		<div class="info">
+
     			<Form :model="userInfo" label-position="top">
-			        <FormItem label="用户名">
+			        <FormItem :label="$t('message.loginuser')">
 			            <Input v-model="userInfo.name"></Input>
 			        </FormItem>
-			        <FormItem label="用户主页">
+			        <FormItem :label="$t('message.userPage')">
 			            <Input v-model="userInfo.url"></Input>
 			        </FormItem>
-			        <FormItem label="邮箱地址">
+			        <FormItem :label="$t('message.Email')">
 			            <Input v-model="userInfo.email"></Input>
 			        </FormItem>
-			        <FormItem label="个人简介">
+			        <FormItem :label="$t('message.PersonalIntroduction')">
 			            <Input v-model="userInfo.info" type="textarea" :rows="3"></Input>
 			        </FormItem>
-			        <FormItem label="所在位置">
+			        <FormItem :label="$t('message.Location')">
 			            <Input v-model="userInfo.location"></Input>
 			        </FormItem>
-			        <FormItem label="擅长技能">
+			        <FormItem :label="$t('message.Skills')">
 			            <Input v-model="userInfo.skill"></Input>
 			        </FormItem>
-			        <Button type="primary" class="update-button" @click="updateInfo">更新</Button>
+			        <Button type="primary" class="update-button" @click="updateInfo">{{ $t("message.Upload") }}</Button>
 			    </Form>
     		</div>
     	</div>
@@ -88,7 +89,7 @@ export default {
       .then(function(response) {
         this.headImg = jsonData.data;
         this.show = false;
-        this.$Notice.success({title: '头像修改成功'});
+        this.$Notice.success({title: this.$t("message.EditorialSuccess")});
         this.$refs.upload.off();
       }.bind(this))
       .catch(function(error) {
@@ -96,7 +97,7 @@ export default {
       }.bind(this));
     },
     cropUploadFail(status, field){
-      this.$Notice.error({title: '头像修改失败'});
+      this.$Notice.error({title: this.$t("message.EditorialFailed")});
       this.$refs.upload.off();
     },
   	userInfoSet(e){
@@ -133,7 +134,7 @@ export default {
   		})
   		.then(
           function(response) {
-            this.$Notice.success({title: '修改成功'});
+            this.$Notice.success({title:  this.$t("message.EditSuccess")});
           }.bind(this)
         )
         .catch(

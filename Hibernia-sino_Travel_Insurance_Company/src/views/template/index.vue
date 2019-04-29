@@ -97,14 +97,15 @@
                       <div class="layout-title">
                           <MenuItem name="interest">
                             <span class="home-text">
-                              主页
+                              {{ $t("message.homepage") }}
                             </span>
                           </MenuItem>
                           </div>
                           <div v-if="loginFlag" class="layout-title">
+
                           <MenuItem name="article">
                             <span class="home-text">
-                              表单列表
+                              {{ $t("message.list") }}
                             </span>
                           </MenuItem>
                       </div>
@@ -113,34 +114,36 @@
                                  @on-enter="search()" />
                       </div>
                       <div v-if="loginFlag" class="layout-nav">
+                          <i-button @click="changeLocale()">{{ $t('message.ChangeLanguage') }}</i-button>
+
                           <MenuItem name="1">
                               {{user.name}}
                           </MenuItem>
                           <MenuItem name="2">
                               <Icon type="ios-mail"></Icon>
-                              提交申请
+                              {{ $t("message.SubmitApplication") }}
                           </MenuItem>
                           <Submenu name="3">
                             <template slot="title">
                                 <Icon type="md-list-box" />
-                                问题咨询
+                                {{ $t("message.QuestionConsultation") }}
                             </template>
                             <MenuItem name="31">
                               <Icon type="md-create" />
-                              填写咨询表
+                                {{ $t("message.fillForm") }}
                             </MenuItem>
                             <MenuItem name="32">
                               <Icon type="md-list" />
-                              我的咨询
+                                {{ $t("message.myConsultation") }}
                             </MenuItem>
                         </Submenu>
                           <MenuItem name="4">
                               <Icon type="md-log-out"></Icon>
-                              退出
+                              {{ $t("message.exit") }}
                           </MenuItem>
                           <MenuItem name="5" v-if="consoleFlag">
                               <Icon type="md-settings"></Icon>
-                              员工控制台
+                              {{ $t("message.employeeConsole") }}
                           </MenuItem>
                       </div>
                       <div  type="success" class="avatar-badge-wrapper" @click="toMessages">
@@ -156,12 +159,18 @@
                       <div v-if="!loginFlag" class="layout-nav">
                           <MenuItem name="6">
                               <Icon type="md-log-in"></Icon>
-                              登录
+                              {{ $t("message.login")}}
                           </MenuItem>
                       </div>
                   </div>
               </Menu>
             </Header>
+
+            <div style="position: absolute;top:200px"  >
+                <h1 style="font-size: 16px; text-align: center;">{{ $t("message.hello") }}</h1>
+                <!--<i-button @click="changeLocale()">Default</i-button>-->
+            </div>
+
             <Content :style="{margin: '80px 0 40px 0'}">
                 <router-view></router-view>
             </Content>
@@ -176,33 +185,33 @@
         </Layout>
 
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
-               title="创建保单" @on-ok="emailOk('email')" @on-cancel="cancel()">
+               :title="$t('message.Application')" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
-                <FormItem label="保单类型">
+                <FormItem :label="$t('message.InsuranceType')">
                     <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
                         <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
                     <!--</Select>-->
                     <Select v-model="email.formType" style="width:200px" >
-                        <Option  :value="1" >行李险</Option>
-                        <Option  :value="2">高理赔行李险</Option>
-                        <Option  :value="3">准时险</Option>
-                        <Option  :value="4">人身安全险</Option>
-                        <Option  :value="5">亲子险</Option>
+                        <Option  :value="1" >{{ $t("message.BaggageInsurance") }}</Option>
+                        <Option  :value="2">{{ $t("message.BaggageInsurancePlus") }}</Option>
+                        <Option  :value="3">{{ $t("message.OnTimeInsurance") }}</Option>
+                        <Option  :value="4">{{ $t("message.SafetyInsurance") }}</Option>
+                        <Option  :value="5">{{ $t("message.ChildInsurance") }}</Option>
                     </Select>
                 </FormItem>
-                <FormItem label="被保险人姓名" prop="name">
-                    <Input v-model="email.name" placeholder="请输入被保险人姓名" />
+                <FormItem :label="$t('message.InsuredName')" prop="name">
+                    <Input v-model="email.name" :placeholder="$t('message.EnterInsuredName')" />
                 </FormItem>
                 <!--<FormItem label="被保险人ID" prop="id">-->
                     <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
                 <!--</FormItem>-->
-                <FormItem label="被保险人邮箱" prop="email">
-                    <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
+                <FormItem :label="$t('message.MailboxOfInsured')" prop="email">
+                    <Input v-model="email.email" :placeholder="$t('message.EnterMailboxOfInsured')" />
                 </FormItem>
-                <FormItem label="申报信息" prop="title">
-                    <Input v-model="email.title" placeholder="请输入所需申报信息：如丢失物品" />
+                <FormItem :label="$t('message.DeclaringInformation')" prop="title">
+                    <Input v-model="email.title" :placeholder="$t('message.EnterDeclaringInformation')" />
                 </FormItem>
-                <Form-item label="图片证明：" prop="image"  >
+                <Form-item :label="$t('message.PictureProof')" prop="image"  >
                     <Upload
                             ref="upload"
                             :headers="headers"
@@ -214,13 +223,13 @@
                             :on-format-error="handleFormatError"
                             :format="['jpg','jpeg','png']"
                     >
-                        <Button icon="ios-cloud-upload-outline"   >上传图片</Button>
+                        <Button icon="ios-cloud-upload-outline"   >{{ $t("message.UploadPic") }}</Button>
                     </Upload>
                 </Form-item>
                 <Form-item>
                     <img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px">
                 </Form-item>
-                <FormItem label="问题详情" prop="content">
+                <FormItem :label="$t('message.ProblemDetails')" prop="content">
                     <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter something..." />
                 </FormItem>
             </Form>
@@ -269,13 +278,13 @@ export default {
         content: "",
           formType: 1,
           image: null,
-          label: "未处理"
+          label: this.$t("message.Processing")
       },
         image: [
             {
                 type: "string",
                 required: true,
-                message: "上传图片",
+                message: this.$t("message.UploadPic"),
                 trigger: "blur"
             }
         ],
@@ -290,7 +299,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请输入申报信息",
+            message: this.$t("message.DeclaringInformation"),
             trigger: "blur"
           }
         ],
@@ -298,7 +307,7 @@ export default {
               {
                   type: "string",
                   required: true,
-                  message: "填选择保单类型",
+                  message: this.$t("message.PleaseSelectType"),
                   trigger: "blur"
               }
           ],
@@ -306,19 +315,19 @@ export default {
               {
                   type: "string",
                   required: true,
-                  message: "请输入被保险人正确的id",
+                  message: this.$t("message.PleaseEnterRightId"),
                   trigger: "blur"
               }
           ],
         email: [
-          { required: true, message: "输入邮箱", trigger: "blur" },
-          { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+          { required: true, message: this.$t("message.EnterEmailAddress"), trigger: "blur" },
+          { type: "email", message: this.$t("message.PleaseEnterRightEmailFormat"), trigger: "blur" }
         ],
         passwordAgain: [
           {
             type: "string",
             required: true,
-            message: "请输入再次输入密码",
+            message: this.$t("message.PleaseEnterPasswordAgain"),
             trigger: "blur"
           }
         ],
@@ -326,11 +335,11 @@ export default {
           {
             type: "string",
             required: true,
-            message: "请输入姓名",
+            message: this.$t("message.PleaseEnterName"),
             trigger: "blur"
           }
         ],
-        content: [{ required: true, message: "请输入内容", trigger: "blur" }]
+        content: [{ required: true, message: this.$t("message.PleaseEnterInformation"), trigger: "blur" }]
       }
     };
   },
@@ -382,8 +391,8 @@ export default {
       },
       handleFormatError(file) {
           this.$Notice.warning({
-              title: "图片格式不对",
-              desc: "图片格式只能为jpg,jpeg,png"
+              title: this.$t("message.WrongPictureFormat"),
+              desc: this.$t("message.OnlyjpgjpegpngBeAllowed")
           });
       },
 
@@ -425,7 +434,7 @@ export default {
         })
         .catch(
           function(error) {
-            this.$Message.error("无权限");
+            this.$Message.error(this.$t("message.PermissionDenied"));
           }.bind(this)
         );
     },
@@ -467,7 +476,7 @@ export default {
       this.$router.push("/page/home");
     },
     cancel() {
-      this.$Message.info("点击了取消");
+      this.$Message.info(this.$t("message.ClickCancel"));
     },
     emailOk(email) {
       this.$refs[email].validate(valid => {
@@ -479,7 +488,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功["+this.email.image+"]");
+                this.$Message.info(this.$t("message.SendSuccess")+"["+this.email.image+"]");
               }.bind(this)
             )
             .catch(function(error) {
@@ -487,7 +496,7 @@ export default {
             });
           this.emailModal = false;
         } else {
-          this.$Message.error("表单验证失败!");
+          this.$Message.error(this.$t("message.ValidationFailed"));
           setTimeout(() => {
             this.loading = false;
             this.$nextTick(() => {
@@ -512,7 +521,7 @@ export default {
                   size: 18
                 }
               }),
-              h("div", "正在登录，请等待...")
+              h("div", this.$t("message.PleaseWait"))
             ]);
           }
         });
@@ -562,7 +571,7 @@ export default {
         )
         .catch(
           function(error) {
-            this.$Message.error("登陆失败");
+            this.$Message.error(this.$t("message.Loginfailed"));
           }.bind(this)
         );
     },
@@ -597,7 +606,7 @@ export default {
         )
         .catch(
           function(error) {
-            this.$Message.error("登陆失败");
+            this.$Message.error(this.$t("message.Loginfailed"));
           }.bind(this)
         );
     },
@@ -605,7 +614,18 @@ export default {
     toMessages() {
       console.log("to messages page");
       this.$router.push({ path: "/page/messages" });
+    },
+    changeLocale() {
+          // let locale = this.$i18n.locale;
+        if(this.$i18n.locale === 'en'){
+              this.$i18n.locale = 'zh';
+        }else if(this.$i18n.locale === 'zh'){
+              this.$i18n.locale = 'en';
+        }
+
+        console.log("hello");
+
     }
-  }
+  },
 };
 </script>
