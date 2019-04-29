@@ -27,7 +27,7 @@
                 <Upload 
                     ref="upload"
                     :headers="headers"
-                    action="/interest/admin/interest/upload/picture"
+                    action="/interest/interest/upload/picture"
                     name="picture"
                     :show-upload-list="false"
                     :before-upload="handleBeforeUpload"
