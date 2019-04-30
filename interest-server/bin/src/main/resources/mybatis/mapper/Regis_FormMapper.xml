@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.interest.dao.Regis_FormDao">
+    <resultMap id="emailMap" type="com.interest.model.entity.Regis_FormEntity">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="email" property="email"/>
+        <result column="name" property="name"/>
+        <result column="content" property="content"/>
+        <result column="createtime" property="createtime"/>
+        <result column="userid" property="userid"/>
+        <result column="formType" property="formType"/>
+        <result column="image" property="image"/>
+        <result column="label" property="label"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <resultMap id="emailModelMap" type="com.interest.model.response.RegisFormResponse">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="email" property="email"/>
+        <result column="name" property="name"/>
+        <result column="content" property="content"/>
+        <result column="createtime" property="createtime"/>
+        <result column="userid" property="userid"/>
+        <result column="formType" property="formType"/>
+        <result column="image" property="image"/>
+        <result column="label" property="label"/>
+        <result column="remark" property="remark"/>
+        <result column="username" property="username"/>
+    </resultMap>
+
+    <insert id="insertEntity" parameterType="Regis_FormEntity">
+		insert into regis_form(userid,title,email,name,content,createtime,formType,image,label,remark)
+		values (#{userid},#{title},#{email},#{name},#{content},#{createtime},#{formType},#{image},#{label},#{remark})
+	</insert>
+
+    <select id="emailsList" resultMap="emailModelMap">
+        select a.* ,b.name username
+          from regis_form a
+          left join sys_user b on a.userid = b.id
+        <![CDATA[ order by createtime desc ]]>
+        <if test="pageSize != null and start != null ">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+
+    <select id="emailList" resultMap="emailModelMap">
+        select a.* ,b.name username
+        from regis_form a
+        left join sys_user b on a.userid = b.id
+        where a.userid=#{ID}
+        <![CDATA[ order by createtime desc ]]>
+        <if test="pageSize != null and start != null ">
+            limit #{start},#{pageSize}
+        </if>
+    </select>
+    <!-- 获取user列表的总量 -->
+    <select id="emailsSize" resultType="Integer">
+	    <![CDATA[
+        select count(*) from regis_form
+        ]]>
+	</select>
+    <!-- 更新label -->
+    <update id="updateLabel" parameterType="Regis_FormEntity">
+        update regis_form set
+        label = #{label},
+        remark=#{remark}
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <delete id="deleteEmails">
+        delete from regis_form
+        <where>
+            <if test="groupId !=null">
+                id in
+                <foreach collection="groupId" item="item" index="index"
+                         open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+</mapper>
