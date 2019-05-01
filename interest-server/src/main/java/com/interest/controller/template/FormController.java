@@ -15,7 +15,7 @@ import com.interest.utils.SecurityAuthenUtil;
 import java.util.List;
 
 @RestController
-public class EmailController {
+public class FormController {
     private Logger log = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private EmailService emailService;
