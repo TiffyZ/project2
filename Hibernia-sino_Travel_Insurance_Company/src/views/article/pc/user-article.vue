@@ -97,7 +97,7 @@
       </div>
       <div v-if="total <= 0" class="default-article-content">
         <img src="../../../images/05d044b1335c6d79ef253b1de1797b08.jpg" />
-        <span>你户很懒一篇文章都没写...</span>
+        <span>{{$t("message.NoQuestions")}}</span>
       </div>
     </div>
     <Modal v-model="modal" width="360">
@@ -106,7 +106,7 @@
             <span>温馨提示</span>
         </p>
         <div style="text-align:center">
-            <p>是否删除该篇文章？</p>
+            <p>是否删除该条咨询？</p>
         </div>
         <div slot="footer">
             <Button type="error" size="large" long :loading="modal_loading" @click="delArticle()">确认</Button>

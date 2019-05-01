@@ -91,7 +91,7 @@
                     <a @click="backHome()">
                         <img src="../../images/logo.png" style="width: 50px;height: 50px;" align="absmiddle" />
                     </a>
-                      <strong>{{ $t("message.homepage") }}</strong>
+                      <strong>{{$t("message.homepage")}}</strong>
                   </div>
                 </div>
                 <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']" @on-select="m=>{select(m)}">

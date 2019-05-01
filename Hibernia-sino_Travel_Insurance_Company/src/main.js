@@ -30,7 +30,6 @@ const messages = {
 
     zh: {
         message: {
-            hello: '好好学习，天天向上！',
             homepage: '主页',
             list: '表单列表',
             createNewPolicy: '创建保单',
@@ -173,6 +172,8 @@ const messages = {
             Skills: '技能',
             Upload: '上传',
             Noessay: '一篇文章都没写',
+            NoQuestions: '无问题提出',
+
 
 
 
@@ -325,6 +326,7 @@ const messages = {
             Skills: 'Skills',
             Upload: 'Upload',
             Noessay: 'Noessay',
+            NoQuestions: 'No Consultations',
 
 
         }
