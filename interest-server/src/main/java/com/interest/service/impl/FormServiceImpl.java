@@ -7,11 +7,11 @@ import com.interest.model.entity.Regis_FormEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.interest.service.EmailService;
+import com.interest.service.FormService;
 import com.interest.utils.DateUtil;
 
 @Service
-public class EmailServiceImpl implements EmailService {
+public class FormServiceImpl implements FormService {
 
 	@Autowired
 	private Regis_FormDao regisFormDao;

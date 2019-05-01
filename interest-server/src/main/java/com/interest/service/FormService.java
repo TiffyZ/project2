@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.interest.model.entity.Regis_FormEntity;
 
-public interface EmailService {
+public interface FormService {
 
 	void insertEntity(Regis_FormEntity regisFormEntity);
 
