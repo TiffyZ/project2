@@ -199,7 +199,6 @@ export default {
             password: null,
             password2: null,
             email: "",
-            // id: "",
             phone: "",
             createtime: null,
             usertype:0,
@@ -223,14 +222,6 @@ export default {
                     trigger: "blur"
                 }
             ],
-            // id: [
-            //     {
-            //         type: "string",
-            //         required: true,
-            //         message: "请输入正确的id",
-            //         trigger: "blur"
-            //     }
-            // ],
             phone: [
                 {
                     type: "string",
@@ -247,7 +238,6 @@ export default {
             userName: [
                 { required: true, message: this.$t("message.PleaseEnterName"), trigger: "blur" }
             ],
-            // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
            password: [{ required: true, message: this.$t("message.PleaseEnterPassword"), validator: validatePass,trigger: "blur" }],
             password2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
         }

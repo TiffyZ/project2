@@ -238,14 +238,6 @@ export default {
                       trigger: "blur"
                   }
               ],
-              // id: [
-              //     {
-              //         type: "string",
-              //         required: true,
-              //         message: "请输入正确的id",
-              //         trigger: "blur"
-              //     }
-              // ],
               phone: [
                   {
                       type: "string",
