@@ -120,12 +120,12 @@
                             </DropdownItem>
                             <DropdownItem name="email" divided>
                             	<Icon type="ios-mail"></Icon>
-                                提交申请
+                                {{ $t("message.SubmitApplication") }}
                             </DropdownItem>
 
                             <DropdownItem name="article" divided>
                                 <Icon type="ios-mail"></Icon>
-                                我的保单
+                                {{ $t("message.MyInsurance") }}
                             </DropdownItem>
 
                     <!--<MenuItem name="article">-->
@@ -136,18 +136,18 @@
 
                             <DropdownItem name="messages" divided>
                                 <Icon type="md-chatboxes"></Icon>
-                                消息
+                                {{ $t("message.Message") }}
                             </DropdownItem>
 
                             <DropdownItem name="loginOut" divided>
                             	<Icon type="md-log-out"></Icon>
-                            	退出
+                                {{ $t("message.exit") }}
                             </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                     <div v-if="!loginFlag" class="layout-nav" style="margin-top: 14px;">
                         <Button shape="circle" @click="toLogin()">
-                        	<span>登录</span>
+                        	<span>{{ $t("message.login") }}</span>
                         </Button>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
             </Footer>
         </Layout>
 
-        <Modal :mask-closable="false" :visible.sync="emailModal" :loading = "loading" v-model="emailModal" title="联系管理员" @on-ok="emailOk('email')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="emailModal" :loading = "loading" v-model="emailModal" :title="$t('message.ContactWithAdmin')" @on-ok="emailOk('email')" @on-cancel="cancel()">
              <Form ref="email" :rules="emailRule" :model="email"  :label-width="80" >
                 <!--<FormItem label="标题" prop="title">-->
                     <!--<Input v-model="email.title" placeholder="请输入标题" />-->
@@ -179,31 +179,31 @@
                 <!--<FormItem label="内容" prop="content">-->
                     <!--<Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..." />-->
                 <!--</FormItem>-->
-                 <FormItem label="保单类型">
+                 <FormItem :label="$t('message.InsuranceType')">
                      <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
                      <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
                      <!--</Select>-->
                      <Select v-model="email.formType" style="width:200px">
-                         <Option  :value="1">行李险</Option>
-                         <Option  :value="2">高理赔行李险</Option>
-                         <Option  :value="3">准时险</Option>
-                         <Option  :value="4">人身安全险</Option>
-                         <Option  :value="5">亲子险</Option>
+                         <Option  :value="1">{{ $t("message.BaggageInsurance") }}</Option>
+                         <Option  :value="2">{{ $t("message.BaggageInsurancePlus") }}</Option>
+                         <Option  :value="3">{{ $t("message.OnTimeInsurance") }}</Option>
+                         <Option  :value="4">{{ $t("message.SafetyInsurance") }}</Option>
+                         <Option  :value="5">{{ $t("message.ChildInsurance") }}</Option>
                      </Select>
                  </FormItem>
-                 <FormItem label="被保险人姓名" prop="name">
-                     <Input v-model="email.name" placeholder="请输入被保险人姓名" />
+                 <FormItem :label="$t('message.InsuredName')" prop="name">
+                     <Input v-model="email.name" :placeholder="$t('message.EnterInsuredName')" />
                  </FormItem>
                  <!--<FormItem label="被保险人ID" prop="id">-->
                  <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
                  <!--</FormItem>-->
-                 <FormItem label="被保险人邮箱" prop="email">
-                     <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
+                 <FormItem :label="$t('message.MailboxOfInsured')" prop="email">
+                     <Input v-model="email.email" :placeholder="$t('message.EnterMailboxOfInsured')"/>
                  </FormItem>
-                 <FormItem label="申报信息" prop="title">
-                     <Input v-model="email.title" placeholder="请输入所需申报信息：如丢失物品" />
+                 <FormItem :label="$t('message.DeclaringInformation')" prop="title">
+                     <Input v-model="email.title" :placeholder="$t('message.EnterDeclaringInformation')" />
                  </FormItem>
-                 <Form-item label="图片证明：" prop="image"  >
+                 <Form-item :label="$t('message.PictureProof')" prop="image"  >
                      <Upload
                              ref="upload"
                              :headers="headers"
@@ -215,45 +215,45 @@
                              :on-format-error="handleFormatError"
                              :format="['jpg','jpeg','png']"
                      >
-                         <Button icon="ios-cloud-upload-outline"   >上传图片</Button>
+                         <Button icon="ios-cloud-upload-outline"   >{{ $t("message.uploadPic") }}</Button>
                      </Upload>
                  </Form-item>
                  <Form-item>
                      <img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px">
                  </Form-item>
-                 <FormItem label="问题详情" prop="content">
+                 <FormItem :label="$t('message.ProblemDetails')" prop="content">
                      <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter something..." />
                  </FormItem>
             </Form>
         </Modal>
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
-               title="创建表单" @on-ok="emailOk('email')" @on-cancel="cancel()">
+               :title="$t('message.createNewPolicy')" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
-                <FormItem label="保单类型">
+                <FormItem :label="$t('message.InsuranceType')">
                     <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
                     <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
                     <!--</Select>-->
                     <Select v-model="email.formType" style="width:200px">
-                        <Option  :value="1">行李险</Option>
-                        <Option  :value="2">高理赔行李险</Option>
-                        <Option  :value="3">准时险</Option>
-                        <Option  :value="4">人身安全险</Option>
-                        <Option  :value="5">亲子险</Option>
+                        <Option  :value="1">{{ $t("message.BaggageInsurance") }}</Option>
+                        <Option  :value="2">{{ $t("message.BaggageInsurancePlus") }}</Option>
+                        <Option  :value="3">{{ $t("message.OnTimeInsurance") }}</Option>
+                        <Option  :value="4">{{ $t("message.SafetyInsurance") }}</Option>
+                        <Option  :value="5">{{ $t("message.ChildInsurance") }}</Option>
                     </Select>
                 </FormItem>
-                <FormItem label="被保险人姓名" prop="name">
-                    <Input v-model="email.name" placeholder="请输入被保险人姓名" />
+                <FormItem :label="$t('message.InsuredName')" prop="name">
+                    <Input v-model="email.name" :placeholder="$t('message.EnterInsuredName')" />
                 </FormItem>
                 <!--<FormItem label="被保险人ID" prop="id">-->
                 <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
                 <!--</FormItem>-->
-                <FormItem label="被保险人邮箱" prop="email">
-                    <Input v-model="email.email" placeholder="请输入被保险人邮箱" />
+                <FormItem :label="$t('message.MailboxOfInsured')" prop="email">
+                    <Input v-model="email.email" :placeholder="$t('message.EnterMailboxOfInsured')" />
                 </FormItem>
-                <FormItem label="申报信息" prop="title">
-                    <Input v-model="email.title" placeholder="请输入所需申报信息：如丢失物品" />
+                <FormItem :label="$t('message.DeclaringInformation')" prop="title">
+                    <Input v-model="email.title" :placeholder="$t('message.EnterDeclaringInformation')" />
                 </FormItem>
-                <Form-item label="图片证明：" prop="image"  >
+                <Form-item :label="$t('message.PictureProof')" prop="image"  >
                     <Upload
                             ref="upload"
                             :headers="headers"
@@ -265,13 +265,13 @@
                             :on-format-error="handleFormatError"
                             :format="['jpg','jpeg','png']"
                     >
-                        <Button icon="ios-cloud-upload-outline"   >上传图片</Button>
+                        <Button icon="ios-cloud-upload-outline"   >{{ $t("message.uploadPic") }}</Button>
                     </Upload>
                 </Form-item>
                 <Form-item>
                     <img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px">
                 </Form-item>
-                <FormItem label="问题详情" prop="content">
+                <FormItem :label="$t('message.ProblemDetails')" prop="content">
                     <Input v-model="email.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter something..." />
                 </FormItem>
             </Form>
@@ -297,13 +297,13 @@ export default {
             content: "",
             formType: 1,
             image: null,
-            label: "未处理"
+            label: this.$t("message.Processing")
         },
         image: [
             {
                 type: "string",
                 required: true,
-                message: "上传图片",
+                message: this.$t("message.UploadPic"),
                 trigger: "blur"
             }
         ],
@@ -318,7 +318,7 @@ export default {
                 {
                     type: "string",
                     required: true,
-                    message: "请输入申报信息",
+                    message: this.$t("message.DeclaringInformation"),
                     trigger: "blur"
                 }
             ],
@@ -326,7 +326,7 @@ export default {
                 {
                     type: "string",
                     required: true,
-                    message: "填选择保单类型",
+                    message: this.$t("message.PleaseSelectType"),
                     trigger: "blur"
                 }
             ],
@@ -334,19 +334,19 @@ export default {
                 {
                     type: "string",
                     required: true,
-                    message: "请输入被保险人正确的id",
+                    message: this.$t("message.PleaseEnterRightId"),
                     trigger: "blur"
                 }
             ],
             email: [
-                { required: true, message: "输入邮箱", trigger: "blur" },
-                { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+                { required: true, message: this.$t("message.EnterEmailAddress"), trigger: "blur" },
+                { type: "email", message: this.$t("message.PleaseEnterRightEmailFormat"), trigger: "blur" }
             ],
             passwordAgain: [
                 {
                     type: "string",
                     required: true,
-                    message: "请输入再次输入密码",
+                    message: this.$t("message.PleaseEnterPasswordAgain"),
                     trigger: "blur"
                 }
             ],
@@ -354,11 +354,11 @@ export default {
                 {
                     type: "string",
                     required: true,
-                    message: "请输入姓名",
+                    message: this.$t("message.PleaseEnterName"),
                     trigger: "blur"
                 }
             ],
-            content: [{ required: true, message: "请输入内容", trigger: "blur" }]
+            content: [{ required: true, message: this.$t("message.PleaseEnterTitleAndContent"), trigger: "blur" }]
         }
     };
   },
@@ -389,8 +389,8 @@ export default {
       },
       handleFormatError(file) {
           this.$Notice.warning({
-              title: "图片格式不对",
-              desc: "图片格式只能为jpg,jpeg,png"
+              title: this.$t("message.WrongPictureFormat"),
+              desc: this.$t("message.OnlyjpgjpegpngBeAllowed")
           });
       },
       emailOk(email) {
@@ -403,7 +403,7 @@ export default {
                   })
                       .then(
                           function(response) {
-                              this.$Message.info("发送成功["+this.email.image+"]");
+                              this.$Message.info(this.$t("message.SendSuccess")+"["+this.email.image+"]");
                           }.bind(this)
                       )
                       .catch(function(error) {
@@ -411,7 +411,7 @@ export default {
                       });
                   this.emailModal = false;
               } else {
-                  this.$Message.error("表单验证失败!");
+                  this.$Message.error(this.$t("message.ValidationFailed"));
                   setTimeout(() => {
                       this.loading = false;
                       this.$nextTick(() => {
@@ -479,7 +479,7 @@ export default {
         })
         .catch(
           function(error) {
-            this.$Message.error("无权限");
+            this.$Message.error(this.$t("message.PermissionDenied"));
           }.bind(this)
         );
     },
@@ -495,8 +495,8 @@ export default {
       },
       handleFormatError(file) {
           this.$Notice.warning({
-              title: "图片格式不对",
-              desc: "图片格式只能为jpg,jpeg,png"
+              title: this.$t("message.WrongPictureFormat"),
+              desc: this.$t("message.OnlyjpgjpegpngBeAllowed")
           });
       },
 
@@ -524,7 +524,7 @@ export default {
       this.$router.push("/page/home");
     },
     cancel() {
-      this.$Message.info("点击了取消");
+      this.$Message.info(this.$t("message.ClickCancel"));
     },
     emailOk(email) {
       this.$refs[email].validate(valid => {
@@ -536,7 +536,7 @@ export default {
           })
             .then(
               function(response) {
-                this.$Message.info("发送成功");
+                this.$Message.info(this.$t("message.SendSuccess"));
               }.bind(this)
             )
             .catch(function(error) {
@@ -544,7 +544,7 @@ export default {
             });
           this.emailModal = false;
         } else {
-          this.$Message.error("表单验证失败!");
+          this.$Message.error(this.$t("message.ValidationFailed"));
           setTimeout(() => {
             this.loading = false;
             this.$nextTick(() => {
@@ -569,7 +569,7 @@ export default {
                   size: 18
                 }
               }),
-              h("div", "正在登录，请等待...")
+              h("div", this.$t("message.PleaseWait"))
             ]);
           }
         });
@@ -619,7 +619,7 @@ export default {
         )
         .catch(
           function(error) {
-            this.$Message.error("登陆失败");
+            this.$Message.error(this.$t("message.Loginfailed"));
           }.bind(this)
         );
     },
@@ -654,7 +654,7 @@ export default {
         )
         .catch(
           function(error) {
-            this.$Message.error("登陆失败");
+            this.$Message.error(this.$t("message.Loginfailed"));
           }.bind(this)
         );
     },

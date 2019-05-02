@@ -37,7 +37,7 @@
             <!--</Carousel>-->
         </div>
         <div v-if="flage" style="background: #f5f7f9;padding: 24px 50px;color: #495060;font-size: 14px;text-align: center;">
-            <span>未找到符合条件的结果</span>
+            <span>{{ $t("message.Noreturnvalue") }}</span>
         </div>
         <div class="box-flex flex-direction-column margin-top-2">
             <div class="mobile-box-margin box-flex width-80 margin-auto" v-for="(A,index) in homeArticle">
@@ -103,7 +103,7 @@
                     )
                     .catch(
                         function(error) {
-                            this.$Message.error("无权限");
+                            this.$Message.error(this.$t("message.PermissionDenied"));
                         }.bind(this)
                     );
             },
@@ -120,7 +120,7 @@
                         )
                         .catch(
                             function(error) {
-                                this.$Message.error("无权限");
+                                this.$Message.error(this.$t("message.PermissionDenied"));
                             }.bind(this)
                         );
                 } else {
@@ -143,7 +143,7 @@
                         )
                         .catch(
                             function(error) {
-                                this.$Message.error("无权限");
+                                this.$Message.error(this.$t("message.PermissionDenied"));
                             }.bind(this)
                         );
                 }

@@ -3,7 +3,7 @@
         <div>
             <ul>
                 <li>
-                    <Button type="error" icon="md-trash" @click="del()">删除我的表单</Button>
+                    <Button type="error" icon="md-trash" @click="del()">{{ $t("message.delete") }}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -17,19 +17,19 @@
                 </li>
             </ul>
         </div>
-        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
+        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" :title="$t('message.Watch')">
             <Form :label-width="80" >
-                <Form-item label="用户名:">
+                <Form-item :label="$t('message.loginuser')">
                     <strong>{{email.username}}</strong>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
-                <Form-item label="内容:">
+                <Form-item :label="$t('message.Content')">
                     <span>{{email.content}}</span>
                     <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
             </Form>
             <div slot="footer">
-                <Button type="error" size="large"  @click="cancel">关闭</Button>
+                <Button type="error" size="large"  @click="cancel">{{ $t("message.close") }}</Button>
             </div>
         </Modal>
     </div>
@@ -70,16 +70,16 @@
                         align: "center"
                     },
                     {
-                        title: "姓名",
+                        title: this.$t("message.name"),
                         key: "name"
                     },
                     {
-                        title: "标题",
+                        title: this.$t("message.Title"),
                         width: 500,
                         key: "title"
                     },
                     {
-                        title: "状态",
+                        title: this.$t("message.State"),
                         key: "label"
                     },
                     {
@@ -87,11 +87,11 @@
                         key: "email"
                     },
                     {
-                        title: "时间",
+                        title: this.$t("message.Time"),
                         key: "createtime"
                     },
                     {
-                        title: "操作",
+                        title: this.$t("message.Operation"),
                         align: "center",
                         key: "action",
                         render: (h, params) => {
@@ -108,7 +108,7 @@
                                             }
                                         }
                                     },
-                                    "查看"
+                                    this.$t("message.Watch")
                                 )
                             ]);
                         }
@@ -213,7 +213,7 @@
                                     pageInfo: this.pageInfo
                                 });
                                 this.groupId = [];
-                                this.$Message.info("删除成功");
+                                this.$Message.info(this.$t("message.DeleteSuccess"));
                             }.bind(this)
                         )
                         .catch(function(error) {

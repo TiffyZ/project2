@@ -15,10 +15,10 @@
 <template>
 	<div class="content-background">
       <Form class="form" ref="entity" :model="entity" :rules="ruleNew" :label-width="80" >
-          <Form-item label="标题：" prop="title">
+          <Form-item :label="$t('message.Title')" prop="title">
               <Input v-model="entity.title" />
           </Form-item>
-          <Form-item label="详情：" prop="content">
+          <Form-item :label="$t('message.Details')" prop="content">
               <interest-quill-editor class="editor" v-bind:interestContent="interestContent" @editor-change="e=>{contentGet(e)}"></interest-quill-editor>
           </Form-item>
           <FormItem>
@@ -62,7 +62,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写标题",
+            message: this.$t("message.Title"),
             trigger: "blur"
           }
         ],
@@ -70,7 +70,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写内容",
+            message: this.$t("message.PleaseEnterInformation"),
             trigger: "blur"
           }
         ]
@@ -145,7 +145,7 @@ export default {
           }.bind(this)
         ).catch(
           function(error) {
-            this.$Message.error("新建失败");
+            this.$Message.error(this.$t("message.CreateFail"));
           }.bind(this)
         );
     }

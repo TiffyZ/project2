@@ -232,7 +232,7 @@
                            type="textarea" :autosize="{minRows: 3,maxRows: 10}" placeholder="添加评论" /> -->
                     <Input v-model="commentAppend" @on-blur="toggleInput" @on-focus="focusInput" ref="commentInputDom" type="textarea" :rows="commentAppendInput" placeholder="添加评论" />
 
-                    <Button style="margin-top: 10px" type="primary" @click="publishComment()">发表评论</Button>
+                    <Button style="margin-top: 10px" type="primary" @click="publishComment()">{{ $t("message.DeliverReply") }}</Button>
                 </div>
 
                 <div class="comment-section">
@@ -254,9 +254,9 @@
                                     </div>
                                     <div class="title-info-other">
                                         <span>
-                                            <a v-show="!comment.showContent" @click="changeContent(index)">查看回复({{comment.childCommentsCount}})</a>
-                                            <a v-show="comment.showContent" @click="changeContent(index)">收起回复</a>
-                                            <a @click="writeComment(comment,1)">回复</a>
+                                            <a v-show="!comment.showContent" @click="changeContent(index)">{{ $t("message.CheckReply") }}({{comment.childCommentsCount}})</a>
+                                            <a v-show="comment.showContent" @click="changeContent(index)">{{ $t("message.HideReply") }}</a>
+                                            <a @click="writeComment(comment,1)">{{ $t("message.Reply") }}</a>
                                         </span>
                                     </div>
                                 </div>
@@ -276,11 +276,11 @@
                                                 <a :href="$store.state.userUrlPre+replyComment.userid" target="_blank">
                                                     <span class="user-name">{{replyComment.userName}}</span>
                                                 </a>
-                                                <span>回复</span>
+                                                <span>{{ $t("message.Reply") }}</span>
                                                 <span class="user-name">{{replyComment.replierName}}:</span>
                                                 <span>{{replyComment.comment}}</span>
                                                 <span class="reply-time">({{replyComment.creatTimeBy}})</span>
-                                                <a @click="writeComment(replyComment,2)">回复</a>
+                                                <a @click="writeComment(replyComment,2)">{{ $t("message.Reply") }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -432,11 +432,11 @@
             },
             publishComment() {
                 if (this.axios.defaults.headers.common["Authorization"] == null ||this.axios.defaults.headers.common["Authorization"] == ""){
-                    this.$Message.error('请登录');
+                    this.$Message.error(this.$t("message.Pleaselogin"));
                     return;
                 }
                 if(this.commentAppend == null || this.commentAppend == ''){
-                    this.$Message.error('请输入评论');
+                    this.$Message.error(this.$t("message.comment"));
                     return;
                 }
 
@@ -466,12 +466,12 @@
                     url: '/article/comment',
                     data: e
                 }).then(function (response) {
-                    this.$Message.success('评论成功');
+                    this.$Message.success(this.$t("message.commentSuccess"));
                     this.getComments();
                     this.articleCommentInit();
                     this.commentAppend = null;
                 }.bind(this)).catch(function () {
-                    this.$Message.error('评论失败，请稍后重试！');
+                    this.$Message.error(this.$t("message.commentFail"));
                 }.bind(this));
             },
             changeContent(index){

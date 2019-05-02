@@ -7,7 +7,7 @@
 
                     <span class="user-name">{{item.replyUsername}}</span>
                     <span class="time">{{dateGet(item.replytime)}}</span>
-                    <span>回复：</span>
+                    <span>{{ $t("message.DeliverReply") }}</span>
 
                     <router-link v-if="item.form == 0" :to="{ path: 'card/' + item.toId }">{{item.title}}</router-link>
                     <router-link v-if="item.form == 1" :to="{ path: '/article/detail/' + item.toId }">{{item.title}}</router-link>
@@ -54,7 +54,7 @@ export default {
         _this.totalCount = data.totalCount;
       })
       .catch(function(error) {
-        _this.$Message.error("查询失败，请稍后重试");
+        _this.$Message.error(this.$t("message.QueryFailed"));
       });
   },
 
@@ -84,7 +84,7 @@ export default {
           }.bind(this)
         )
         .catch(function(error) {
-          _this.$Message.error("已读失败，请稍后重试");
+          _this.$Message.error(this.$t("message.ReadFailed"));
         });
       // this.axios.put('/msgrecords/read/',{
       //     msgRecordId: id
@@ -114,7 +114,7 @@ export default {
                   _this.totalCount = data.totalCount;
               })
               .catch(function(error) {
-                  _this.$Message.error("查询失败，请稍后重试");
+                  _this.$Message.error(this.$t("message.QueryFailed"));
               });
       }
   }

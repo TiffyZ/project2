@@ -15,10 +15,10 @@
 <template>
 	<div class="content-background">
       <Form class="form" ref="entity" :model="entity" :rules="ruleNew" :label-width="80" >
-          <Form-item label="标题：" prop="title">
+          <Form-item :label="$t('message.Title')" prop="title">
               <Input v-model="entity.title" />
           </Form-item>
-          <Form-item label="详情：" prop="content">
+          <Form-item :label="$t('message.Details')" prop="content">
               <interest-quill-editor class="editor" v-bind:interestContent="interestContent" @editor-change="e=>{contentGet(e)}"></interest-quill-editor>
           </Form-item>
           <FormItem>
@@ -32,7 +32,7 @@
             <span>温馨提示</span>
         </p>
         <div style="text-align:center">
-            <p>为保证服务正常运行，每个用户每日只能发布一篇文章，是否确认发布？</p>
+            <p>{{ $t("message.OnereplyeachDay") }}</p>
         </div>
         <div slot="footer">
             <Button type="error" size="large" long :loading="modal_loading" @click="publish()">确认</Button>
@@ -63,7 +63,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写标题",
+            message: this.$t("message.Title"),
             trigger: "blur"
           }
         ],
@@ -71,7 +71,7 @@ export default {
           {
             type: "string",
             required: true,
-            message: "填写内容",
+            message: this.$t("message.PleaseEnterInformation"),
             trigger: "blur"
           }
         ]
@@ -127,7 +127,7 @@ export default {
           }.bind(this)
         ).catch(
           function(error) {
-            this.$Message.error("新建失败");
+            this.$Message.error(this.$t("message.CreateFail"));
           }.bind(this)
         );
     },

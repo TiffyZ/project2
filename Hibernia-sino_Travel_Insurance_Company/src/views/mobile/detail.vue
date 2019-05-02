@@ -38,7 +38,7 @@
             <div style="width: 100%;margin: 10% 0 20px 0">
 
                 <div class="ivu-card-head" style="background: #eceef2">
-                    <p>提问</p>
+                    <p>{{ $t("message.Quiz") }}</p>
                 </div>
                 <Card v-for="(item,index) in postcardList" :key="index">
                     <div class="clearfix head">
@@ -80,17 +80,17 @@
             <div class="box-flex margin-auto margin-top-2 flex-direction-column flex-justify-center flex-items-center" style="width: 100%;margin-bottom: 30px;">
                 <div class=" width-100 flex-direction-row">
                   <div class="box-flex flex-1 padding-all-5x">
-                    <span><Icon type="edit"></Icon>提问</span>
+                    <span><Icon type="edit"></Icon>{{ $t("message.Quiz") }}</span>
                   </div>
                   <div class="box-flex flex-6 width-100 padding-all-5x">
-                    <Input v-model="title" placeholder="问题" />
+                    <Input v-model="title" :placeholder="$t('message.ProblemDetails')" />
                   </div>
                   <div class="box-flex flex-6 width-100 padding-all-5x">
-                    <Input v-model="textarea" type="textarea" :rows="6" placeholder="内容" />
+                    <Input v-model="textarea" type="textarea" :rows="6" :placeholder="$t('message.Content')" />
                   </div>
                 </div>
                 <div class="box-flex width-100 margin-top-2 flex-items-flex-end flex-justify-flex-end margin-bottom-3">
-                  <Button type="primary" @click="sendCard()">提交</Button>
+                  <Button type="primary" @click="sendCard()">{{ $t("message.Submission") }}</Button>
                 </div>
               </div>
 	      </div>
@@ -239,10 +239,10 @@ export default {
               }.bind(this)
             );
         } else {
-          this.$Message.error("登录后，才能发帖！");
+          this.$Message.error(this.$t("message.YouNeedLogIn"));
         }
       } else {
-        this.$Message.error("请填写标题和内容");
+        this.$Message.error(this.$t("message.PleaseEnterTitleAndContent"));
       }
     }
   }

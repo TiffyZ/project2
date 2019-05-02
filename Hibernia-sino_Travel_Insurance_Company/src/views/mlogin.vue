@@ -83,19 +83,19 @@
                         <li style="border-bottom: 1px solid #e9eaec;">
                             <div class="contenst">
                                 <img src="../images/logo.png" style="width: 40px;height: 40px;" align="absmiddle" />
-                                <span style="float:right;font-size: 15px">欢迎登录</span>
+                                <span style="float:right;font-size: 15px">{{ $t("message.Welcome") }}</span>
                             </div>
                         </li>
                         <li>
-                            <div class="name-password-error" v-if="this.$store.state.ifSign">用户名或密码错误</div>
+                            <div class="name-password-error" v-if="this.$store.state.ifSign">{{ $t("message.WorryUsernameORPassword") }}</div>
                             <dl>
                                 <FormItem prop="userName" >
-                                    <Input v-model="formLogin.userName" type="text" placeholder="登录名" >
+                                    <Input v-model="formLogin.userName" type="text" :placeholder="$t('message.loginuser')" >
                                         <Icon type="ios-person-outline" slot="prepend" ></Icon>
                                     </Input>
                                 </FormItem>
                                 <FormItem prop="password">
-                                    <Input v-model="formLogin.password" type="password" placeholder="密码" >
+                                    <Input v-model="formLogin.password" type="password" :placeholder="$t('message.Password')" >
                                     <Icon type="ios-lock-outline" slot="prepend"></Icon></Input>
                                 </FormItem>
                                 <!-- <FormItem>
@@ -107,36 +107,36 @@
                                     </div>
                                 </FormItem> -->
                                 <FormItem>
-                                    <Button type="primary" @click="login('formLogin')" style="width: 250px ">登录</Button>
+                                    <Button type="primary" @click="login('formLogin')" style="width: 250px ">{{ $t("message.login") }}</Button>
                                     <!--<Button type="primary" @click="register()" style="width: 250px ">注册</Button>-->
-                                    <Button type="primary" @click="modal1 = true" style="width: 250px">注册</Button>
+                                    <Button type="primary" @click="modal1 = true" style="width: 250px">{{ $t("message.register") }}</Button>
                                     <Modal
                                             v-model="modal1"
-                                            title="进行会员注册"
+                                            :title="$t('message.register')"
                                             @on-ok="okEnroll('enroll')"
                                             @on-cancel="cancel">
 
                                         <Form ref="enroll" :rules="riRule" :model="enroll" :label-width="110">
-                                            <FormItem label="用户名：" prop="loginName">
-                                                <Input v-model="enroll.loginName" placeholder="请输入您想设置的用户名" />
+                                            <FormItem :label="$t('message.loginuser')" prop="loginName">
+                                                <Input v-model="enroll.loginName" :placeholder="$t('message.EnterUser')" />
                                             </FormItem>
-                                            <FormItem label="密码：" prop="password">
-                                                <Input v-model="enroll.password" type="password" placeholder="请输入密码" />
+                                            <FormItem :label="$t('message.Password')" prop="password">
+                                                <Input v-model="enroll.password" type="password" :placeholder="$t('message.PleaseEnterPassword')" />
                                             </FormItem>
-                                            <FormItem label="确认密码："  prop="password2">
-                                                <Input v-model="enroll.password2" type="password" placeholder="请再次输入密码"  />
+                                            <FormItem :label="$t('message.CheckPassword')"  prop="password2">
+                                                <Input v-model="enroll.password2" type="password" :placeholder="$t('message.PleaseEnterPasswordAgain')"  />
                                             </FormItem>
-                                            <FormItem label="真实姓名：" prop="name">
-                                                <Input v-model="enroll.name" placeholder="请输入您的真实姓名" />
+                                            <FormItem :label="$t('message.name')" prop="name">
+                                                <Input v-model="enroll.name" :placeholder="$t('message.PleaseEnterName')" />
                                             </FormItem>
                                             <!--<FormItem label="ID：" prop="id">-->
                                             <!--<Input v-model="enroll.id"  placeholder="请输入证件号" />-->
                                             <!--</FormItem>-->
-                                            <FormItem label="邮箱：" prop="email">
-                                                <Input v-model="enroll.email" placeholder="请输入您的邮箱" />
+                                            <FormItem :label="$t('message.Email')" prop="email">
+                                                <Input v-model="enroll.email" :placeholder="$t('message.EnterEmailAddress')" />
                                             </FormItem>
-                                            <FormItem label="电话：" prop="phone">
-                                                <Input v-model="enroll.phone" placeholder="请输入您的电话号码" />
+                                            <FormItem :label="$t('message.Telphone')" prop="phone">
+                                                <Input v-model="enroll.phone" :placeholder="$t('message.EnterTelNumber')" />
                                             </FormItem>
                                         </Form>
                                     </Modal>
@@ -170,7 +170,7 @@ export default {
 
           if (value === '') {
 
-              callback(new Error('请输入密码'));
+              callback(new Error(this.$t("message.PleaseEnterPassword")));
 
           } else {
 
@@ -190,11 +190,11 @@ export default {
 
           if (value === '') {
 
-              callback(new Error('请再次输入密码'));
+              callback(new Error(this.$t("message.PleaseEnterPasswordAgain")));
 
           } else if (value !== this.enroll.password) {
 
-              callback(new Error('两次输入密码不一致!'));
+              callback(new Error(this.$t("message.PasswordDifferent")));
 
           } else {
 
@@ -225,16 +225,16 @@ export default {
           },
       ruleLogin: {
         userName: [
-          { required: true, message: "用户名", trigger: "blur" }
+          { required: true, message: this.$t("message.loginuser"), trigger: "blur" }
         ],
-        password: [{ required: true, message: "密码", trigger: "blur" }]
+        password: [{ required: true, message: this.$t("message.Password"), trigger: "blur" }]
       },
           riRule: {
               name: [
                   {
                       type: "string",
                       required: true,
-                      message: "请输入姓名",
+                      message: this.$t("message.PleaseEnterName"),
                       trigger: "blur"
                   }
               ],
@@ -250,20 +250,20 @@ export default {
                   {
                       type: "string",
                       required: true,
-                      message: "请输入电话号码",
+                      message: this.$t("message.EnterTelNumber"),
                       trigger: "blur"
                   }
               ],
 
               email: [
-                  { required: true, message: "输入邮箱", trigger: "blur" },
-                  { type: "email", message: "输入正确的邮箱格式", trigger: "blur" }
+                  { required: true, message: this.$t("message.EnterEmailAddress"), trigger: "blur" },
+                  { type: "email", message: this.$t("message.PleaseEnterRightEmailFormat"), trigger: "blur" }
               ],
               userName: [
-                  { required: true, message: "请填写用户名", trigger: "blur" }
+                  { required: true, message: this.$t("message.EnterUser"), trigger: "blur" }
               ],
               // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
-              password: [{ required: true, message: "请填写密码", validator: validatePass,trigger: "blur" }],
+              password: [{ required: true, message: this.$t("message.PleaseEnterPassword"), validator: validatePass,trigger: "blur" }],
               password2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
           },
 
@@ -285,7 +285,7 @@ export default {
                   })
                       .then(
                           function (response) {
-                              this.$Message.info("发送成功[" + this.enroll.loginName + "]");
+                              this.$Message.info(this.$t("message.SendSuccess")+"["+this.enroll.loginName + "]");
                           }.bind(this)
                       )
                       .catch(function (error) {
@@ -293,7 +293,7 @@ export default {
                       });
                   this.modal1 = false;
               } else {
-                  this.$Message.error("表单验证失败!");
+                  this.$Message.error(this.$t("message.ValidationFailed"));
               };
           });
           // this.user1.userID = this.enroll.id;

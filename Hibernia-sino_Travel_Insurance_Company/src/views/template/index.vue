@@ -94,6 +94,7 @@
                               <img src="../../images/logo.png" style="width: 50px;height: 50px;" align="absmiddle" />
                           </a>
                       </div>
+
                       <div class="layout-title">
                           <MenuItem name="interest">
                             <span class="home-text">
@@ -109,10 +110,10 @@
                             </span>
                           </MenuItem>
                       </div>
-                      <div class="layout-search">
-                          <Input v-model="searchValue" icon="android-search" placeholder="Enter something..."
-                                 @on-enter="search()" />
-                      </div>
+                      <!--<div class="layout-search">-->
+                          <!--<Input v-model="searchValue" icon="android-search" placeholder="Enter something..."-->
+                                 <!--@on-enter="search()" />-->
+                      <!--</div>-->
                       <div v-if="loginFlag" class="layout-nav">
                           <i-button @click="changeLocale()">{{ $t('message.ChangeLanguage') }}</i-button>
 
@@ -146,6 +147,8 @@
                               {{ $t("message.employeeConsole") }}
                           </MenuItem>
                       </div>
+
+
                       <div  type="success" class="avatar-badge-wrapper" @click="toMessages">
 
                           <img v-if="loginFlag"
@@ -166,6 +169,11 @@
               </Menu>
             </Header>
 
+            <div style="position: absolute;top:200px"  >
+
+                <!--<i-button @click="changeLocale()">Default</i-button>-->
+            </div>
+
             <Content :style="{margin: '80px 0 40px 0'}">
                 <router-view></router-view>
             </Content>
@@ -183,6 +191,9 @@
                :title="$t('message.Application')" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
                 <FormItem :label="$t('message.InsuranceType')">
+                    <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
+                        <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
+                    <!--</Select>-->
                     <Select v-model="email.formType" style="width:200px" >
                         <Option  :value="1" >{{ $t("message.BaggageInsurance") }}</Option>
                         <Option  :value="2">{{ $t("message.BaggageInsurancePlus") }}</Option>
@@ -194,7 +205,10 @@
                 <FormItem :label="$t('message.InsuredName')" prop="name">
                     <Input v-model="email.name" :placeholder="$t('message.EnterInsuredName')" />
                 </FormItem>
-                 <FormItem :label="$t('message.MailboxOfInsured')" prop="email">
+                <!--<FormItem label="被保险人ID" prop="id">-->
+                    <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
+                <!--</FormItem>-->
+                <FormItem :label="$t('message.MailboxOfInsured')" prop="email">
                     <Input v-model="email.email" :placeholder="$t('message.EnterMailboxOfInsured')" />
                 </FormItem>
                 <FormItem :label="$t('message.DeclaringInformation')" prop="title">
@@ -377,12 +391,6 @@ export default {
       handleBeforeUpload() {
           this.$refs.upload.fileList.splice(0, this.$refs.upload.fileList.length);
           return true;
-      },
-      handleMaxSize (file) {
-          this.$Notice.warning({
-              title: this.$t("message.SizeExceeded"),
-              desc: this.$t("message.PleaseOptimization")
-          });
       },
       handleFormatError(file) {
           this.$Notice.warning({
@@ -617,6 +625,8 @@ export default {
         }else if(this.$i18n.locale === 'zh'){
               this.$i18n.locale = 'en';
         }
+
+        console.log("hello");
 
     }
   },
