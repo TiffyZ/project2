@@ -356,6 +356,16 @@ const RouterConfig = {
 const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
+  // let token = window.localStorage.getItem("currentUser_token");
+  // if (
+  //   to.matched.some(record => record.meta.requiresAuth) &&
+  //   (!token || token === null)
+  // ) {
+  //   next({
+  //     path: "/",
+  //     query: { redirect: to.fullPath }
+  //   });
+  // }
   iView.LoadingBar.start();
   next();
 });
