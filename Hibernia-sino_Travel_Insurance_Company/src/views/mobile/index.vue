@@ -93,9 +93,9 @@
 </style>
 <template>
     <div class="mobild-layout">
-    	<Layout>
+      <Layout>
             <Header style="position: fixed;width: 100%;background:#fff;padding:0 0;z-index: 1000; line-height:0;">
-            	<div style="width: 95%;margin: 0 auto">
+              <div style="width: 95%;margin: 0 auto">
                     <div class="layout-logo">
                         <a @click="backHome()">
                             <img src="../../images/logo.png" style="width: 50px;height: 50px;" align="absmiddle" />
@@ -114,12 +114,12 @@
                         </div>
 
                         <DropdownMenu class="dropdown-menu" slot="list">
-                        	<DropdownItem name="name">
-                            	<Icon type="ios-person"></Icon>
-                               	{{user.name}}
+                          <DropdownItem name="name">
+                              <Icon type="ios-person"></Icon>
+                                {{user.name}}
                             </DropdownItem>
                             <DropdownItem name="email" divided>
-                            	<Icon type="ios-mail"></Icon>
+                              <Icon type="ios-mail"></Icon>
                                 {{ $t("message.SubmitApplication") }}
                             </DropdownItem>
 
@@ -139,15 +139,21 @@
                                 {{ $t("message.Message") }}
                             </DropdownItem>
 
+                            <DropdownItem name="language" divided>
+                                {{ $t('message.ChangeLanguage') }}
+                            </DropdownItem>
+
                             <DropdownItem name="loginOut" divided>
-                            	<Icon type="md-log-out"></Icon>
+                              <Icon type="md-log-out"></Icon>
                                 {{ $t("message.exit") }}
                             </DropdownItem>
+
+
                         </DropdownMenu>
                     </Dropdown>
                     <div v-if="!loginFlag" class="layout-nav" style="margin-top: 14px;">
                         <Button shape="circle" @click="toLogin()">
-                        	<span>{{ $t("message.login") }}</span>
+                          <span>{{ $t("message.login") }}</span>
                         </Button>
                     </div>
                 </div>
@@ -215,7 +221,7 @@
                              :on-format-error="handleFormatError"
                              :format="['jpg','jpeg','png']"
                      >
-                         <Button icon="ios-cloud-upload-outline"   >{{ $t("message.uploadPic") }}</Button>
+                         <Button icon="ios-cloud-upload-outline"   >{{ $t("message.UploadPic") }}</Button>
                      </Upload>
                  </Form-item>
                  <Form-item>
@@ -265,7 +271,7 @@
                             :on-format-error="handleFormatError"
                             :format="['jpg','jpeg','png']"
                     >
-                        <Button icon="ios-cloud-upload-outline"   >{{ $t("message.uploadPic") }}</Button>
+                        <Button icon="ios-cloud-upload-outline"   >{{ $t("message.UploadPic") }}</Button>
                     </Upload>
                 </Form-item>
                 <Form-item>
@@ -436,11 +442,12 @@ export default {
 
           this.$router.push({ path: "/mobile/article" });
 
-          this.$router.push("/article");
-//  parent of 6965e89... 默认值
-// =======
-          this.$router.push("/article");
-// >>>>>>> parent of 6965e89... 默认值
+      }else if(m == "language") {
+          if(this.$i18n.locale === 'en'){
+              this.$i18n.locale = 'zh';
+          }else if(this.$i18n.locale === 'zh'){
+              this.$i18n.locale = 'en';
+          }
       }
     },
     toLogin() {
