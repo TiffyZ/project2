@@ -232,7 +232,7 @@
         <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/login.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="496">
-              <caret line="227" column="17" lean-forward="true" selection-start-line="227" selection-start-column="17" selection-end-line="227" selection-end-column="17" />
+              <caret line="227" column="17" selection-start-line="227" selection-start-column="17" selection-end-line="227" selection-end-column="17" />
               <folding>
                 <element signature="e#22#311#0" />
                 <element signature="e#333#352#0" />
@@ -257,11 +257,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/template/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="769">
-              <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+            <state relative-caret-position="419">
+              <caret line="120" column="37" selection-start-line="120" selection-start-column="37" selection-end-line="120" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -313,11 +313,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="form.vue" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/form.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="131" selection-start-line="60" selection-start-column="131" selection-end-line="60" selection-end-column="131" />
+            <state relative-caret-position="716">
+              <caret line="62" column="19" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="62" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -364,11 +364,11 @@
         <option value="$PROJECT_DIR$/Hibernia Sino Travel insurance company1/src/views/Dashboard.vue" />
         <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/template/home.vue" />
         <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/article/pc/create-article.vue" />
-        <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/form.vue" />
         <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/card.vue" />
         <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/store/store.js" />
         <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/login.vue" />
         <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/template/index.vue" />
+        <option value="$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/form.vue" />
       </list>
     </option>
   </component>
@@ -479,12 +479,12 @@
       <workItem from="1553475072434" duration="775000" />
       <workItem from="1555203943317" duration="700000" />
       <workItem from="1555299000592" duration="1000" />
-      <workItem from="1556813308394" duration="11783000" />
+      <workItem from="1556813308394" duration="12123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27393000" />
+    <option name="totallyTimeSpent" value="27733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -642,13 +642,6 @@
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/template/messages.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/form.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="131" selection-start-line="60" selection-start-column="131" selection-end-line="60" selection-end-column="131" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/article/pc/user-article.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -678,7 +671,7 @@
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/login.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
-          <caret line="227" column="17" lean-forward="true" selection-start-line="227" selection-start-column="17" selection-end-line="227" selection-end-column="17" />
+          <caret line="227" column="17" selection-start-line="227" selection-start-column="17" selection-end-line="227" selection-end-column="17" />
           <folding>
             <element signature="e#22#311#0" />
             <element signature="e#333#352#0" />
@@ -704,8 +697,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/template/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="769">
-          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
+        <state relative-caret-position="419">
+          <caret line="120" column="37" selection-start-line="120" selection-start-column="37" selection-end-line="120" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/form.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="716">
+          <caret line="62" column="19" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="62" selection-end-column="19" />
         </state>
       </provider>
     </entry>

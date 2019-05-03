@@ -53,9 +53,7 @@
                 	<span>{{email.content}}</span>
                 </Form-item>
                 <Form-item label="证明图片:" prop="image">
-
                     <span><img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px"></span>
-
                 </Form-item>
                  <Form-item label="员工备注:" prop="remark">
                      <Input v-model="email.remark" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter remark..." />
