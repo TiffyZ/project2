@@ -5,9 +5,6 @@
 
                 <li>
                     <Button type="error" icon="md-trash" @click="del()">删除</Button>
-                    <!--<Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">新建</Button>-->
-                    <!--<Button class="operation-button" type="success" icon="md-build" @click="openModifyModal()">修改</Button>-->
-                    <!--<Button class="operation-button" type="success" icon="md-build" @click="remarkModal()">备注</Button>-->
                 </li>
                 <li>
                     <p>保单类型对应：</p>
@@ -33,50 +30,40 @@
             <Form-item label="表单ID号:" prop="id">
 
               <strong>{{email.id}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
 
 
 	        	<Form-item label="用户姓名:" prop="name">
 	        		<strong>{{email.name}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item label="用户ID号:" prop="userid">
                     <strong>{{email.userid}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item label="用户邮箱:" prop="email">
               <strong>{{email.email}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
 
                 <Form-item label="表单类型:" prop="formType">
               <strong>{{email.formType}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item label="用户标题:" prop="title">
                     <strong>{{email.title}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item label="内容说明:" prop="content">
                 	<span>{{email.content}}</span>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item label="证明图片:" prop="image">
 
                     <span><img v-if="email.image != null" :src="email.image" style="width: 300px;height: 200px"></span>
 
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                  <Form-item label="员工备注:" prop="remark">
-                  <!--<span>{{email.remark}}</span>-->
                      <Input v-model="email.remark" type="textarea" :autosize="{minRows: 2,maxRows: 5}"placeholder="Enter remark..." />
 
                 </Form-item>
             
             </Form>
 	        <div slot="footer">
-	            <!--<Button type="error" size="large"  @click="cancel">关闭</Button>-->
                 <Button v-model="email" type="success" size="large"  @click="agree('email')">同意赔付</Button>
                 <Button v-model="email" type="error" size="large"  @click="disagree('email')">拒绝赔付</Button>
 	        </div>
@@ -177,16 +164,12 @@ export default {
           width: 200,
           key: "title"
         },
-        // {
-        //   title: "email",
-        //   key: "email"
-        // },
         {
           title: "时间",
           key: "createtime"
         },
         {
-          title: "表单类型",
+          title: "保单类型",
           key: "formType",
             render: (h, params) => {
                 if (params.row.formType == 1) {
@@ -203,65 +186,11 @@ export default {
             }
         },
         {
-          title: "表单赔付状态",
+          title: "保单赔付状态",
           key: "label"
         },
 
-        //   {
-        //       title: "员工同意操作",
-        //       align: "center",
-        //       key: "action",
-        //       render: (h, params) => {
-        //           return h("div", [
-        //               h(
-        //                   "Button",
-        //                   {
-        //                       props: {
-        //                           type: "info"
-        //                       },
-        //                       on: {
-        //                           click: () => {
-        //                               this.email.label = "同意赔付";
-        //                               this.getTable({
-        //                                   pageInfo: this.pageInfo
-        //                               });
-        //
-        //                           }
-        //                       }
-        //                   },
-        //                   "同意"
-        //               )
-        //           ]);
-        //       }
-        //
-        //   },
-        //   {
-        //       title: "员工拒绝操作",
-        //       align: "center",
-        //       key: "action",
-        //       render: (h, params) => {
-        //           return h("div", [
-        //               h(
-        //                   "Button",
-        //                   {
-        //                       props: {
-        //                           type: "info"
-        //                       },
-        //                       on: {
-        //                           click: () => {
-        //                               this.email.label="拒绝赔付";
-        //                               this.getTable({
-        //                                   pageInfo: this.pageInfo
-        //                               });
-        //                           }
-        //                       }
-        //                   },
-        //                   "拒绝"
-        //               )
-        //           ]);
-        //       }
-        //
-        // },
+
 
         {
           title: "查看详情",
@@ -305,7 +234,7 @@ export default {
       this.pageInfo.pageSize = 10;
     },
       labelpost(){
-          this.$Message.info("发送成功1");
+          this.$Message.info("发送成功");
 
       },
 

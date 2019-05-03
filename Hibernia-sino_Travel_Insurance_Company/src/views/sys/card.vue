@@ -31,11 +31,9 @@
 	        <Form :label-width="80" >
 	        	<Form-item :label="$t('message.loginuser')">
 	        		<strong>{{postcard.username}}</strong>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item :label="$t('message.Content')">
                 	<span>{{postcard.content}}</span>
-                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
             </Form>
 	        <div slot="footer">
