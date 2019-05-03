@@ -316,8 +316,8 @@
       <file leaf-file-name="form.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/form.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="716">
-              <caret line="62" column="19" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="62" selection-end-column="19" />
+            <state relative-caret-position="523">
+              <caret line="232" column="6" selection-start-line="229" selection-start-column="4" selection-end-line="232" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -479,12 +479,12 @@
       <workItem from="1553475072434" duration="775000" />
       <workItem from="1555203943317" duration="700000" />
       <workItem from="1555299000592" duration="1000" />
-      <workItem from="1556813308394" duration="12123000" />
+      <workItem from="1556813308394" duration="12415000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27733000" />
+    <option name="totallyTimeSpent" value="28025000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -704,8 +704,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/form.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="62" column="19" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="62" selection-end-column="19" />
+        <state relative-caret-position="523">
+          <caret line="232" column="6" selection-start-line="229" selection-start-column="4" selection-end-line="232" selection-end-column="6" />
         </state>
       </provider>
     </entry>
