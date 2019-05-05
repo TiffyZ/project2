@@ -12,29 +12,29 @@
           </div>
           <div class="user-info">
             {{userInfo.info}}
-            <span v-if="userInfo.info == null ||userInfo.info == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.info == null ||userInfo.info == ''" class="span-default">{{ $t("message.Edit")}}......</span>
           </div>
           <div class="user-location cotent-form">
             <Icon class="icon" type="ios-locate-outline"></Icon>
             <span class="span-line-feed">{{userInfo.location}}</span>
-            <span v-if="userInfo.location == null ||userInfo.location == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.location == null ||userInfo.location == ''" class="span-default">{{ $t("message.Edit")}}......</span>
           </div>
           <div class="user-url cotent-form">
             <Icon class="icon" type="ios-link" />
             <a :href="userInfo.url" target="_blank">
               <span class="span-line-feed">{{userInfo.url}}</span>
             </a>
-            <span v-if="userInfo.url == null ||userInfo.url == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.url == null ||userInfo.url == ''" class="span-default">{{ $t("message.Edit")}}......</span>
           </div>
           <div class="user-email cotent-form">
             <Icon class="icon" type="ios-mail-outline" />
             <span class="span-line-feed">{{userInfo.email}}</span>
-            <span v-if="userInfo.email == null ||userInfo.email == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.email == null ||userInfo.email == ''" class="span-default">{{ $t("message.Edit")}}......</span>
           </div>
           <div class="user-skill cotent-form">
             <Icon class="icon" type="ios-paw-outline" />
             <span class="span-line-feed">{{userInfo.skill}}</span>
-            <span v-if="userInfo.skill == null ||userInfo.skill == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.skill == null ||userInfo.skill == ''" class="span-default">{{ $t("message.Edit")}}......</span>
           </div>
       </Card>
     </div>
