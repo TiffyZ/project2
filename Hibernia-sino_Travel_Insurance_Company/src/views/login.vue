@@ -91,8 +91,8 @@
                         <li>
                             <div class="name-password-error" v-if="this.$store.state.ifSign">{{ $t("message.WorryUsernameORPassword") }}</div>
                             <dl>
-                                <FormItem prop="loginName" >
-                                    <Input v-model="formLogin.loginName" type="text" :placeholder="$t('message.loginuser')" >
+                                <FormItem prop="userName" >
+                                    <Input v-model="formLogin.userName" type="text" :placeholder="$t('message.loginuser')" >
                                         <Icon type="ios-person-outline" slot="prepend" ></Icon>
                                     </Input>
                                 </FormItem>
@@ -210,7 +210,7 @@ export default {
         modal1: false,
       code: null,
       formLogin: {
-        loginName: null,
+        userName: null,
         password: null
       },
         enroll: {
@@ -229,7 +229,7 @@ export default {
             roleId : 0,
         },
       ruleLogin: {
-        loginName: [
+        userName: [
           { required: true, message: this.$t("message.PleaseEnterName"), trigger: "blur" }
         ],
         password: [{ required: true, message: this.$t("message.PleaseEnterPassword"), trigger: "blur" }]
@@ -257,7 +257,7 @@ export default {
                 { required: true, message: this.$t("message.EnterEmailAddress"), trigger: "blur" },
                 { type: "email", message: this.$t("message.PleaseEnterRightEmailFormat"), trigger: "blur" }
             ],
-            loginName: [
+            userName: [
                 {  required: true, message: this.$t("message.PleaseEnterName"), trigger: "blur" }
             ],
             // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
@@ -321,7 +321,7 @@ export default {
       this.$refs[formLogin].validate(valid => {
         if (valid) {
           this.$store.dispatch("users/userLogin", {
-            user_name: this.formLogin.loginName,
+            user_name: this.formLogin.userName,
             user_password: this.formLogin.password,
             router: this.$router
           });
