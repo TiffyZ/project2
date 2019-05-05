@@ -233,7 +233,7 @@ export default {
     selectChange(e) {
       this.axios({
         method: "get",
-        url: "/interests/interest",
+        url: "/public/interests/interest",
         params: {
           id: e
         }
