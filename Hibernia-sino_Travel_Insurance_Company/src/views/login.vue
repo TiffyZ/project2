@@ -243,14 +243,7 @@ export default {
                     trigger: "blur"
                 }
             ],
-            // id: [
-            //     {
-            //         type: "string",
-            //         required: true,
-            //         message: "请输入正确的id",
-            //         trigger: "blur"
-            //     }
-            // ],
+
             phone: [
                 {
                     type: "string",
@@ -265,7 +258,7 @@ export default {
                 { type: "email", message: this.$t("message.PleaseEnterRightEmailFormat"), trigger: "blur" }
             ],
             userName: [
-                { required: true, message: this.$t("message.PleaseEnterName"), trigger: "blur" }
+                {  required: true, message: this.$t("message.PleaseEnterName"), trigger: "blur" }
             ],
             // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
            password: [{ required: true, message: this.$t("message.PleaseEnterPassword"), validator: validatePass,trigger: "blur" }],
@@ -317,29 +310,7 @@ export default {
                   this.$Message.error(this.$t("message.ValidationFailed"));
               };
       });
-          // this.user1.userID = this.enroll.id;
-          //
-          // this.$refs[user1].validate(valid => {
-          //     if (valid) {
-          //
-          //         this.axios({
-          //             method: "post",
-          //             url: "/relations",
-          //             data: this.user1
-          //         })
-          //             .then(
-          //                 function (response) {
-          //                     this.$Message.info("发送成功[" + this.user1.userID + "]");
-          //                 }.bind(this)
-          //             )
-          //             .catch(function (error) {
-          //                 alert(error);
-          //             });
-          //
-          //     } else {
-          //         this.$Message.error("表单验证失败!");
-          //     };
-          // });
+
 
 
       },

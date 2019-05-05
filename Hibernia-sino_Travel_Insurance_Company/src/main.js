@@ -203,6 +203,7 @@ const messages = {
             ModifyConfirm: '确认修改',
             WaitingForPerfection: '未填写',
             DLname: '登录名',
+            Realname: '真实姓名',
 
 
 
@@ -388,6 +389,7 @@ const messages = {
             ModifyConfirm: 'Modify Confirm',
             WaitingForPerfection: 'Waiting For Perfection',
             DLname: 'login name',
+            Realname: 'Real name',
 
 
         }
