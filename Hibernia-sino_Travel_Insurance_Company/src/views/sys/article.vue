@@ -307,37 +307,37 @@ export default {
               title: this.$t("message.Introduce"),
               key: "info"
           },
-          {
-              title: this.$t("message.Operation"),
-              align: "center",
-              key: "action",
-              width: 100,
-              render: (h, params) => {
-                  return h(
-                      "a",
-                      {
-                          attrs: {
-                              href:
-                              this.$store.state.domainName +
-                              "/article/detail/" +
-                              params.row.id,
-                              target: "_blank"
-                          }
-                      },
-                      [
-                          h(
-                              "Button",
-                              {
-                                  props: {
-                                      type: "info"
-                                  }
-                              },
-                              this.$t("message.Watch")
-                          )
-                      ]
-                  );
-              }
-          }
+          // {
+          //     title: this.$t("message.Operation"),
+          //     align: "center",
+          //     key: "action",
+          //     width: 100,
+          //     render: (h, params) => {
+          //         return h(
+          //             "a",
+          //             {
+          //                 attrs: {
+          //                     href:
+          //                     this.$store.state.domainName +
+          //                     "/article/detail/" +
+          //                     params.row.id,
+          //                     target: "_blank"
+          //                 }
+          //             },
+          //             [
+          //                 h(
+          //                     "Button",
+          //                     {
+          //                         props: {
+          //                             type: "info"
+          //                         }
+          //                     },
+          //                     this.$t("message.Watch")
+          //                 )
+          //             ]
+          //         );
+          //     }
+          // }
       ],
       /*生产类型表数据*/
       data1: []

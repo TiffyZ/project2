@@ -103,36 +103,36 @@ export default {
           title: this.$t("message.Time"),
           key: "createtime"
         },
-        {
-          title: this.$t("message.Operation"),
-          align: "center",
-          key: "action",
-          render: (h, params) => {
-            return h(
-              "a",
-              {
-                attrs: {
-                  href:
-                    this.$store.state.domainName +
-                    "/page/card/" +
-                    params.row.id,
-                  target: "_blank"
-                }
-              },
-              [
-                h(
-                  "Button",
-                  {
-                    props: {
-                      type: "info"
-                    }
-                  },
-                    this.$t("message.Watch")
-                )
-              ]
-            );
-          }
-        }
+        // {
+        //   title: this.$t("message.Operation"),
+        //   align: "center",
+        //   key: "action",
+        //   render: (h, params) => {
+        //     return h(
+        //       "a",
+        //       {
+        //         attrs: {
+        //           href:
+        //             this.$store.state.domainName +
+        //             "/page/card/" +
+        //             params.row.id,
+        //           target: "_blank"
+        //         }
+        //       },
+        //       [
+        //         h(
+        //           "Button",
+        //           {
+        //             props: {
+        //               type: "info"
+        //             }
+        //           },
+        //             this.$t("message.Watch")
+        //         )
+        //       ]
+        //     );
+        //   }
+        // }
       ],
       /*表数据*/
       data1: []
