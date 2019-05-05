@@ -65,7 +65,7 @@
                     </div>
                 </Card>
                 <div style="margin-top: 20px">
-                    <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
+                    <Page :total="total" :page-size="pageInfo.pageSize"  @on-change="e=>{pageSearch(e)}"></Page>
                 </div>
             </div>
 

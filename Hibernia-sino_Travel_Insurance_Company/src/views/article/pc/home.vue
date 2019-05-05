@@ -4,7 +4,7 @@
         <div>
             <ul>
                 <li>
-                    <Button type="error" icon="md-trash" @click="del()">删除我的表单</Button>
+                    <Button type="error" icon="md-trash" @click="del()">{{ $t("message.delete")}}</Button>
                 </li>
                 <li>
                     <div style="padding: 10px 0;">
@@ -18,7 +18,8 @@
                 </li>
             </ul>
         </div>
-        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
+
+        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" :title="$t('message.Watch')">
             <Form :label-width="80" >
                 <Form-item :label="$t('message.loginuser')">
                     <strong>{{email.username}}</strong>
@@ -30,7 +31,7 @@
                 </Form-item>
             </Form>
             <div slot="footer">
-                <Button type="error" size="large"  @click="cancel">关闭</Button>
+                <Button type="error" size="large"  @click="cancel">{{ $t("message.Close")}}</Button>
             </div>
         </Modal>
     </div>

@@ -11,7 +11,7 @@
     		<div class="info">
 
     			<Form :model="userInfo" label-position="top">
-			        <FormItem :label="$t('message.loginuser')">
+			        <FormItem :label="$t('message.DLname')">
 			            <Input v-model="userInfo.name"></Input>
 			        </FormItem>
 			        <FormItem :label="$t('message.userPage')">

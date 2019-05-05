@@ -84,7 +84,7 @@
                     <ul style="list-style: none;box-shadow:10px 10px 20px rgba(0,0,0,.5);">
                         <li style="border-bottom: 1px solid #e9eaec;">
                             <div class="content">
-                                <img src="../images/logo.png" style="width: 40px;height: 40px" align="absmiddle" />
+                                <img src="../images/WechatIMG1636.png" style="width: 40px;height: 40px" align="absmiddle" />
                                 <span style="float:right;font-size: 22px;align-items: center" >{{ $t("message.Welcome") }}</span>
                             </div>
                         </li>
@@ -98,21 +98,24 @@
                                 </FormItem>
                                 <FormItem prop="password">
                                     <Input v-model="formLogin.password" type="password" :placeholder="$t('message.Password')" >
-                                    <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                                    </Input>
+                                    <Icon type="ios-lock-outline" slot="prepend"></Icon></Input>
                                 </FormItem>
                                 <FormItem>
 
                                     <Button type="primary" @click="login('formLogin')" style="width: 250px">{{ $t("message.login") }}</Button>
+                                    <!--<Button type="primary" @click="register()" style="width: 250px"  >注册</Button>-->
+
                                     <Button type="primary" @click="modal1 = true" style="width: 250px">{{ $t("message.register") }}</Button>
                                     <Modal
                                             v-model="modal1"
+                                            :ok-text ="$t('message.Confirm')"
+                                            :cancel-text ="$t('message.Cancel')"
                                             :title="$t('message.register')"
                                             @on-ok="okEnroll('enroll')"
                                             @on-cancel="cancel">
 
                                         <Form ref="enroll" :rules="riRule" :model="enroll" :label-width="110">
-                                            <FormItem :label="$t('message.loginuser')" prop="loginName">
+                                            <FormItem :label="$t('message.DLname')" prop="loginName">
                                                 <Input v-model="enroll.loginName" :placeholder="$t('message.EnterUser')" />
                                             </FormItem>
                                             <FormItem :label="$t('message.Password')" prop="password">
@@ -124,6 +127,9 @@
                                             <FormItem :label="$t('message.name')" prop="name">
                                                 <Input v-model="enroll.name" :placeholder="$t('message.PleaseEnterName')" />
                                             </FormItem>
+                                            <!--<FormItem label="ID：" prop="id">-->
+                                                <!--<Input v-model="enroll.id"  placeholder="请输入证件号" />-->
+                                            <!--</FormItem>-->
                                             <FormItem :label="$t('message.Email')" prop="email">
                                                 <Input v-model="enroll.email" :placeholder="$t('message.EnterEmailAddress')" />
                                             </FormItem>
@@ -133,7 +139,21 @@
                                         </Form>
                                     </Modal>
 
-                                    <ul class="account-list"></ul>
+
+                                    <ul class="account-list">
+                                        <li>
+                                            <!--<a href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github" style="{right: 26px;}">-->
+                                                <!--&lt;!&ndash; <Icon  style="color: rebeccapurple;" size="40" type="social-github"></Icon> &ndash;&gt;-->
+                                                <!--<img class="icon" src="../images/GitHub.svg" />-->
+                                            <!--</a>-->
+                                        </li>
+
+                                        <li>
+                                            <!--<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101512648&redirect_uri=http://www.lovemtt.com/qq&state=qq" style="{right: 26px;}">-->
+                                                <!--<img class="icon" src="../images/social-qq.svg" />  -->
+                                            <!--</a>-->
+                                        </li>
+                                    </ul>
                                 </FormItem>
                             </dl>
                         </li>
@@ -223,7 +243,14 @@ export default {
                     trigger: "blur"
                 }
             ],
-
+            // id: [
+            //     {
+            //         type: "string",
+            //         required: true,
+            //         message: "请输入正确的id",
+            //         trigger: "blur"
+            //     }
+            // ],
             phone: [
                 {
                     type: "string",
@@ -240,6 +267,7 @@ export default {
             userName: [
                 { required: true, message: this.$t("message.PleaseEnterName"), trigger: "blur" }
             ],
+            // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
            password: [{ required: true, message: this.$t("message.PleaseEnterPassword"), validator: validatePass,trigger: "blur" }],
             password2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
         }
@@ -289,6 +317,30 @@ export default {
                   this.$Message.error(this.$t("message.ValidationFailed"));
               };
       });
+          // this.user1.userID = this.enroll.id;
+          //
+          // this.$refs[user1].validate(valid => {
+          //     if (valid) {
+          //
+          //         this.axios({
+          //             method: "post",
+          //             url: "/relations",
+          //             data: this.user1
+          //         })
+          //             .then(
+          //                 function (response) {
+          //                     this.$Message.info("发送成功[" + this.user1.userID + "]");
+          //                 }.bind(this)
+          //             )
+          //             .catch(function (error) {
+          //                 alert(error);
+          //             });
+          //
+          //     } else {
+          //         this.$Message.error("表单验证失败!");
+          //     };
+          // });
+
 
       },
       cancel () {

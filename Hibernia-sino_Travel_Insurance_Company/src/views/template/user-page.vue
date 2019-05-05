@@ -12,29 +12,29 @@
           </div>
           <div class="user-info">
             {{userInfo.info}}
-            <span v-if="userInfo.info == null ||userInfo.info == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.info == null ||userInfo.info == ''" class="span-default">{{ $t("message.WaitingForPerfection") }}</span>
           </div>
           <div class="user-location cotent-form">
             <Icon class="icon" type="ios-locate-outline"></Icon>
             <span class="span-line-feed">{{userInfo.location}}</span>
-            <span v-if="userInfo.location == null ||userInfo.location == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.location == null ||userInfo.location == ''" class="span-default">{{ $t("message.WaitingForPerfection") }}</span>
           </div>
           <div class="user-url cotent-form">
             <Icon class="icon" type="ios-link" />
             <a :href="userInfo.url" target="_blank">
               <span class="span-line-feed">{{userInfo.url}}</span>
             </a>
-            <span v-if="userInfo.url == null ||userInfo.url == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.url == null ||userInfo.url == ''" class="span-default">{{ $t("message.WaitingForPerfection") }}</span>
           </div>
           <div class="user-email cotent-form">
             <Icon class="icon" type="ios-mail-outline" />
             <span class="span-line-feed">{{userInfo.email}}</span>
-            <span v-if="userInfo.email == null ||userInfo.email == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.email == null ||userInfo.email == ''" class="span-default">{{ $t("message.WaitingForPerfection") }}</span>
           </div>
           <div class="user-skill cotent-form">
             <Icon class="icon" type="ios-paw-outline" />
             <span class="span-line-feed">{{userInfo.skill}}</span>
-            <span v-if="userInfo.skill == null ||userInfo.skill == ''" class="span-default">未填写......</span>
+            <span v-if="userInfo.skill == null ||userInfo.skill == ''" class="span-default">{{ $t("message.WaitingForPerfection") }}</span>
           </div>
       </Card>
     </div>
@@ -64,14 +64,14 @@
             <div class="right-info">
               <dd>
                 <router-link :to="('/article/detail/'+item.id)">
-                  <span class="text">阅读数</span>
+                  <span class="text">{{ $t("message.Watch") }}</span>
                   <span class="num">{{item.clickRate}}</span>
                 </router-link>
               </dd>
               <div class="interval"></div>
               <dd>
                 <router-link :to="('/article/detail/'+item.id)">
-                  <span class="text">评论数</span>
+                  <span class="text">{{ $t("message.comment") }}</span>
                   <span class="num">{{item.commentCount}}</span>
                 </router-link>
               </dd>
@@ -79,7 +79,7 @@
           </dl>
       </Card>
       <div class="paging" v-if="total > 0">
-          <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
+          <Page :total="total" :page-size="pageInfo.pageSize"  @on-change="e=>{pageSearch(e)}"></Page>
       </div>
       <div v-if="total <= 0" class="default-article-content">
         <img src="../../images/05d044b1335c6d79ef253b1de1797b08.jpg" />

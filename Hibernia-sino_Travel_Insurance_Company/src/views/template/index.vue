@@ -42,6 +42,7 @@
 .layout-nav {
   height: inherit;
   float: right;
+  min-width: 10%;
 }
 
 .layout-footer-center {
@@ -99,8 +100,11 @@
                           <MenuItem name="interest">
                             <span class="home-text">
                               {{ $t("message.homepage") }}
+
                             </span>
+
                           </MenuItem>
+
                           </div>
                           <div v-if="loginFlag" class="layout-title">
 
@@ -108,10 +112,19 @@
                             <span class="home-text">
                               {{ $t("message.list") }}
                             </span>
+
                           </MenuItem>
+
+
+
                       </div>
+                      <!--<div class="layout-search">-->
+                          <!--<Input v-model="searchValue" icon="android-search" placeholder="Enter something..."-->
+                                 <!--@on-enter="search()" />-->
+                      <!--</div>-->
                       <div v-if="loginFlag" class="layout-nav">
-                          <i-button @click="changeLocale()">{{ $t('message.ChangeLanguage') }}</i-button>
+
+
                           <MenuItem name="1">
                               {{user.name}}
                           </MenuItem>
@@ -142,6 +155,8 @@
                               {{ $t("message.employeeConsole") }}
                           </MenuItem>
                       </div>
+
+
                       <div  type="success" class="avatar-badge-wrapper" @click="toMessages">
 
                           <img v-if="loginFlag"
@@ -157,15 +172,28 @@
                               <Icon type="md-log-in"></Icon>
                               {{ $t("message.login")}}
                           </MenuItem>
-                          <i-button @click="changeLocale()">{{ $t('message.ChangeLanguage') }}</i-button>
 
+                          <!--<MenuItem name="langu">-->
+                              <!--&lt;!&ndash;<i-button @click="changeLocale()">{{ $t('message.ChangeLanguage') }}</i-button>&ndash;&gt;-->
+                          <!--</MenuItem>-->
                       </div>
+
+                      <div>
+                          <MenuItem name="langu">
+                              <i-button @click="changeLocale()">{{ $t('message.ChangeLanguage') }}</i-button>
+                          </MenuItem>
+                      </div>
+
+
                   </div>
+
+
               </Menu>
             </Header>
 
             <div style="position: absolute;top:200px"  >
 
+                <!--<i-button @click="changeLocale()">Default</i-button>-->
             </div>
 
             <Content :style="{margin: '80px 0 40px 0'}">
@@ -173,15 +201,22 @@
             </Content>
             <Footer class="layout-footer-center">
                 <div>
+                    <!--<a href="https://github.com/smallsnail-wh" target="_blank">-->
+                        <!--<Icon style="color: rebeccapurple;" size="40" type="logo-github">z</Icon>-->
+                    <!--</a>-->
                 </div>
                 <p>2016-2020 &copy; Hibernia-Sino Travel Insurance Company</p>
             </Footer>
         </Layout>
 
         <Modal :mask-closable="false" :visible.sync="emailModal" :loading="loading" v-model="emailModal" width="600"
-               :title="$t('message.Application')" @on-ok="emailOk('email')" @on-cancel="cancel()">
+               :title="$t('message.Application')" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" @on-ok="emailOk('email')" @on-cancel="cancel()">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="110">
                 <FormItem :label="$t('message.InsuranceType')">
+                    <!--<Select v-model="formType" filterable style="width: 200px" @on-change="e=>{selectChange(e)}">-->
+                        <!--<Option v-for="item in insuranceList" :value="item.value" :key="item.value">{{ item.label }}</Option>-->
+                    <!--</Select>-->
                     <Select v-model="email.formType" style="width:200px" >
                         <Option  :value="1" >{{ $t("message.BaggageInsurance") }}</Option>
                         <Option  :value="2">{{ $t("message.BaggageInsurancePlus") }}</Option>
@@ -193,6 +228,9 @@
                 <FormItem :label="$t('message.InsuredName')" prop="name">
                     <Input v-model="email.name" :placeholder="$t('message.EnterInsuredName')" />
                 </FormItem>
+                <!--<FormItem label="被保险人ID" prop="id">-->
+                    <!--<Input v-model="email.id" placeholder="请输入被保险人id" />-->
+                <!--</FormItem>-->
                 <FormItem :label="$t('message.MailboxOfInsured')" prop="email">
                     <Input v-model="email.email" :placeholder="$t('message.EnterMailboxOfInsured')" />
                 </FormItem>
@@ -240,6 +278,24 @@ export default {
         },
       //用户未读消息个数
       unreadMsgCount: 0,
+        // insuranceList: [
+        //     {
+        //         value: '行李险',
+        //         label: '行李险'
+        //     },
+        //     {
+        //         value: '亲子险',
+        //         label: '亲子险'
+        //     },
+        //     {
+        //         value: '准时险',
+        //         label: '准时险'
+        //     },
+        //     {
+        //         value: '人身安全险',
+        //         label: '人身安全险'
+        //     }
+        // ],
 
       email: {
         title: "",
@@ -254,7 +310,7 @@ export default {
             {
                 type: "string",
                 required: true,
-                message: this.$t("message.UploadPic"),
+                message: this.$t("message.loginuser"),
                 trigger: "blur"
             }
         ],
@@ -314,6 +370,25 @@ export default {
     };
   },
   mounted() {
+
+      // this.axios({
+      //     method: "get",
+      //     url: "/public/interests"
+      // })
+      //     .then(
+      //         function(response) {
+      //             var listTemp = response.data.data;
+      //             for (var i = 0; i < listTemp.length; i++) {
+      //                 this.interestList.push({
+      //                     value: listTemp[i].id,
+      //                     label: listTemp[i].title
+      //                 });
+      //             }
+      //         }.bind(this)
+      //     )
+      //     .catch(function(error) {
+      //         alert(error);
+      //     });
 
 
     var code = this.$route.query.code;
@@ -567,6 +642,7 @@ export default {
       this.$router.push({ path: "/page/messages" });
     },
     changeLocale() {
+          // let locale = this.$i18n.locale;
         if(this.$i18n.locale === 'en'){
               this.$i18n.locale = 'zh';
         }else if(this.$i18n.locale === 'zh'){

@@ -112,6 +112,8 @@
                                     <Button type="primary" @click="modal1 = true" style="width: 250px">{{ $t("message.register") }}</Button>
                                     <Modal
                                             v-model="modal1"
+                                            :ok-text ="$t('message.Confirm')"
+                                            :cancel-text ="$t('message.Cancel')"
                                             :title="$t('message.register')"
                                             @on-ok="okEnroll('enroll')"
                                             @on-cancel="cancel">

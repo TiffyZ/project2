@@ -22,20 +22,20 @@
               <interest-quill-editor class="editor" v-bind:interestContent="interestContent" @editor-change="e=>{contentGet(e)}"></interest-quill-editor>
           </Form-item>
           <FormItem>
-              <Button type="primary" @click="submit('entity')">发布</Button>
-              <Button @click="reset()" style="margin-left: 8px">重置</Button>
+              <Button type="primary" @click="submit('entity')">{{ $t("message.Publish")}}</Button>
+              <Button @click="reset()" style="margin-left: 8px">{{ $t("message.Reset")}}</Button>
           </FormItem>
       </Form>
       <Modal v-model="modal" width="360">
         <p slot="header" style="color:#f60;text-align:center">
             <Icon type="ios-information-circle"></Icon>
-            <span>温馨提示</span>
+            <span>{{ $t("message.Tip")}}</span>
         </p>
         <div style="text-align:center">
             <p>{{ $t("message.OnereplyeachDay") }}</p>
         </div>
         <div slot="footer">
-            <Button type="error" size="large" long :loading="modal_loading" @click="publish()">确认</Button>
+            <Button type="error" size="large" long :loading="modal_loading" @click="publish()">{{ $t("message.Confirm")}}</Button>
         </div>
       </Modal>
   </div>

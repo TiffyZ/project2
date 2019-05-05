@@ -212,7 +212,7 @@
                                     <a :href="$store.state.userUrlPre+article.userid" target="_blank">{{article.userName}}</a>
                                 </dd>
                                 <dd>
-                                    <span class="text">浏览数:</span>
+                                    <span class="text">Num： </span>
                                     <span class="num">{{article.clickRate}}</span>
                                 </dd>
                                 <dd>{{article.createTime}}</dd>
@@ -250,7 +250,7 @@
                                         <a :href="$store.state.userUrlPre+comment.userid" target="_blank">
                                             <span class="user-name">{{comment.userName}}</span>
                                         </a>
-                                        <span># {{index + 1}} 楼 • {{comment.creatTimeBy}}</span>
+                                        <span># {{index + 1}} floor • {{comment.creatTimeBy}}</span>
                                     </div>
                                     <div class="title-info-other">
                                         <span>

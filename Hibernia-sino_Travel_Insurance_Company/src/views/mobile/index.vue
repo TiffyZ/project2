@@ -139,10 +139,16 @@
                                 {{ $t("message.Message") }}
                             </DropdownItem>
 
+                            <DropdownItem name="language" divided>
+                                {{ $t('message.ChangeLanguage') }}
+                            </DropdownItem>
+
                             <DropdownItem name="loginOut" divided>
                             	<Icon type="md-log-out"></Icon>
                                 {{ $t("message.exit") }}
                             </DropdownItem>
+
+
                         </DropdownMenu>
                     </Dropdown>
                     <div v-if="!loginFlag" class="layout-nav" style="margin-top: 14px;">
@@ -215,7 +221,7 @@
                              :on-format-error="handleFormatError"
                              :format="['jpg','jpeg','png']"
                      >
-                         <Button icon="ios-cloud-upload-outline"   >{{ $t("message.uploadPic") }}</Button>
+                         <Button icon="ios-cloud-upload-outline"   >{{ $t("message.UploadPic") }}</Button>
                      </Upload>
                  </Form-item>
                  <Form-item>
@@ -265,7 +271,7 @@
                             :on-format-error="handleFormatError"
                             :format="['jpg','jpeg','png']"
                     >
-                        <Button icon="ios-cloud-upload-outline"   >{{ $t("message.uploadPic") }}</Button>
+                        <Button icon="ios-cloud-upload-outline"   >{{ $t("message.UploadPic") }}</Button>
                     </Upload>
                 </Form-item>
                 <Form-item>
@@ -436,11 +442,12 @@ export default {
 
           this.$router.push({ path: "/mobile/article" });
 
-          this.$router.push("/article");
-//  parent of 6965e89... 默认值
-// =======
-          this.$router.push("/article");
-// >>>>>>> parent of 6965e89... 默认值
+      }else if(m == "language") {
+          if(this.$i18n.locale === 'en'){
+              this.$i18n.locale = 'zh';
+          }else if(this.$i18n.locale === 'zh'){
+              this.$i18n.locale = 'en';
+          }
       }
     },
     toLogin() {

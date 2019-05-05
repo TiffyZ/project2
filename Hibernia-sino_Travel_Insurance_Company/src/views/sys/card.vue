@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <div style="text-align: right;">
-                        <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
+                        <Page :total="total" :page-size="pageInfo.pageSize" @on-change="e=>{pageSearch(e)}"></Page>
                     </div>  
                 </li>
             </ul>
@@ -31,9 +31,11 @@
 	        <Form :label-width="80" >
 	        	<Form-item :label="$t('message.loginuser')">
 	        		<strong>{{postcard.username}}</strong>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
                 <Form-item :label="$t('message.Content')">
                 	<span>{{postcard.content}}</span>
+                    <!-- <Input v-model="email.username" style="width: 204px" disabled="disabled" /> -->
                 </Form-item>
             </Form>
 	        <div slot="footer">

@@ -16,7 +16,7 @@
             :format="['jpg','jpeg','png']"
             :max-size="1024"
             :on-exceeded-size="handleMaxSize">
-            <Button icon="ios-cloud-upload-outline">上传图片</Button>
+            <Button icon="ios-cloud-upload-outline">{{ $t("message.UploadPic")}}</Button>
         </Upload>
         <quill-editor
           v-model="content" 

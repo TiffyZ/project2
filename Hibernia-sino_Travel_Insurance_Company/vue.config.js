@@ -53,7 +53,7 @@ module.exports = {
     hotOnly: false,
     proxy: {
       "/interest": {
-        target: "http://localhost:8080",
+        target: "http://localhost:8055",
         secure: false
       }
     } // 设置代理

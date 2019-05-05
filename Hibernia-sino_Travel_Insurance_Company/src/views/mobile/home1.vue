@@ -71,27 +71,32 @@
                     },
                     {
                         title: this.$t("message.name"),
+                        width: 50,
                         key: "name"
                     },
                     {
                         title: this.$t("message.Title"),
-                        width: 500,
+                        width: 50,
                         key: "title"
                     },
                     {
                         title: this.$t("message.State"),
+                        width: 50,
                         key: "label"
                     },
                     {
                         title: "email",
+                        width: 50,
                         key: "email"
                     },
                     {
                         title: this.$t("message.Time"),
+                        width: 50,
                         key: "createtime"
                     },
                     {
                         title: this.$t("message.Operation"),
+                        width: 50,
                         align: "center",
                         key: "action",
                         render: (h, params) => {

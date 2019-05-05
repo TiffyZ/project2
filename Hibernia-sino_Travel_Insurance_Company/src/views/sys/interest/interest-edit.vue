@@ -34,7 +34,7 @@
                     :on-success="handleSuccess"
                     :on-format-error="handleFormatError"
                     :format="['jpg','jpeg','png']">
-                    <Button icon="ios-cloud-upload-outline">上传图片</Button>
+                    <Button icon="ios-cloud-upload-outline">{{ $t("message.UploadPic") }}</Button>
                 </Upload>
             </Form-item>
             <Form-item>
@@ -233,7 +233,7 @@ export default {
     selectChange(e) {
       this.axios({
         method: "get",
-        url: "/public/interests/interest",
+        url: "/interests/interest",
         params: {
           id: e
         }

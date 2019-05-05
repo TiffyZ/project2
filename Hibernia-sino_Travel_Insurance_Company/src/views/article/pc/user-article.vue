@@ -65,14 +65,14 @@
             <div class="read-comment-info">
               <dd>
                 <router-link :to="('/article/detail/'+item.id)">
-                  <span class="text">阅读数</span>
+                  <!--<span class="text">阅读数</span>-->
                   <span class="num">{{item.clickRate}}</span>
                 </router-link>
               </dd>
               <div class="interval"></div>
               <dd>
                 <router-link :to="('/article/detail/'+item.id)">
-                  <span class="text">评论数</span>
+                  <!--<span class="text">评论数</span>-->
                   <span class="num">{{item.commentCount}}</span>
                 </router-link>
               </dd>
@@ -80,13 +80,13 @@
             <div class="right-info">
               <dd>
                 <router-link :to="('/article/update/'+item.id)">
-                  <span class="text">修改</span>
+                  <span class="text">{{ $t("message.Edit")}}</span>
                 </router-link>
               </dd>
               <div class="interval"></div>
               <dd>
               	<a @click="delPre(item.id)">
-              		<span class="del-text">删除</span>
+              		<span class="del-text">{{ $t("message.delete")}}</span>
               	</a>
               </dd>
             </div>
@@ -97,19 +97,19 @@
       </div>
       <div v-if="total <= 0" class="default-article-content">
         <img src="../../../images/05d044b1335c6d79ef253b1de1797b08.jpg" />
-        <span>你户很懒一篇文章都没写...</span>
+        <!--<span>你户很懒一篇文章都没写...</span>-->
       </div>
     </div>
     <Modal v-model="modal" width="360">
         <p slot="header" style="color:#f60;text-align:center">
             <Icon type="ios-information-circle"></Icon>
-            <span>温馨提示</span>
+            <span>{{ $t("message.Tip")}}</span>
         </p>
         <div style="text-align:center">
-            <p>是否删除该篇文章？</p>
+            <p>{{ $t("message.delete")}}?</p>
         </div>
         <div slot="footer">
-            <Button type="error" size="large" long :loading="modal_loading" @click="delArticle()">确认</Button>
+            <Button type="error" size="large" long :loading="modal_loading" @click="delArticle()">{{ $t("message.Confirm")}}</Button>
         </div>
   	</Modal>
   </div>

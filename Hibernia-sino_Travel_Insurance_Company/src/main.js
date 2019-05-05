@@ -3,17 +3,15 @@ import App from "./app.vue";
 import router from "./router";
 import iView from "iview";
 // import VueRouter from "vue-router";
-import axios from "./axios";
-import VueAxios from "vue-axios";
-import store from "./store/store";
-import VueQuillEditor from "vue-quill-editor";
-
-import "./styles/common.css";
 // import "iview/dist/styles/iview.css";
 // import "quill/dist/quill.core.css";
 // import "quill/dist/quill.snow.css";
 // import "quill/dist/quill.bubble.css";
-
+import axios from "./axios";
+import VueAxios from "vue-axios";
+import store from "./store/store";
+import VueQuillEditor from "vue-quill-editor";
+import "./styles/common.css";
 import base from "./base";
 import VueI18n from "vue-i18n";
 
@@ -47,7 +45,7 @@ const messages = {
             ChildInsurance: '亲子险',
             UploadPic: '上传图片',
             sethead: '设置头像',
-            ChangeLanguage: 'Change Language',
+            ChangeLanguage: 'English',
             ClickCancel: '点击了取消',
 
             InsuredName: '被保险人姓名',
@@ -195,6 +193,17 @@ const messages = {
             CreateFail: '新建失败',
             OnereplyeachDay: '为保证服务正常运行，每个用户每日只能发布一个，是否确认发布？',
             ReturnMy: '返回我的',
+            Userid: '用户id',
+            ContentDetails: '内容说明',
+            FormID: '表单ID',
+            Confirm: '确认',
+            Previouspage: '上一页',
+            Nextpage: '下一页',
+            Tip: '提示',
+            ModifyConfirm: '确认修改',
+            WaitingForPerfection: '未填写',
+            DLname: '登录名',
+
 
 
 
@@ -215,13 +224,13 @@ const messages = {
             employeeConsole: 'Console',
             login: 'login',
             BaggageInsurance: "Baggage Insurance",
-            BaggageInsurancePlus: "Baggage Insurance Plus",
+            BaggageInsurancePlus: "Advanced Baggage Insurance",
             OnTimeInsurance: 'OnTime Insurance',
             SafetyInsurance: 'Safety Insurance',
             ChildInsurance: 'Child Insurance',
             UploadPic: 'Upload Pictures',
             sethead: "sethead",
-            ChangeLanguage: '切换语言',
+            ChangeLanguage: '中文',
             ClickCancel: 'Click Cancel',
 
             InsuredName: 'Insured Name',
@@ -309,7 +318,7 @@ const messages = {
             Permission: 'Permission',
             ConfigurationSuccess: 'Configuration Success',
             MenuName: 'Menu Name',
-            bala: 'bala',
+            bala: 'Side bar is the key document, non-developers are prohibited to modify!!!!',
             Path: 'Path',
             FaID: 'FaID',
             SortNumber: 'Sort Number',
@@ -327,7 +336,7 @@ const messages = {
             sort: 'sort',
             Noreturnvalue: 'No-return value',
             AgreeToPay: 'Agree To Pay',
-            DisAgreeToPay: 'Disagree To Pay',
+            DisAgreeToPay: 'Refuse To Pay',
             EssayId: 'EssayId',
             CreaterId: 'Creater Id',
             createTime1: 'create Time',
@@ -353,7 +362,7 @@ const messages = {
             Message: 'Message',
             ContactWithAdmin: 'Contact With Admin',
             Welcome: 'Welcome',
-            WorryUsernameORPassword: 'WorryUsernameORPassword',
+            WorryUsernameORPassword: 'Wrong User Name OR Password',
             Password: 'Password',
             register: 'register',
             CheckPassword: 'Check Password',
@@ -369,6 +378,16 @@ const messages = {
             CreateFail: 'Create Fail',
             OnereplyeachDay: 'One reply each Day',
             ReturnMy: 'Return Mine',
+            Userid: 'User id',
+            ContentDetails: 'Content Details',
+            FormID: 'Form ID',
+            Confirm: 'Confirm',
+            Previouspage: 'Previous page',
+            Nextpage: 'Next page',
+            Tip: 'Tip',
+            ModifyConfirm: 'Modify Confirm',
+            WaitingForPerfection: 'Waiting For Perfection',
+            DLname: 'login name',
 
 
         }
