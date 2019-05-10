@@ -237,11 +237,11 @@ const routers = [
         }
       },
       {
-        path: "from1",
-        name: "form1",
-        component: resolve => require(["./views/sys/Handleform.vue"], resolve),
+        path: "finishform",
+        name: "finishform",
+        component: resolve => require(["./views/sys/finishform"], resolve),
         meta: {
-          title: "form1"
+          title: "finishform"
         }
       },
       {
