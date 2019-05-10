@@ -41,7 +41,7 @@ public class ArticleServiceImpl implements ArticleService {
         int userid = SecurityAuthenUtil.getId();
 
         UserDetailEntity userDetailEntity = userDetailService.getEntityByUserid(userid);
-        if (userDetailEntity.getArticleSign() == 1) {
+        if (userDetailEntity.getArticleSign() == 3) {
             throw new ArticleException(ResponseStatus.FAIL_6001.getValue(), ResponseStatus.FAIL_6001.getReasonPhrase());
         }
 
