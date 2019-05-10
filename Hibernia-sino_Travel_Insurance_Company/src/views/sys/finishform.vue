@@ -347,7 +347,7 @@
             getTable(e) {
                 this.axios({
                     method: "get",
-                    url: "/emails",
+                    url: "/emails/finish",
                     params: {
                         page: e.pageInfo.page,
                         pageSize: e.pageInfo.pageSize

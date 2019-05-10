@@ -13,6 +13,10 @@ public interface Regis_FormDao {
 
 	List<Regis_FormEntity> emailsList(@Param("pageSize") int pageSize, @Param("start") int start);
 
+	List<Regis_FormEntity> femailsList(@Param("pageSize") int pageSize, @Param("start") int start);
+
+	List<Regis_FormEntity> ufemailsList(@Param("pageSize") int pageSize, @Param("start") int start);
+
 	List<Regis_FormEntity> emailList(@Param("pageSize") int pageSize, @Param("start") int start, @Param("ID") int ID);
 
 	Integer emailsSize(@Param("pageSize") int pageSize, @Param("start") int start);

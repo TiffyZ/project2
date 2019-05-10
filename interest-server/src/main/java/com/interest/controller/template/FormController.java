@@ -28,6 +28,22 @@ public class FormController {
         return new ResponseWrapper<>(pageResult);
     }
 
+    @GetMapping("/emails/finish")
+    public ResponseWrapper<PageResult> femailsList(@RequestParam("pageSize") int pageSize, @RequestParam("page") int page) {
+        PageResult pageResult = new PageResult();
+        pageResult.setData(formService.femailsList(pageSize, page * pageSize));
+        pageResult.setTotalCount(formService.emailsSize(pageSize, page * pageSize));
+        return new ResponseWrapper<>(pageResult);
+    }
+
+    @GetMapping("/emails/unfinish")
+    public ResponseWrapper<PageResult> ufemailsList(@RequestParam("pageSize") int pageSize, @RequestParam("page") int page) {
+        PageResult pageResult = new PageResult();
+        pageResult.setData(formService.ufemailsList(pageSize, page * pageSize));
+        pageResult.setTotalCount(formService.emailsSize(pageSize, page * pageSize));
+        return new ResponseWrapper<>(pageResult);
+    }
+
     @GetMapping("/emails/individual")
     public ResponseWrapper<PageResult> emailList(@RequestParam("pageSize") int pageSize, @RequestParam("page") int page) {
         int ID = SecurityAuthenUtil.getId();

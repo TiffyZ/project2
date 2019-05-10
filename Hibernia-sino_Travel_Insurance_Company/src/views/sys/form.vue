@@ -155,7 +155,7 @@
                     createtime: "",
                     formType: "",
                     image: "",
-                    label: this.$t("message.Processing"),
+                    label: "Processing",
                     remark:""
                 },
                 /*表显示字段*/
