@@ -443,7 +443,7 @@
             },
             agree(email){
                 this.modal=false;
-                this.email.label=this.$t("message.AgreeToPay");
+                this.email.label="Agree";
                 this.$refs[email].validate(valid => {
                     if (valid) {
                         this.axios({
@@ -473,7 +473,7 @@
             },
             disagree(email){
                 this.modal=false;
-                this.email.label=this.$t("message.DisAgreeToPay");
+                this.email.label="Disagree";
                 this.$refs[email].validate(valid => {
                     if (valid) {
                         this.axios({
