@@ -245,6 +245,14 @@ const routers = [
         }
       },
       {
+        path: "unfinishform",
+        name: "unfinishform",
+        component: resolve => require(["./views/sys/unfinishform"], resolve),
+        meta: {
+          title: "unfinishform"
+        }
+      },
+      {
         path: "card",
         name: "cardmanage",
         component: resolve => require(["./views/sys/card.vue"], resolve),
