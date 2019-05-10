@@ -237,6 +237,14 @@ const routers = [
         }
       },
       {
+        path: "from1",
+        name: "form1",
+        component: resolve => require(["./views/sys/Handleform.vue"], resolve),
+        meta: {
+          title: "form1"
+        }
+      },
+      {
         path: "card",
         name: "cardmanage",
         component: resolve => require(["./views/sys/card.vue"], resolve),
