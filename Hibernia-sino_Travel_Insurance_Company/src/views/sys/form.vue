@@ -78,8 +78,8 @@
                 <!--<Button type="error" size="large"  @click="cancel">关闭</Button>-->
                 <!--<Button v-model="email" type="success" size="large"  @click="agree('email')">{{ $t("message.AgreeToPay") }}</Button>-->
                 <!--<Button v-model="email" type="error" size="large"  @click="disagree('email')">{{ $t("message.DisAgreeToPay") }}</Button>-->
-                <Button v-model="email" type="success" size="large"  @click="agree('email')">agree </Button>
-                <Button v-model="email" type="error" size="large"  @click="disagree('email')">{{ $t("message.DisAgreeToPay") }}</Button>
+                <Button v-model="email" type="success" size="large"  @click="agree('email')">Agree </Button>
+                <Button v-model="email" type="error" size="large"  @click="disagree('email')">Disagree</Button>
             </div>
         </Modal>
     </div>
