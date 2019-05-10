@@ -211,7 +211,7 @@
                                 return h("div", [h("strong", null, this.$t("message.AgreeToPay"))]);
                             } else if (params.row.label == "Disagree") {
                                 return h("div", [h("strong", null, this.$t("message.DisAgreeToPay"))]);
-
+                            }
                         }
                     },
 
