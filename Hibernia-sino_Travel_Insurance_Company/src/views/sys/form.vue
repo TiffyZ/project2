@@ -205,7 +205,14 @@
                     },
                     {
                         title: this.$t("message.State"),
-                        key: "label"
+                        key: "label",
+                        render: (h, params) => {
+                            if (params.row.label == 'Agree') {
+                                return h("div", [h("strong", null, this.$t("message.AgreeToPay"))]);
+                            } else if (params.row.label == "Disagree") {
+                                return h("div", [h("strong", null, this.$t("message.DisAgreeToPay"))]);
+
+                        }
                     },
 
                     //   {
