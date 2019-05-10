@@ -304,7 +304,7 @@ export default {
         content: "",
           formType: 1,
           image: null,
-          label: this.$t("message.Processing")
+          label: "Processing"
       },
         image: [
             {
