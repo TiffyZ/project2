@@ -18,10 +18,6 @@
         <div>
             <ul>
                 <li><b>  {{ $t("message.bala") }} </b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
 
                 <li>
                     <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">{{ $t("message.Create") }}</Button>
