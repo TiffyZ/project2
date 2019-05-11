@@ -3,7 +3,9 @@ package com.interest.service.impl;
 import java.util.List;
 
 import com.interest.dao.RoleDao;
+import com.interest.dao.UserDetailDao;
 import com.interest.model.entity.RoleEntity;
+import com.interest.model.entity.UserDetailEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,6 @@ public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleDao roleDao;
-
 	@Override
 	public List<RoleEntity> rolesList(int pageSize, int start) {
 		return roleDao.rolesList(pageSize, start);

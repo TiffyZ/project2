@@ -27,7 +27,7 @@
     </select>
 
     <update id="updateUseridArticleSign">
-        update sys_user_detail set article_sign = #{articleSign}
+        update sys_user_detail set article_sign = article_sign+1
         <where>
             userid = #{userid}
         </where>

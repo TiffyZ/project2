@@ -2,7 +2,9 @@ package com.interest.service.impl;
 
 import com.interest.dao.RelationDao;
 import com.interest.dao.UserDao;
+import com.interest.dao.UserDetailDao;
 import com.interest.model.entity.RelationEntity;
+import com.interest.model.entity.UserDetailEntity;
 import com.interest.model.entity.UserEntity;
 import com.interest.model.ordinary.UserIdHeadImg;
 import com.interest.model.request.UserInfoRequest;
@@ -32,6 +34,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RelationDao relationDao;
+
+    @Autowired
+    private UserDetailDao userDetailDao;
 
     @Autowired
     private UserDetailService userDetailService;
@@ -82,6 +87,9 @@ public class UserServiceImpl implements UserService {
         //userEntity.setPassword(new Md5PasswordEncoder().encodePassword(userEntity.getPassword(), null));
         userEntity.setPassword("{bcrypt}" + new BCryptPasswordEncoder().encode(userEntity.getPassword()));
         userDao.insertUser(userEntity);
+        UserDetailEntity userDetailEntity = new UserDetailEntity();
+        userDetailEntity.setUserid(userEntity.getId());
+        userDetailDao.insert(userDetailEntity);
     }
 
     @Override

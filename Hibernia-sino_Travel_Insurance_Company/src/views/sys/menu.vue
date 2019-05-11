@@ -14,14 +14,10 @@
                 </Col>
                 <Col span="8"><Button type="primary" shape="circle" icon="ios-search" @click="search()">{{ $t("message.search") }}</Button></Col>
             </Row>
-        </div>            
+        </div>
         <div>
             <ul>
                 <li><b>  {{ $t("message.bala") }} </b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
-                <li><b>  {{ $t("message.bala") }}</b></li>
 
                 <li>
                     <Button class="operation-button" type="primary" icon="md-add" @click="openNewModal()">{{ $t("message.Create") }}</Button>
@@ -40,7 +36,7 @@
                 </li>
             </ul>
         </div>
-        <!--添加modal-->  
+        <!--添加modal-->
         <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" :title="$t('message.Create')" @on-ok="newOk('menuNew')" @on-cancel="cancel()">
             <Form ref="menuNew" :model="menuNew" :rules="ruleNew" :label-width="80" >
                 <Row>

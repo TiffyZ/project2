@@ -10,6 +10,10 @@ public interface FormService {
 
 	List<Regis_FormEntity> emailsList(int pageSize, int start);
 
+	List<Regis_FormEntity> femailsList(int pageSize, int start);
+
+	List<Regis_FormEntity> ufemailsList(int pageSize, int start);
+
 	List<Regis_FormEntity> emailList(int pageSize, int start, int ID);
 
 	Integer emailsSize(int pageSize, int start);

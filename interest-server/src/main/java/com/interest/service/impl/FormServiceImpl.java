@@ -28,6 +28,15 @@ public class FormServiceImpl implements FormService {
 	}
 
 	@Override
+	public List<Regis_FormEntity> femailsList(int pageSize, int start) {
+		return regisFormDao.femailsList(pageSize,start);
+	}
+
+	@Override
+	public List<Regis_FormEntity> ufemailsList(int pageSize, int start) {
+		return regisFormDao.ufemailsList(pageSize,start);
+	}
+	@Override
 	public List<Regis_FormEntity> emailList(int pageSize, int start, int ID) {
 		return regisFormDao.emailList(pageSize,start,ID);
 	}
