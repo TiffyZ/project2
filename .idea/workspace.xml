@@ -254,8 +254,8 @@
       <file leaf-file-name="interest-delete.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/interest/interest-delete.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="101" column="12" lean-forward="true" selection-start-line="71" selection-start-column="7" selection-end-line="101" selection-end-column="12" />
+            <state relative-caret-position="1725">
+              <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -268,7 +268,7 @@
         <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/router.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="319">
-              <caret line="268" column="49" lean-forward="true" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
+              <caret line="268" column="49" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
                 <element signature="e#1251#2900#0" />
@@ -282,8 +282,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="280" column="12" selection-start-line="280" selection-start-column="12" selection-end-line="280" selection-end-column="12" />
+            <state relative-caret-position="328">
+              <caret line="282" column="12" selection-start-line="282" selection-start-column="12" selection-end-line="282" selection-end-column="12" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -846,30 +846,6 @@
               <item name="Hibernia-sino_Travel_Insurance_Company" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="project2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project2" type="462c0819:PsiDirectoryNode" />
-              <item name="Hibernia-sino_Travel_Insurance_Company" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project2" type="462c0819:PsiDirectoryNode" />
-              <item name="Hibernia-sino_Travel_Insurance_Company" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sys" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project2" type="462c0819:PsiDirectoryNode" />
-              <item name="Hibernia-sino_Travel_Insurance_Company" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="sys" type="462c0819:PsiDirectoryNode" />
-              <item name="interest" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -912,16 +888,15 @@
       <workItem from="1555203943317" duration="700000" />
       <workItem from="1555299000592" duration="1000" />
       <workItem from="1556813308394" duration="14769000" />
-      <workItem from="1557057411536" duration="6212000" />
+      <workItem from="1557057411536" duration="6732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36591000" />
+    <option name="totallyTimeSpent" value="37111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34779987" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1177,8 +1152,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="280" column="12" selection-start-line="280" selection-start-column="12" selection-end-line="280" selection-end-column="12" />
+        <state relative-caret-position="328">
+          <caret line="282" column="12" selection-start-line="282" selection-start-column="12" selection-end-line="282" selection-end-column="12" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
@@ -1212,7 +1187,7 @@
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
-          <caret line="268" column="49" lean-forward="true" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
+          <caret line="268" column="49" selection-start-line="268" selection-start-column="49" selection-end-line="268" selection-end-column="49" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
             <element signature="e#1251#2900#0" />
@@ -1224,8 +1199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Hibernia-sino_Travel_Insurance_Company/src/views/sys/interest/interest-delete.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="101" column="12" lean-forward="true" selection-start-line="71" selection-start-column="7" selection-end-line="101" selection-end-column="12" />
+        <state relative-caret-position="1725">
+          <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#2;n#ul#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
