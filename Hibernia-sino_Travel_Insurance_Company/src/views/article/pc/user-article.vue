@@ -93,7 +93,7 @@
           </dl>
       </Card>
       <div class="paging" v-if="total > 0">
-          <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
+          <Page :total="total" show-total @on-change="e=>{pageSearch(e)}"></Page>
       </div>
       <div v-if="total <= 0" class="default-article-content">
         <img src="../../../images/05d044b1335c6d79ef253b1de1797b08.jpg" />

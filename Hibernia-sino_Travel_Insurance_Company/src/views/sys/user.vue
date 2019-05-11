@@ -43,7 +43,7 @@
                 </Row>
                 <Row>
                     <Col span="12">
-                        <Form-item label="用户类型:">
+                        <Form-item label="User Type:">
                             <Select v-model="userModify.usertype" style="width:200px">
                                 <Option  :value="0">{{ $t("message.user") }}</Option>
                                 <Option  :value="1">{{ $t("message.admin") }}</Option>

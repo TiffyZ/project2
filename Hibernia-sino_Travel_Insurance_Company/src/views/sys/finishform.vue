@@ -27,7 +27,7 @@
 
             </ul>
         </div>
-        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="查看">
+        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" title="Detail">
             <Form ref="email" :rules="emailRule" :model="email" :label-width="80">
                 <Form-item label="ID:" prop="id">
 
