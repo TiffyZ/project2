@@ -92,19 +92,17 @@
                             <div class="name-password-error" v-if="this.$store.state.ifSign">{{ $t("message.WorryUsernameORPassword") }}</div>
                             <dl>
                                 <FormItem prop="loginName" >
-                                    <Input v-model="formLogin.loginName" type="text" :placeholder="$t('message.loginuser')" >
+                                    <Input v-model="formLogin.loginName" @keyup.enter.native="login('formLogin')" type="text" :placeholder="$t('message.loginuser')" >
                                         <Icon type="ios-person-outline" slot="prepend" ></Icon>
                                     </Input>
                                 </FormItem>
                                 <FormItem prop="password">
-                                    <Input v-model="formLogin.password" type="password" :placeholder="$t('message.Password')" >
+                                    <Input v-model="formLogin.password" @keyup.enter.native="login('formLogin')" type="password" :placeholder="$t('message.Password')" >
                                     <Icon type="ios-lock-outline" slot="prepend"></Icon></Input>
                                 </FormItem>
                                 <FormItem>
 
                                     <Button type="primary" @click="login('formLogin')" style="width: 250px">{{ $t("message.login") }}</Button>
-                                    <!--<Button type="primary" @click="register()" style="width: 250px"  >注册</Button>-->
-
                                     <Button type="primary" @click="modal1 = true" style="width: 250px">{{ $t("message.register") }}</Button>
                                     <Modal
                                             v-model="modal1"
@@ -127,9 +125,6 @@
                                             <FormItem :label="$t('message.name')" prop="name">
                                                 <Input v-model="enroll.name" :placeholder="$t('message.PleaseEnterName')" />
                                             </FormItem>
-                                            <!--<FormItem label="ID：" prop="id">-->
-                                                <!--<Input v-model="enroll.id"  placeholder="请输入证件号" />-->
-                                            <!--</FormItem>-->
                                             <FormItem :label="$t('message.Email')" prop="email">
                                                 <Input v-model="enroll.email" :placeholder="$t('message.EnterEmailAddress')" />
                                             </FormItem>
@@ -142,16 +137,9 @@
 
                                     <ul class="account-list">
                                         <li>
-                                            <!--<a href="https://github.com/login/oauth/authorize?client_id=bbb5cc2034eb62484c1c&state=github" style="{right: 26px;}">-->
-                                                <!--&lt;!&ndash; <Icon  style="color: rebeccapurple;" size="40" type="social-github"></Icon> &ndash;&gt;-->
-                                                <!--<img class="icon" src="../images/GitHub.svg" />-->
-                                            <!--</a>-->
                                         </li>
 
                                         <li>
-                                            <!--<a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101512648&redirect_uri=http://www.lovemtt.com/qq&state=qq" style="{right: 26px;}">-->
-                                                <!--<img class="icon" src="../images/social-qq.svg" />  -->
-                                            <!--</a>-->
                                         </li>
                                     </ul>
                                 </FormItem>
@@ -260,7 +248,6 @@ export default {
             loginName: [
                 {  required: true, message: this.$t("message.PleaseEnterName"), trigger: "blur" }
             ],
-            // password: [{ required: true, message: "请填写密码", trigger: "blur" }],
            password: [{ required: true, message: this.$t("message.PleaseEnterPassword"), validator: validatePass,trigger: "blur" }],
             password2: [{ required: true,  validator: validatePass2,trigger: "blur" }]
         }
