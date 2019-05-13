@@ -32,7 +32,8 @@
             </ul>
         </div>
         <!--修改modal-->  
-        <Modal :mask-closable="false" :visible.sync="modifyModal" v-model="modifyModal" width="600" :title="$t('message.Edit')" @on-ok="modifyOk()" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="modifyModal" v-model="modifyModal" width="600" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" :title="$t('message.Edit')" @on-ok="modifyOk()" @on-cancel="cancel()">
              <Form :label-width="80" >
                 <Row>
                     <Col span="12">
@@ -55,7 +56,8 @@
             </Form>
         </Modal>
         <!--配置角色modal-->  
-        <Modal v-model="roleModal" width="500" :title="$t('message.Configure')" @on-ok="roleOk()" @on-cancel="cancel()">
+        <Modal v-model="roleModal" width="500" :title="$t('message.Configure')" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" @on-ok="roleOk()" @on-cancel="cancel()">
             <div>
                 <Table border :columns="columns2" :data="data2" :height="260"  @on-selection-change="s=>{change2(s)}"></Table>
             </div>

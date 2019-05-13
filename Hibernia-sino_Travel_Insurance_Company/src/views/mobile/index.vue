@@ -171,7 +171,8 @@
             </Footer>
         </Layout>
 
-        <Modal :mask-closable="false" :visible.sync="emailModal" :loading = "loading" v-model="emailModal" :title="$t('message.ContactWithAdmin')" @on-ok="emailOk('email')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="emailModal" :loading = "loading" v-model="emailModal" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" :title="$t('message.ContactWithAdmin')" @on-ok="emailOk('email')" @on-cancel="cancel()">
              <Form ref="email" :rules="emailRule" :model="email"  :label-width="80" >
                 <!--<FormItem label="标题" prop="title">-->
                     <!--<Input v-model="email.title" placeholder="请输入标题" />-->

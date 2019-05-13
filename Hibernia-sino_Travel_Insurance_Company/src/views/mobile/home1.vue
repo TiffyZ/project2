@@ -12,7 +12,7 @@
                 </li>
                 <li>
                     <div style="text-align: right;">
-                        <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
+                        <Page :total="total" :page-size="pageInfo.pageSize" @on-change="e=>{pageSearch(e)}"></Page>
                     </div>
                 </li>
             </ul>

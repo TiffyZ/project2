@@ -308,7 +308,7 @@ const messages = {
             createTime: 'createTime',
             Describe: 'Describe',
             CharacterName: 'CharacterName',
-            Configure1: 'Configure1',
+            Configure1: 'Change',
             Usertype: 'User type',
             PasswordDifferent: 'Password Different',
             CreateSuccess: 'Create Success',

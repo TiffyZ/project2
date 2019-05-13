@@ -289,7 +289,7 @@
                         </li>
                     </ul>
 
-                    <Page v-if="total > 10" class="pagin" :total="total" size="small" show-elevator @on-change="e=>{pageSearch(e)}" />
+                    <Page v-if="total > 10" class="pagin" :total="total" size="small" @on-change="e=>{pageSearch(e)}" />
                 </div>
             </div>
         </div>

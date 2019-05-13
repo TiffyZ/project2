@@ -22,7 +22,7 @@
         
         </Card>
 
-        <Page :total="totalCount" class="pagin" show-elevator show-sizer show-total
+        <Page :total="totalCount" class="pagin"
             @on-change="e=>{pageSearch(e)}"></Page>
     </div>
     

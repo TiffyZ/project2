@@ -19,13 +19,14 @@
                 </li>
                 <li>
                     <div style="text-align: right;">
-                        <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
+                        <Page :total="total" :page-size="pageInfo.pageSize"  @on-change="e=>{pageSearch(e)}"></Page>
                     </div>  
                 </li>
             </ul>
         </div>
         <!--添加modal-->  
-        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" :title="$t('message.Create')" @on-ok="newOk('roleNew')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" width="600" :title="$t('message.Create')" @on-ok="newOk('roleNew')" @on-cancel="cancel()">
             <Form ref="roleNew" :model="roleNew" :rules="ruleNew" :label-width="80" >
                 <Row>
                     <Col span="12">
@@ -46,7 +47,8 @@
             </Form>
         </Modal>
         <!--修改modal-->  
-        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" width="600" :title="$t('message.Edit')" @on-ok="modifyOk('roleModify')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" width="600" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" :title="$t('message.Edit')" @on-ok="modifyOk('roleModify')" @on-cancel="cancel()">
             <Form ref="roleModify" :model="roleModify" :rules="ruleModify" :label-width="80" >
                 <Row>
                     <Col span="12">
@@ -69,7 +71,8 @@
             </Form>
         </Modal>
         <!-- 配置权限 -->
-        <Modal v-model="settingModal"  width="400" :title="$t('message.PermissionConfiguration')" @on-ok="settingOk()" @on-cancel="cancel()" :mask-closable="false">
+        <Modal v-model="settingModal"  width="400" :title="$t('message.PermissionConfiguration')" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" @on-ok="settingOk()" @on-cancel="cancel()" :mask-closable="false">
             <Row>
                 <Col span="24"><Table border :columns="columns2" :data="data2"></Table></Col>
             </Row>

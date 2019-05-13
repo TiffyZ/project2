@@ -37,7 +37,8 @@
             </ul>
         </div>
         <!--添加modal-->
-        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" :title="$t('message.Create')" @on-ok="newOk('menuNew')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="newModal" :loading = "loading" v-model="newModal" width="600" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" :title="$t('message.Create')" @on-ok="newOk('menuNew')" @on-cancel="cancel()">
             <Form ref="menuNew" :model="menuNew" :rules="ruleNew" :label-width="80" >
                 <Row>
                     <Col span="12">
@@ -76,7 +77,8 @@
             </Form>
         </Modal>
         <!--修改modal-->  
-        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" width="600" :title="$t('message.Edit')" @on-ok="modifyOk('menuModify')" @on-cancel="cancel()">
+        <Modal :mask-closable="false" :visible.sync="modifyModal" :loading = "loading" v-model="modifyModal" :ok-text ="$t('message.Confirm')"
+               :cancel-text ="$t('message.Cancel')" width="600" :title="$t('message.Edit')" @on-ok="modifyOk('menuModify')" @on-cancel="cancel()">
             <Form ref="menuModify" :model="menuModify" :rules="ruleModify" :label-width="80" >
                 <Row>
                     <Col span="12">

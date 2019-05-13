@@ -12,12 +12,12 @@
                 </li>
                 <li>
                     <div style="text-align: right;">
-                        <Page :total="total" :page-size="pageInfo.pageSize" show-elevator show-total @on-change="e=>{pageSearch(e)}"></Page>
+                        <Page :total="total" :page-size="pageInfo.pageSize"  @on-change="e=>{pageSearch(e)}"></Page>
                     </div>  
                 </li>
             </ul>
         </div>
-        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600" :title="$t('message.Watch')">
+        <Modal :mask-closable="false" :visible.sync="modal" v-model="modal" width="600"   :title="$t('message.Watch')">
 	        <Form :label-width="80" >
 	        	<Form-item :label="$t('message.loginuser')">
 	        		<strong>{{postcard.username}}</strong>
